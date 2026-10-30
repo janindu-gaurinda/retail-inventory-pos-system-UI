@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Checkout Terminal | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">POS Checkout Screen</h5>
+                        <span class="badge text-bg-success"><i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i> LIVE REGISTER</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Scan IMEI/barcode or click phones & accessories to add to cart, calculate change, and print receipt</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-outline-danger btn-sm fw-semibold" onclick="clearCart()">
+                <i class="bi bi-trash3 me-1"></i> Clear Cart
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <div class="row g-4 no-print">
+                <!-- Left Column: Barcode Scanner Input, Category Filter & Product Grid -->
+                <div class="col-12 col-xl-7">
+                    <div class="content-card p-3 mb-3">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-12 col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-primary text-white border-primary">
+                                        <i class="bi bi-upc-scan"></i>
+                                    </span>
+                                    <input type="text" id="posSearchInput" class="form-control"
+                                        placeholder="Scan Barcode (Press Enter) or search phone model / SKU..." autofocus>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-5">
+                                <select id="posCategoryFilter" class="form-select" onchange="filterPosProducts()">
+                                    <option value="">All Categories (13 items)</option>
+                                    <option value="iPhones & iOS Devices">iPhones & iOS Devices</option><option value="Smartphones (Android)">Smartphones (Android)</option><option value="Fast Chargers & Adapters">Fast Chargers & Adapters</option><option value="Audio & Wireless Earbuds">Audio & Wireless Earbuds</option><option value="Power Banks & Data Cables">Power Banks & Data Cables</option><option value="Cases & Tempered Glass">Cases & Tempered Glass</option><option value="Smartwatches & Wearables">Smartwatches & Wearables</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Product Tiles Grid -->
+                    <div class="row g-3" id="posProductGrid">
+                        
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="1"
+             data-name="apple iphone 16 pro 256gb (desert titanium)"
+             data-sku="ism-phn-0101"
+             data-barcode="8901041001011"
+             data-category="iPhones & iOS Devices">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(1, 'Apple iPhone 16 Pro 256GB (Desert Titanium)', 'ISM-PHN-0101', 429900, 8)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-PHN-0101</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 8</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Apple iPhone 16 Pro 256GB (Desert Titanium)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041001011
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 429,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="2"
+             data-name="apple iphone 15 128gb (blue) - official warranty"
+             data-sku="ism-phn-0102"
+             data-barcode="8901041001028"
+             data-category="iPhones & iOS Devices">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(2, 'Apple iPhone 15 128GB (Blue) - Official Warranty', 'ISM-PHN-0102', 259900, 11)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-PHN-0102</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 11</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Apple iPhone 15 128GB (Blue) - Official Warranty</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041001028
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 259,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="3"
+             data-name="apple iphone 13 128gb (midnight black)"
+             data-sku="ism-phn-0103"
+             data-barcode="8901041001035"
+             data-category="iPhones & iOS Devices">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(3, 'Apple iPhone 13 128GB (Midnight Black)', 'ISM-PHN-0103', 179900, 3)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-PHN-0103</span>
+                        <span class="badge text-bg-warning">Stock: 3</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Apple iPhone 13 128GB (Midnight Black)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041001035
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 179,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="4"
+             data-name="samsung galaxy s24 ultra 5g (12gb/256gb titanium gray)"
+             data-sku="ism-phn-0104"
+             data-barcode="8901041001042"
+             data-category="Smartphones (Android)">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(4, 'Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)', 'ISM-PHN-0104', 379500, 6)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-PHN-0104</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 6</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041001042
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 379,500.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="5"
+             data-name="samsung galaxy a55 5g (8gb/256gb awesome iceblue)"
+             data-sku="ism-phn-0105"
+             data-barcode="8901041001059"
+             data-category="Smartphones (Android)">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(5, 'Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)', 'ISM-PHN-0105', 126900, 15)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-PHN-0105</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 15</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041001059
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 126,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="6"
+             data-name="xiaomi redmi note 13 pro 5g (8gb/256gb midnight black)"
+             data-sku="ism-phn-0106"
+             data-barcode="8901041001066"
+             data-category="Smartphones (Android)">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(6, 'Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)', 'ISM-PHN-0106', 102500, 18)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-PHN-0106</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 18</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041001066
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 102,500.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="7"
+             data-name="apple 20w usb-c power adapter (original mhje3)"
+             data-sku="ism-acc-0201"
+             data-barcode="8901041002018"
+             data-category="Fast Chargers & Adapters">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(7, 'Apple 20W USB-C Power Adapter (Original MHJE3)', 'ISM-ACC-0201', 8500, 3)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-ACC-0201</span>
+                        <span class="badge text-bg-warning">Stock: 3</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Apple 20W USB-C Power Adapter (Original MHJE3)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041002018
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 8,500.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="8"
+             data-name="anker 45w nano ii gan type-c super fast charger"
+             data-sku="ism-acc-0202"
+             data-barcode="8901041002025"
+             data-category="Fast Chargers & Adapters">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(8, 'Anker 45W Nano II GaN Type-C Super Fast Charger', 'ISM-ACC-0202', 10500, 45)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-ACC-0202</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 45</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Anker 45W Nano II GaN Type-C Super Fast Charger</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041002025
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 10,500.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="9"
+             data-name="apple airpods pro (2nd gen) with magsafe case (usb-c)"
+             data-sku="ism-acc-0203"
+             data-barcode="8901041002032"
+             data-category="Audio & Wireless Earbuds">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(9, 'Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)', 'ISM-ACC-0203', 78500, 2)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-ACC-0203</span>
+                        <span class="badge text-bg-warning">Stock: 2</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041002032
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 78,500.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="10"
+             data-name="samsung galaxy buds3 pro anc wireless earbuds (silver)"
+             data-sku="ism-acc-0204"
+             data-barcode="8901041002049"
+             data-category="Audio & Wireless Earbuds">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(10, 'Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)', 'ISM-ACC-0204', 56900, 20)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-ACC-0204</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 20</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041002049
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 56,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="11"
+             data-name="baseus 20000mah 65w pd fast charging power bank"
+             data-sku="ism-acc-0205"
+             data-barcode="8901041002056"
+             data-category="Power Banks & Data Cables">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between out-of-stock"
+                 >
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-ACC-0205</span>
+                        <span class="badge text-bg-danger">Out of Stock</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Baseus 20000mAh 65W PD Fast Charging Power Bank</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041002056
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 16,500.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="12"
+             data-name="spigen ultra hybrid magfit case + 9h tempered glass (iphone 16 pro)"
+             data-sku="ism-acc-0206"
+             data-barcode="8901041002063"
+             data-category="Cases & Tempered Glass">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(12, 'Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)', 'ISM-ACC-0206', 5900, 85)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-ACC-0206</span>
+                        <span class="badge text-bg-success bg-opacity-10 text-success">Stock: 85</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041002063
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 5,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4 pos-product-item"
+             data-id="13"
+             data-name="apple watch series 10 gps 46mm (jet black aluminum)"
+             data-sku="ism-wch-0301"
+             data-barcode="8901041003015"
+             data-category="Smartwatches & Wearables">
+            <div class="pos-product-card p-3 h-100 d-flex flex-column justify-content-between "
+                 onclick="addToCart(13, 'Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)', 'ISM-WCH-0301', 144900, 3)">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge text-bg-light border font-monospace" style="font-size: 0.68rem;">ISM-WCH-0301</span>
+                        <span class="badge text-bg-warning">Stock: 3</span>
+                    </div>
+                    <div class="fw-semibold text-dark small mb-1">Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)</div>
+                    <div class="text-muted" style="font-size: 0.72rem;">
+                        <i class="bi bi-upc me-1"></i>8901041003015
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-2 border-top d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-primary">LKR 144,900.00</span>
+                    <span class="btn btn-sm btn-primary py-0 px-2"><i class="bi bi-plus-lg"></i></span>
+                </div>
+            </div>
+        </div>
+                    </div>
+
+                    <!-- Recent Shift Invoices Strip -->
+                    <div class="content-card p-3 mt-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0 small text-dark">
+                                <i class="bi bi-clock-history text-primary me-1"></i> Recent POS Invoices (Click to View Receipt)
+                            </h6>
+                            <a href="sales.html" class="small text-decoration-none">All Invoices &rarr;</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 small">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Customer</th>
+                                        <th>Items</th>
+                                        <th>Method</th>
+                                        <th class="text-end">Total</th>
+                                        <th class="text-end">Receipt</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="posRecentInvoicesBody">
+                                    
+        <tr>
+            <td class="fw-bold text-primary"><code>INV-1048</code></td>
+            <td>Walk-in Customer (In-Store)</td>
+            <td>2</td>
+            <td><span class="badge text-bg-light border">Card</span></td>
+            <td class="text-end fw-semibold">LKR 435,000.00</td>
+            <td class="text-end">
+                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2"
+                        onclick='openReceiptModal({"id":101,"invoice_no":"INV-1048","created_at":"2026-10-30 01:15 PM","customer_name":"Walk-in Customer (In-Store)","customer_phone":"077 452 8891","cashier":{"id":4,"name":"Kavindi Perera","role_label":"Cashier"},"items_count":2,"payment_method":"Card","subtotal":438400,"discount_amount":3400,"tax_amount":0,"grand_total":435000,"paid_amount":435000,"change_amount":0,"status":"completed","items":[{"product_name":"Apple iPhone 16 Pro 256GB (Desert Titanium)","sku":"ISM-PHN-0101","quantity":1,"unit_price":429900,"line_total":429900},{"product_name":"Apple 20W USB-C Power Adapter (Original MHJE3)","sku":"ISM-ACC-0201","quantity":1,"unit_price":8500,"line_total":8500}]})'>
+                    <i class="bi bi-printer"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="fw-bold text-primary"><code>INV-1047</code></td>
+            <td>Online Order (Website / Social)</td>
+            <td>2</td>
+            <td><span class="badge text-bg-light border">QR / Bank</span></td>
+            <td class="text-end fw-semibold">LKR 131,000.00</td>
+            <td class="text-end">
+                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2"
+                        onclick='openReceiptModal({"id":102,"invoice_no":"INV-1047","created_at":"2026-10-30 12:30 PM","customer_name":"Online Order (Website / Social)","customer_phone":"071 899 3340","cashier":{"id":1,"name":"Janindu Gaurinda","role_label":"Admin"},"items_count":2,"payment_method":"QR / Bank","subtotal":132800,"discount_amount":1800,"tax_amount":0,"grand_total":131000,"paid_amount":131000,"change_amount":0,"status":"completed","items":[{"product_name":"Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)","sku":"ISM-PHN-0105","quantity":1,"unit_price":126900,"line_total":126900},{"product_name":"Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass","sku":"ISM-ACC-0206","quantity":1,"unit_price":5900,"line_total":5900}]})'>
+                    <i class="bi bi-printer"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="fw-bold text-primary"><code>INV-1046</code></td>
+            <td>Walk-in Customer (In-Store)</td>
+            <td>1</td>
+            <td><span class="badge text-bg-light border">Cash</span></td>
+            <td class="text-end fw-semibold">LKR 78,000.00</td>
+            <td class="text-end">
+                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2"
+                        onclick='openReceiptModal({"id":103,"invoice_no":"INV-1046","created_at":"2026-10-30 11:20 AM","customer_name":"Walk-in Customer (In-Store)","customer_phone":"076 221 9087","cashier":{"id":4,"name":"Kavindi Perera","role_label":"Cashier"},"items_count":1,"payment_method":"Cash","subtotal":78500,"discount_amount":500,"tax_amount":0,"grand_total":78000,"paid_amount":80000,"change_amount":2000,"status":"completed","items":[{"product_name":"Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)","sku":"ISM-ACC-0203","quantity":1,"unit_price":78500,"line_total":78500}]})'>
+                    <i class="bi bi-printer"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="fw-bold text-primary"><code>INV-1045</code></td>
+            <td>Phone / WhatsApp Delivery Order</td>
+            <td>1</td>
+            <td><span class="badge text-bg-light border">Card</span></td>
+            <td class="text-end fw-semibold">LKR 375,000.00</td>
+            <td class="text-end">
+                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2"
+                        onclick='openReceiptModal({"id":104,"invoice_no":"INV-1045","created_at":"2026-10-29 06:45 PM","customer_name":"Phone / WhatsApp Delivery Order","customer_phone":"077 901 1122","cashier":{"id":2,"name":"Nimali Jayawardena","role_label":"Store Manager"},"items_count":1,"payment_method":"Card","subtotal":379500,"discount_amount":4500,"tax_amount":0,"grand_total":375000,"paid_amount":375000,"change_amount":0,"status":"completed","items":[{"product_name":"Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)","sku":"ISM-PHN-0104","quantity":1,"unit_price":379500,"line_total":379500}]})'>
+                    <i class="bi bi-printer"></i>
+                </button>
+            </td>
+        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Active POS Cart & Payment Checkout Form -->
+                <div class="col-12 col-xl-5">
+                    <div class="content-card p-3 p-sm-4 pos-cart-panel">
+                        <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">
+                                    <i class="bi bi-cart4 text-primary me-1"></i> Current Sale Basket
+                                </h6>
+                                <small class="text-muted">Cashier: Janindu Gaurinda</small>
+                            </div>
+                            <span class="badge rounded-pill text-bg-primary" id="cartCountBadge">0 Items</span>
+                        </div>
+
+                        <!-- Cart Items Table -->
+                        <div class="table-responsive mb-3" style="max-height: 270px; overflow-y: auto;">
+                            <table class="table table-sm align-middle mb-0 small">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th class="text-center" style="width: 110px;">Qty</th>
+                                        <th class="text-end">Subtotal</th>
+                                        <th class="text-end"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="posCartTableBody">
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">
+                                            <i class="bi bi-cart-x fs-3 d-block mb-1"></i>
+                                            Cart is empty. Click a product or scan a barcode.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Checkout Form -->
+                        <form id="posCheckoutForm" onsubmit="return handleCompletePosSale(event)">
+                            <!-- Customer / Order Channel Selector -->
+                            <div class="row g-2 mb-3">
+                                <div class="col-7">
+                                    <label class="form-label small fw-semibold text-secondary mb-1">Customer / Sale Type</label>
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text bg-light"><i class="bi bi-person-badge"></i></span>
+                                        <input type="text" id="posCustomerInput" list="posCustomerList"
+                                               class="form-control form-control-sm"
+                                               value="Walk-in Customer (In-Store)"
+                                               placeholder="Select or type customer / channel...">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                        <ul class="dropdown-menu dropdown-menu-end small">
+                                            <li><a class="dropdown-item" href="#" onclick="selectPosCustomer('Walk-in Customer (In-Store)'); return false;">Walk-in Customer (In-Store)</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectPosCustomer('Online Order (Website / Social)'); return false;">Online Order (Website / Social)</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectPosCustomer('Wholesale / Trade Buyer'); return false;">Wholesale / Trade Buyer</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectPosCustomer('Phone / WhatsApp Delivery Order'); return false;">Phone / WhatsApp Delivery Order</a></li>
+                                        </ul>
+                                    </div>
+                                    <datalist id="posCustomerList">
+                                        <option value="Walk-in Customer (In-Store)"></option>
+                                        <option value="Online Order (Website / Social)"></option>
+                                        <option value="Wholesale / Trade Buyer"></option>
+                                        <option value="Phone / WhatsApp Delivery Order"></option>
+                                    </datalist>
+                                </div>
+                                <div class="col-5">
+                                    <label class="form-label small fw-semibold text-secondary mb-1">Phone (Optional)</label>
+                                    <input type="text" id="posCustomerPhone" class="form-control form-control-sm" placeholder="07X XXX XXXX">
+                                </div>
+                            </div>
+
+                            <!-- Two-Way Discount (%) & Discount (LKR) + Tax / VAT (%) Inputs -->
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <label class="form-label small fw-semibold text-primary mb-1">Discount (%)</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="number" step="0.01" min="0" max="100" id="posDiscountPctInput"
+                                               class="form-control form-control-sm" value="0" oninput="onDiscountPctInput()">
+                                        <span class="input-group-text bg-light">%</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label small fw-semibold text-secondary mb-1">Discount (LKR)</label>
+                                    <input type="number" step="0.01" min="0" id="posDiscountInput"
+                                           class="form-control form-control-sm" value="0.00" oninput="onDiscountAmtInput()">
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label small fw-semibold text-secondary mb-1">Tax / VAT (%)</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="number" step="0.1" min="0" max="100" id="posTaxRateInput"
+                                               class="form-control form-control-sm" value="0" oninput="recalcTotals()">
+                                        <span class="input-group-text bg-light">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Totals Summary Box -->
+                            <div class="bg-light rounded-3 p-3 border mb-3 small">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="text-secondary">Subtotal:</span>
+                                    <span class="fw-semibold" id="summarySubtotal">LKR 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="text-secondary">Discount (<span id="summaryDiscountPct">0.00%</span>):</span>
+                                    <span class="text-danger fw-semibold" id="summaryDiscount">- LKR 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                                    <span class="text-secondary">Tax Amount:</span>
+                                    <span class="fw-medium" id="summaryTax">LKR 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-dark fs-6">GRAND TOTAL:</span>
+                                    <span class="fw-bold text-primary fs-5" id="summaryGrandTotal">LKR 0.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Payment Method & Customer Given Cash Calculator -->
+                            <div class="row g-2 mb-2">
+                                <div class="col-5">
+                                    <label class="form-label small fw-semibold mb-1">Payment Method</label>
+                                    <select id="posPaymentMethod" class="form-select form-select-sm" onchange="syncPaidAmount()">
+                                        <option value="Cash">Cash</option>
+                                        <option value="Card">Card (VISA/Master)</option>
+                                        <option value="QR / Bank">QR / Bank Transfer</option>
+                                    </select>
+                                </div>
+                                <div class="col-7">
+                                    <label class="form-label small fw-semibold text-primary mb-1">Customer Given Amount (LKR) *</label>
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text bg-light fw-semibold">LKR</span>
+                                        <input type="number" step="0.01" min="0" id="posPaidInput"
+                                               class="form-control form-control-sm fw-bold text-dark" value="0.00" required
+                                               oninput="onPaidManualInput()">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quick Cash Note Buttons -->
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <button type="button" class="btn btn-sm btn-outline-secondary flex-fill" onclick="setExactCash()">Exact Bill</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary flex-fill" onclick="setQuickCash(5000)">5,000</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary flex-fill" onclick="setQuickCash(10000)">10,000</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary flex-fill" onclick="setQuickCash(50000)">50,000</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary flex-fill" onclick="setQuickCash(100000)">100K</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addQuickCash(5000)" title="Add +5,000">+5K</button>
+                            </div>
+
+                            <!-- Live Balance / Change Calculator Box -->
+                            <div id="posBalanceBox" class="p-3 rounded-3 bg-success bg-opacity-10 border border-success-subtle mb-3 small">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="text-secondary">Bill Grand Total:</span>
+                                    <span class="fw-semibold text-dark" id="calcBillTotal">LKR 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2 pb-2 border-bottom border-success border-opacity-25">
+                                    <span class="text-secondary">Customer Given Cash:</span>
+                                    <span class="fw-bold text-primary" id="calcCustomerGiven">LKR 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-success fs-6" id="posChangeLabel">Balance / Change to Return:</span>
+                                    <span class="fw-bold text-success fs-5" id="posChangeDue">LKR 0.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Complete Sale Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success fw-bold py-2 fs-6" id="completeSaleBtn" disabled>
+                                    <i class="bi bi-check2-circle me-1"></i> Complete Sale &amp; Print Receipt
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <div class="modal fade" id="posReceiptModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-dark text-white no-print">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-receipt me-2"></i>POS Customer Receipt
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-3">
+                            <div class="pos-receipt-box small">
+                                <div class="text-center border-bottom pb-2 mb-2">
+                                    <div class="fw-bold fs-6 text-uppercase">ISM Mobile & Phone Shop</div>
+                                    <div class="text-muted" style="font-size: 0.72rem;">No. 42, Galle Road, Bambalapitiya, Colombo 04</div>
+                                    <div class="text-muted" style="font-size: 0.72rem;">Tel: +94 11 255 8899 &bull; support@ismmobile.lk</div>
+                                    <div class="text-muted" style="font-size: 0.7rem;">Tax / VAT Reg: VAT-SL-8849201</div>
+                                    <div class="badge bg-light text-dark border mt-1 text-wrap" style="font-size: 0.68rem;">
+                                        1 Year Official Company / AppleCare Warranty Included
+                                    </div>
+                                    <div class="fw-bold mt-1" id="rcp_invoice_no"></div>
+                                    <div class="text-muted" style="font-size: 0.7rem;" id="rcp_date"></div>
+                                </div>
+
+                                <div class="mb-2" style="font-size: 0.75rem;">
+                                    <div>Customer: <span id="rcp_customer"></span></div>
+                                    <div>Cashier: <span id="rcp_cashier"></span></div>
+                                    <div>Payment: <span id="rcp_method"></span></div>
+                                </div>
+
+                                <div class="border-top border-bottom py-2 mb-2" id="rcp_items_list" style="font-size: 0.75rem;"></div>
+
+                                <div style="font-size: 0.78rem;">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Subtotal:</span>
+                                        <span id="rcp_subtotal"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Discount (<span id="rcp_discount_pct">0%</span>):</span>
+                                        <span id="rcp_discount"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Tax:</span>
+                                        <span id="rcp_tax"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between fw-bold border-top pt-1 mt-1">
+                                        <span>TOTAL:</span>
+                                        <span id="rcp_total"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-1">
+                                        <span>Paid:</span>
+                                        <span id="rcp_paid"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between fw-bold">
+                                        <span>Change:</span>
+                                        <span id="rcp_change"></span>
+                                    </div>
+                                </div>
+
+                                <div class="text-center border-top pt-2 mt-3" style="font-size: 0.7rem;">
+                                    Thank you for shopping at ISM Mobile & Phone Shop! Keep invoice for warranty claims.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-light justify-content-center no-print">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-sm fw-semibold" onclick="window.print()">
+                                <i class="bi bi-printer me-1"></i> Print Receipt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            let cart = [];
+            let currentGrandTotal = 0;
+            let userManuallyEnteredCash = false;
+            let discountEditMode = 'amount';
+
+            function addToCart(id, name, sku, price, maxStock) {
+                const existing = cart.find(item => item.id === id);
+                if (existing) {
+                    if (existing.qty >= maxStock) {
+                        alert('Maximum available stock (' + maxStock + ') reached for ' + name + '.');
+                        return;
+                    }
+                    existing.qty += 1;
+                } else {
+                    cart.push({ id, name, sku, price: parseFloat(price), qty: 1, maxStock: parseInt(maxStock, 10) });
+                }
+                renderCart();
+            }
+
+            function updateCartQty(id, delta) {
+                const item = cart.find(i => i.id === id);
+                if (!item) return;
+                const nextQty = item.qty + delta;
+                if (nextQty <= 0) {
+                    removeFromCart(id);
+                    return;
+                }
+                if (nextQty > item.maxStock) {
+                    alert('Only ' + item.maxStock + ' units available in stock.');
+                    return;
+                }
+                item.qty = nextQty;
+                renderCart();
+            }
+
+            function removeFromCart(id) {
+                cart = cart.filter(i => i.id !== id);
+                renderCart();
+            }
+
+            function clearCart() {
+                cart = [];
+                userManuallyEnteredCash = false;
+                document.getElementById('posDiscountPctInput').value = '0';
+                document.getElementById('posDiscountInput').value = '0.00';
+                document.getElementById('posTaxRateInput').value = '0';
+                document.getElementById('posPaidInput').value = '0.00';
+                renderCart();
+            }
+
+            function selectPosCustomer(value) {
+                document.getElementById('posCustomerInput').value = value;
+            }
+
+            function onDiscountPctInput() {
+                discountEditMode = 'percent';
+                const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+                const pct = Math.min(100, Math.max(0, parseFloat(document.getElementById('posDiscountPctInput').value) || 0));
+                const amt = subtotal * (pct / 100);
+                document.getElementById('posDiscountInput').value = amt.toFixed(2);
+                recalcTotals();
+            }
+
+            function onDiscountAmtInput() {
+                discountEditMode = 'amount';
+                const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+                const amt = Math.min(subtotal, Math.max(0, parseFloat(document.getElementById('posDiscountInput').value) || 0));
+                const pct = subtotal > 0 ? (amt / subtotal) * 100 : 0;
+                document.getElementById('posDiscountPctInput').value = pct.toFixed(2);
+                recalcTotals();
+            }
+
+            function renderCart() {
+                const tbody = document.getElementById('posCartTableBody');
+                const countBadge = document.getElementById('cartCountBadge');
+                const submitBtn = document.getElementById('completeSaleBtn');
+
+                const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+                countBadge.textContent = totalUnits + (totalUnits === 1 ? ' Item' : ' Items');
+
+                if (cart.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">
+                                <i class="bi bi-cart-x fs-3 d-block mb-1"></i>
+                                Cart is empty. Click a product or scan a barcode.
+                            </td>
+                        </tr>
+                    `;
+                    submitBtn.disabled = true;
+                    recalcTotals();
+                    return;
+                }
+
+                submitBtn.disabled = false;
+                let rowsHtml = '';
+                cart.forEach(item => {
+                    const lineTotal = item.price * item.qty;
+                    rowsHtml += `
+                        <tr>
+                            <td>
+                                <div class="fw-semibold text-dark text-truncate" style="max-width: 150px;">${item.name}</div>
+                                <small class="text-muted">LKR ${item.price.toLocaleString(undefined, {minimumFractionDigits: 2})}</small>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-outline-secondary py-0 px-2" onclick="updateCartQty(${item.id}, -1)">-</button>
+                                    <span class="btn btn-light border py-0 px-2 fw-bold">${item.qty}</span>
+                                    <button type="button" class="btn btn-outline-secondary py-0 px-2" onclick="updateCartQty(${item.id}, 1)">+</button>
+                                </div>
+                            </td>
+                            <td class="text-end fw-semibold">${lineTotal.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm text-danger p-0" onclick="removeFromCart(${item.id})">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                tbody.innerHTML = rowsHtml;
+                recalcTotals();
+            }
+
+            function recalcTotals() {
+                const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+                const pctInput = document.getElementById('posDiscountPctInput');
+                const amtInput = document.getElementById('posDiscountInput');
+
+                let discount = 0;
+                let discountPct = 0;
+                if (subtotal > 0) {
+                    if (discountEditMode === 'percent' && pctInput) {
+                        discountPct = Math.min(100, Math.max(0, parseFloat(pctInput.value) || 0));
+                        discount = Math.round((subtotal * (discountPct / 100)) * 100) / 100;
+                        amtInput.value = discount.toFixed(2);
+                    } else {
+                        discount = Math.min(subtotal, Math.max(0, parseFloat(amtInput.value) || 0));
+                        discountPct = (discount / subtotal) * 100;
+                        if (pctInput && document.activeElement !== pctInput) {
+                            pctInput.value = discountPct > 0 ? discountPct.toFixed(2) : '0';
+                        }
+                    }
+                }
+
+                const taxRate = parseFloat(document.getElementById('posTaxRateInput').value) || 0;
+                const taxable = Math.max(0, subtotal - discount);
+                const taxAmount = taxable * (taxRate / 100);
+                currentGrandTotal = Math.round((taxable + taxAmount) * 100) / 100;
+
+                document.getElementById('summarySubtotal').textContent = 'LKR ' + subtotal.toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('summaryDiscountPct').textContent = discountPct.toFixed(2) + '%';
+                document.getElementById('summaryDiscount').textContent = '- LKR ' + discount.toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('summaryTax').textContent = 'LKR ' + taxAmount.toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('summaryGrandTotal').textContent = 'LKR ' + currentGrandTotal.toLocaleString(undefined, {minimumFractionDigits: 2});
+
+                const paidInput = document.getElementById('posPaidInput');
+                if (!userManuallyEnteredCash && document.activeElement !== paidInput) {
+                    paidInput.value = currentGrandTotal.toFixed(2);
+                }
+                calcChangeDue();
+            }
+
+            function setExactCash() {
+                userManuallyEnteredCash = false;
+                document.getElementById('posPaidInput').value = currentGrandTotal.toFixed(2);
+                calcChangeDue();
+            }
+
+            function setQuickCash(noteAmount) {
+                userManuallyEnteredCash = true;
+                document.getElementById('posPaidInput').value = parseFloat(noteAmount).toFixed(2);
+                calcChangeDue();
+            }
+
+            function addQuickCash(amount) {
+                userManuallyEnteredCash = true;
+                const currentPaid = parseFloat(document.getElementById('posPaidInput').value) || 0;
+                document.getElementById('posPaidInput').value = (currentPaid + amount).toFixed(2);
+                calcChangeDue();
+            }
+
+            function onPaidManualInput() {
+                userManuallyEnteredCash = true;
+                calcChangeDue();
+            }
+
+            function syncPaidAmount() {
+                setExactCash();
+            }
+
+            function calcChangeDue() {
+                const paid = parseFloat(document.getElementById('posPaidInput').value) || 0;
+                const diff = Math.round((paid - currentGrandTotal) * 100) / 100;
+
+                document.getElementById('calcBillTotal').textContent = 'LKR ' + currentGrandTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('calcCustomerGiven').textContent = 'LKR ' + paid.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+                const changeLabelEl = document.getElementById('posChangeLabel');
+                const changeDueEl = document.getElementById('posChangeDue');
+                const balanceBoxEl = document.getElementById('posBalanceBox');
+
+                if (diff >= 0) {
+                    balanceBoxEl.className = 'p-3 rounded-3 bg-success bg-opacity-10 border border-success-subtle mb-3 small';
+                    changeLabelEl.className = 'fw-bold text-success fs-6';
+                    changeLabelEl.textContent = 'Balance / Change to Return:';
+                    changeDueEl.className = 'fw-bold text-success fs-5';
+                    changeDueEl.textContent = 'LKR ' + diff.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                } else {
+                    const shortage = Math.abs(diff);
+                    balanceBoxEl.className = 'p-3 rounded-3 bg-danger bg-opacity-10 border border-danger-subtle mb-3 small';
+                    changeLabelEl.className = 'fw-bold text-danger fs-6';
+                    changeLabelEl.textContent = 'Shortage / Balance Still Due:';
+                    changeDueEl.className = 'fw-bold text-danger fs-5';
+                    changeDueEl.textContent = '- LKR ' + shortage.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                }
+            }
+
+            function handleCompletePosSale(e) {
+                e.preventDefault();
+                if (cart.length === 0) {
+                    alert('Please add at least one product to the cart.');
+                    return false;
+                }
+                const paid = parseFloat(document.getElementById('posPaidInput').value) || 0;
+                if (paid < currentGrandTotal) {
+                    alert('Amount received cannot be less than the Grand Total.');
+                    return false;
+                }
+
+                const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+                const discount = parseFloat(document.getElementById('posDiscountInput').value) || 0;
+                const taxRate = parseFloat(document.getElementById('posTaxRateInput').value) || 0;
+                const taxAmount = Math.max(0, subtotal - discount) * (taxRate / 100);
+                const invNo = 'INV-' + Math.floor(1049 + Math.random() * 900);
+
+                const newSale = {
+                    invoice_no: invNo,
+                    created_at: new Date().toLocaleString(),
+                    customer_name: document.getElementById('posCustomerInput').value || 'Walk-in Customer',
+                    cashier: { name: 'Janindu Gaurinda' },
+                    payment_method: document.getElementById('posPaymentMethod').value,
+                    subtotal: subtotal,
+                    discount_amount: discount,
+                    tax_amount: taxAmount,
+                    grand_total: currentGrandTotal,
+                    paid_amount: paid,
+                    change_amount: Math.max(0, paid - currentGrandTotal),
+                    items: cart.map(c => ({
+                        product_name: c.name,
+                        sku: c.sku,
+                        quantity: c.qty,
+                        unit_price: c.price,
+                        line_total: c.price * c.qty
+                    }))
+                };
+
+                openReceiptModal(newSale);
+                clearCart();
+                showStaticAlert('POS Sale ' + invNo + ' completed! Thermal receipt generated.', 'success');
+                return false;
+            }
+
+            const posSearchInput = document.getElementById('posSearchInput');
+            const posCategoryFilter = document.getElementById('posCategoryFilter');
+
+            function filterPosProducts() {
+                const q = (posSearchInput.value || '').trim().toLowerCase();
+                const cat = posCategoryFilter.value;
+
+                document.querySelectorAll('.pos-product-item').forEach(el => {
+                    const name = el.getAttribute('data-name') || '';
+                    const sku = el.getAttribute('data-sku') || '';
+                    const barcode = el.getAttribute('data-barcode') || '';
+                    const itemCat = el.getAttribute('data-category') || '';
+
+                    const matchesText = !q || name.includes(q) || sku.includes(q) || barcode.includes(q);
+                    const matchesCat = !cat || itemCat === cat;
+                    el.style.display = (matchesText && matchesCat) ? '' : 'none';
+                });
+            }
+
+            if (posSearchInput) {
+                posSearchInput.addEventListener('input', filterPosProducts);
+                posSearchInput.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const q = posSearchInput.value.trim().toLowerCase();
+                        if (!q) return;
+                        const exactMatch = Array.from(document.querySelectorAll('.pos-product-item')).find(el => {
+                            return el.getAttribute('data-barcode') === q || el.getAttribute('data-sku') === q;
+                        });
+                        if (exactMatch) {
+                            const card = exactMatch.querySelector('.pos-product-card');
+                            if (card && !card.classList.contains('out-of-stock')) {
+                                card.click();
+                                posSearchInput.value = '';
+                                filterPosProducts();
+                            }
+                        }
+                    }
+                });
+            }
+
+            function openReceiptModal(sale) {
+                document.getElementById('rcp_invoice_no').textContent = sale.invoice_no;
+                document.getElementById('rcp_date').textContent = sale.created_at;
+                document.getElementById('rcp_customer').textContent = sale.customer_name;
+                document.getElementById('rcp_cashier').textContent = sale.cashier ? sale.cashier.name : 'Cashier';
+                document.getElementById('rcp_method').textContent = sale.payment_method;
+
+                let itemsHtml = '';
+                if (sale.items && sale.items.length) {
+                    sale.items.forEach(item => {
+                        itemsHtml += `
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>${item.quantity}x ${item.product_name}</span>
+                                <span>${Number(item.line_total).toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+                            </div>
+                        `;
+                    });
+                } else {
+                    itemsHtml = '<div class="text-muted">POS Items</div>';
+                }
+                document.getElementById('rcp_items_list').innerHTML = itemsHtml;
+
+                const sub = Number(sale.subtotal) || 0;
+                const disc = Number(sale.discount_amount) || 0;
+                const discPct = sub > 0 ? ((disc / sub) * 100).toFixed(1) : '0';
+
+                document.getElementById('rcp_subtotal').textContent = 'LKR ' + sub.toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('rcp_discount_pct').textContent = discPct + '%';
+                document.getElementById('rcp_discount').textContent = '- LKR ' + disc.toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('rcp_tax').textContent = 'LKR ' + Number(sale.tax_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('rcp_total').textContent = 'LKR ' + Number(sale.grand_total).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('rcp_paid').textContent = 'LKR ' + Number(sale.paid_amount).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('rcp_change').textContent = 'LKR ' + Number(sale.change_amount).toLocaleString(undefined, {minimumFractionDigits: 2});
+
+                new bootstrap.Modal(document.getElementById('posReceiptModal')).show();
+            }
+
+            // Preload 1 sample item into cart so POS looks alive immediately
+            document.addEventListener('DOMContentLoaded', function() {
+                addToCart(1, 'Apple iPhone 16 Pro 256GB (Desert Titanium)', 'ISM-PHN-0101', 429900.00, 8);
+                addToCart(12, 'Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)', 'ISM-ACC-0206', 5900.00, 85);
+            });
+        </script>
+        
+</body>
+</html>

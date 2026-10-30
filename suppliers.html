@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppliers Directory | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Suppliers Directory</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Vendor &amp; Supply Chain Management</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Manage smartphone & accessory distributors, contact persons, payment terms, and payable balances</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-primary btn-sm fw-semibold d-inline-flex align-items-center gap-1 px-3 py-2 rounded-3"
+                data-bs-toggle="modal" data-bs-target="#addSupplierModal">
+                <i class="bi bi-plus-lg"></i> Add New Supplier
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- SECTION A: Supplier Summary KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Suppliers</div>
+                            <h4 class="fw-bold mb-0 text-dark">6</h4>
+                            <small class="text-muted">Registered vendors</small>
+                        </div>
+                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Active Suppliers</div>
+                            <h4 class="fw-bold mb-0 text-success">5</h4>
+                            <small class="text-muted">Ready for Purchase Orders</small>
+                        </div>
+                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-building-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Payable Balance</div>
+                            <h5 class="fw-bold mb-0 text-danger">LKR 1,252,000.00</h5>
+                            <small class="text-muted">Outstanding credit dues</small>
+                        </div>
+                        <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-wallet2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Inactive Vendors</div>
+                            <h4 class="fw-bold mb-0 text-secondary">1</h4>
+                            <small class="text-muted">On hold / archived</small>
+                        </div>
+                        <div class="stat-icon bg-secondary bg-opacity-10 text-secondary">
+                            <i class="bi bi-building-slash"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION B: Search & Filter Bar -->
+            <div class="content-card p-3 mb-4">
+                <form onsubmit="filterSuppliers(event)" class="row g-2 align-items-end">
+                    <div class="col-12 col-md-5">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Search Company / Code / Contact / Phone</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                            <input type="text" id="supSearchInput" class="form-control"
+                                placeholder="Search by company name, SUP code, contact person, phone, or city..." oninput="filterSuppliers()">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Supply Category</label>
+                        <select id="supCategoryFilter" class="form-select form-select-sm" onchange="filterSuppliers()">
+                            <option value="">All Categories</option>
+                            <option value="iPhones & iOS Devices">iPhones & iOS Devices</option><option value="Smartphones (Android)">Smartphones (Android)</option><option value="Fast Chargers & Adapters">Fast Chargers & Adapters</option><option value="Audio & Wireless Earbuds">Audio & Wireless Earbuds</option><option value="Power Banks & Data Cables">Power Banks & Data Cables</option><option value="Cases & Tempered Glass">Cases & Tempered Glass</option><option value="Smartwatches & Wearables">Smartwatches & Wearables</option><option value="Mobile Spare Parts & Batteries">Mobile Spare Parts & Batteries</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Status</label>
+                        <select id="supStatusFilter" class="form-select form-select-sm" onchange="filterSuppliers()">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-sm w-100 fw-semibold">
+                            <i class="bi bi-funnel me-1"></i> Filter
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" title="Reset Filters" onclick="resetSupFilters()">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION C: Suppliers Directory Table -->
+            <div class="content-card p-3 p-sm-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-building text-primary me-1"></i> Registered Suppliers (<span id="supVisibleCount">6</span> companies)
+                        </h6>
+                        <small class="text-muted">Click View, Edit, or Delete to manage vendor profiles</small>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Supplier / Code</th>
+                                <th>Contact Person</th>
+                                <th>Phone &amp; Email</th>
+                                <th>Category / City</th>
+                                <th>Payment Terms</th>
+                                <th class="text-end">Payable (LKR)</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="suppliersTableBody">
+                            
+        <tr class="supplier-row"
+            data-id="1"
+            data-search="futureworld apple authorized sl sup-101 nuwan wijesinghe +94 11 234 9000 colombo 03"
+            data-category="iPhones & iOS Devices"
+            data-status="active">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">FutureWorld Apple Authorized SL</div>
+                        <div>
+                            <code class="text-primary">SUP-101</code>
+                            <small class="text-muted ms-1">&bull; Tax: VAT-109281</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="fw-medium text-dark">Nuwan Wijesinghe</td>
+            <td>
+                <div><i class="bi bi-telephone text-secondary me-1"></i>+94 11 234 9000</div>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i>b2b@futureworld.lk</small>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">iPhones & iOS Devices</span>
+                <div class="text-muted small mt-1"><i class="bi bi-geo-alt me-1"></i>Colombo 03</div>
+            </td>
+            <td>
+                <span class="badge text-bg-info bg-opacity-10 text-primary border border-primary-subtle">Net 30</span>
+            </td>
+            <td class="text-end fw-bold text-danger">
+                680,000.00
+            </td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Supplier Profile"
+                        onclick='openViewSupplierModal({"id":1,"supplier_code":"SUP-101","company_name":"FutureWorld Apple Authorized SL","contact_person":"Nuwan Wijesinghe","phone":"+94 11 234 9000","email":"b2b@futureworld.lk","category":"iPhones & iOS Devices","city":"Colombo 03","tax_number":"VAT-109281","payment_terms":"Net 30","outstanding_balance":680000,"status":"active","address":"No. 118, Duplication Road, Kollupitiya, Colombo 03"})'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Edit Supplier"
+                        onclick='openEditSupplierModal({"id":1,"supplier_code":"SUP-101","company_name":"FutureWorld Apple Authorized SL","contact_person":"Nuwan Wijesinghe","phone":"+94 11 234 9000","email":"b2b@futureworld.lk","category":"iPhones & iOS Devices","city":"Colombo 03","tax_number":"VAT-109281","payment_terms":"Net 30","outstanding_balance":680000,"status":"active","address":"No. 118, Duplication Road, Kollupitiya, Colombo 03"})'>
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Supplier"
+                        onclick='openDeleteSupplierModal({"id":1,"supplier_code":"SUP-101","company_name":"FutureWorld Apple Authorized SL","contact_person":"Nuwan Wijesinghe","phone":"+94 11 234 9000","email":"b2b@futureworld.lk","category":"iPhones & iOS Devices","city":"Colombo 03","tax_number":"VAT-109281","payment_terms":"Net 30","outstanding_balance":680000,"status":"active","address":"No. 118, Duplication Road, Kollupitiya, Colombo 03"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="supplier-row"
+            data-id="2"
+            data-search="samsung lanka mobility pvt ltd sup-102 kasun perera +94 11 250 4411 colombo 02"
+            data-category="Smartphones (Android)"
+            data-status="active">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Samsung Lanka Mobility Pvt Ltd</div>
+                        <div>
+                            <code class="text-primary">SUP-102</code>
+                            <small class="text-muted ms-1">&bull; Tax: VAT-402918</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="fw-medium text-dark">Kasun Perera</td>
+            <td>
+                <div><i class="bi bi-telephone text-secondary me-1"></i>+94 11 250 4411</div>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i>dealer@samsunglanka.lk</small>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Smartphones (Android)</span>
+                <div class="text-muted small mt-1"><i class="bi bi-geo-alt me-1"></i>Colombo 02</div>
+            </td>
+            <td>
+                <span class="badge text-bg-info bg-opacity-10 text-primary border border-primary-subtle">Net 30</span>
+            </td>
+            <td class="text-end fw-bold text-danger">
+                425,000.00
+            </td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Supplier Profile"
+                        onclick='openViewSupplierModal({"id":2,"supplier_code":"SUP-102","company_name":"Samsung Lanka Mobility Pvt Ltd","contact_person":"Kasun Perera","phone":"+94 11 250 4411","email":"dealer@samsunglanka.lk","category":"Smartphones (Android)","city":"Colombo 02","tax_number":"VAT-402918","payment_terms":"Net 30","outstanding_balance":425000,"status":"active","address":"Level 14, Parkland Building, Park Street, Colombo 02"})'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Edit Supplier"
+                        onclick='openEditSupplierModal({"id":2,"supplier_code":"SUP-102","company_name":"Samsung Lanka Mobility Pvt Ltd","contact_person":"Kasun Perera","phone":"+94 11 250 4411","email":"dealer@samsunglanka.lk","category":"Smartphones (Android)","city":"Colombo 02","tax_number":"VAT-402918","payment_terms":"Net 30","outstanding_balance":425000,"status":"active","address":"Level 14, Parkland Building, Park Street, Colombo 02"})'>
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Supplier"
+                        onclick='openDeleteSupplierModal({"id":2,"supplier_code":"SUP-102","company_name":"Samsung Lanka Mobility Pvt Ltd","contact_person":"Kasun Perera","phone":"+94 11 250 4411","email":"dealer@samsunglanka.lk","category":"Smartphones (Android)","city":"Colombo 02","tax_number":"VAT-402918","payment_terms":"Net 30","outstanding_balance":425000,"status":"active","address":"Level 14, Parkland Building, Park Street, Colombo 02"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="supplier-row"
+            data-id="3"
+            data-search="anker & baseus accessories hub sup-103 m. rizwan +94 77 788 2211 colombo 11"
+            data-category="Fast Chargers & Adapters"
+            data-status="active">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Anker & Baseus Accessories Hub</div>
+                        <div>
+                            <code class="text-primary">SUP-103</code>
+                            <small class="text-muted ms-1">&bull; Tax: VAT-778231</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="fw-medium text-dark">M. Rizwan</td>
+            <td>
+                <div><i class="bi bi-telephone text-secondary me-1"></i>+94 77 788 2211</div>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i>sales@ankerhub.lk</small>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Fast Chargers & Adapters</span>
+                <div class="text-muted small mt-1"><i class="bi bi-geo-alt me-1"></i>Colombo 11</div>
+            </td>
+            <td>
+                <span class="badge text-bg-info bg-opacity-10 text-primary border border-primary-subtle">Net 15</span>
+            </td>
+            <td class="text-end fw-bold text-danger">
+                115,000.00
+            </td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Supplier Profile"
+                        onclick='openViewSupplierModal({"id":3,"supplier_code":"SUP-103","company_name":"Anker & Baseus Accessories Hub","contact_person":"M. Rizwan","phone":"+94 77 788 2211","email":"sales@ankerhub.lk","category":"Fast Chargers & Adapters","city":"Colombo 11","tax_number":"VAT-778231","payment_terms":"Net 15","outstanding_balance":115000,"status":"active","address":"No. 88, 1st Cross Street, Pettah, Colombo 11"})'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Edit Supplier"
+                        onclick='openEditSupplierModal({"id":3,"supplier_code":"SUP-103","company_name":"Anker & Baseus Accessories Hub","contact_person":"M. Rizwan","phone":"+94 77 788 2211","email":"sales@ankerhub.lk","category":"Fast Chargers & Adapters","city":"Colombo 11","tax_number":"VAT-778231","payment_terms":"Net 15","outstanding_balance":115000,"status":"active","address":"No. 88, 1st Cross Street, Pettah, Colombo 11"})'>
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Supplier"
+                        onclick='openDeleteSupplierModal({"id":3,"supplier_code":"SUP-103","company_name":"Anker & Baseus Accessories Hub","contact_person":"M. Rizwan","phone":"+94 77 788 2211","email":"sales@ankerhub.lk","category":"Fast Chargers & Adapters","city":"Colombo 11","tax_number":"VAT-778231","payment_terms":"Net 15","outstanding_balance":115000,"status":"active","address":"No. 88, 1st Cross Street, Pettah, Colombo 11"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="supplier-row"
+            data-id="4"
+            data-search="xiaomi lanka official imports sup-104 dilshan silva +94 71 445 9900 colombo 04"
+            data-category="Smartphones (Android)"
+            data-status="active">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Xiaomi Lanka Official Imports</div>
+                        <div>
+                            <code class="text-primary">SUP-104</code>
+                            <small class="text-muted ms-1">&bull; Tax: VAT-559102</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="fw-medium text-dark">Dilshan Silva</td>
+            <td>
+                <div><i class="bi bi-telephone text-secondary me-1"></i>+94 71 445 9900</div>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i>orders@xiaomilanka.lk</small>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Smartphones (Android)</span>
+                <div class="text-muted small mt-1"><i class="bi bi-geo-alt me-1"></i>Colombo 04</div>
+            </td>
+            <td>
+                <span class="badge text-bg-info bg-opacity-10 text-primary border border-primary-subtle">Net 15</span>
+            </td>
+            <td class="text-end fw-bold text-success">
+                0.00
+            </td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Supplier Profile"
+                        onclick='openViewSupplierModal({"id":4,"supplier_code":"SUP-104","company_name":"Xiaomi Lanka Official Imports","contact_person":"Dilshan Silva","phone":"+94 71 445 9900","email":"orders@xiaomilanka.lk","category":"Smartphones (Android)","city":"Colombo 04","tax_number":"VAT-559102","payment_terms":"Net 15","outstanding_balance":0,"status":"active","address":"No. 210, Galle Road, Bambalapitiya, Colombo 04"})'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Edit Supplier"
+                        onclick='openEditSupplierModal({"id":4,"supplier_code":"SUP-104","company_name":"Xiaomi Lanka Official Imports","contact_person":"Dilshan Silva","phone":"+94 71 445 9900","email":"orders@xiaomilanka.lk","category":"Smartphones (Android)","city":"Colombo 04","tax_number":"VAT-559102","payment_terms":"Net 15","outstanding_balance":0,"status":"active","address":"No. 210, Galle Road, Bambalapitiya, Colombo 04"})'>
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Supplier"
+                        onclick='openDeleteSupplierModal({"id":4,"supplier_code":"SUP-104","company_name":"Xiaomi Lanka Official Imports","contact_person":"Dilshan Silva","phone":"+94 71 445 9900","email":"orders@xiaomilanka.lk","category":"Smartphones (Android)","city":"Colombo 04","tax_number":"VAT-559102","payment_terms":"Net 15","outstanding_balance":0,"status":"active","address":"No. 210, Galle Road, Bambalapitiya, Colombo 04"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="supplier-row"
+            data-id="5"
+            data-search="spigen & shield case wholesale sup-105 tharindu fernando +94 76 321 5544 maharagama"
+            data-category="Cases & Tempered Glass"
+            data-status="active">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Spigen & Shield Case Wholesale</div>
+                        <div>
+                            <code class="text-primary">SUP-105</code>
+                            <small class="text-muted ms-1">&bull; Tax: VAT-331094</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="fw-medium text-dark">Tharindu Fernando</td>
+            <td>
+                <div><i class="bi bi-telephone text-secondary me-1"></i>+94 76 321 5544</div>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i>wholesale@spigensl.lk</small>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Cases & Tempered Glass</span>
+                <div class="text-muted small mt-1"><i class="bi bi-geo-alt me-1"></i>Maharagama</div>
+            </td>
+            <td>
+                <span class="badge text-bg-info bg-opacity-10 text-primary border border-primary-subtle">Cash on Delivery</span>
+            </td>
+            <td class="text-end fw-bold text-danger">
+                32,000.00
+            </td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Supplier Profile"
+                        onclick='openViewSupplierModal({"id":5,"supplier_code":"SUP-105","company_name":"Spigen & Shield Case Wholesale","contact_person":"Tharindu Fernando","phone":"+94 76 321 5544","email":"wholesale@spigensl.lk","category":"Cases & Tempered Glass","city":"Maharagama","tax_number":"VAT-331094","payment_terms":"Cash on Delivery","outstanding_balance":32000,"status":"active","address":"No. 54, High Level Road, Maharagama"})'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Edit Supplier"
+                        onclick='openEditSupplierModal({"id":5,"supplier_code":"SUP-105","company_name":"Spigen & Shield Case Wholesale","contact_person":"Tharindu Fernando","phone":"+94 76 321 5544","email":"wholesale@spigensl.lk","category":"Cases & Tempered Glass","city":"Maharagama","tax_number":"VAT-331094","payment_terms":"Cash on Delivery","outstanding_balance":32000,"status":"active","address":"No. 54, High Level Road, Maharagama"})'>
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Supplier"
+                        onclick='openDeleteSupplierModal({"id":5,"supplier_code":"SUP-105","company_name":"Spigen & Shield Case Wholesale","contact_person":"Tharindu Fernando","phone":"+94 76 321 5544","email":"wholesale@spigensl.lk","category":"Cases & Tempered Glass","city":"Maharagama","tax_number":"VAT-331094","payment_terms":"Cash on Delivery","outstanding_balance":32000,"status":"active","address":"No. 54, High Level Road, Maharagama"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="supplier-row"
+            data-id="6"
+            data-search="ifix mobile spare parts co. sup-106 chathura jayasinghe +94 11 288 3322 nugegoda"
+            data-category="Mobile Spare Parts & Batteries"
+            data-status="inactive">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">iFix Mobile Spare Parts Co.</div>
+                        <div>
+                            <code class="text-primary">SUP-106</code>
+                            <small class="text-muted ms-1">&bull; Tax: VAT-990123</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="fw-medium text-dark">Chathura Jayasinghe</td>
+            <td>
+                <div><i class="bi bi-telephone text-secondary me-1"></i>+94 11 288 3322</div>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i>info@ifixparts.lk</small>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Mobile Spare Parts & Batteries</span>
+                <div class="text-muted small mt-1"><i class="bi bi-geo-alt me-1"></i>Nugegoda</div>
+            </td>
+            <td>
+                <span class="badge text-bg-info bg-opacity-10 text-primary border border-primary-subtle">Advance Payment</span>
+            </td>
+            <td class="text-end fw-bold text-success">
+                0.00
+            </td>
+            <td>
+                <span class="badge text-bg-secondary">Inactive</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Supplier Profile"
+                        onclick='openViewSupplierModal({"id":6,"supplier_code":"SUP-106","company_name":"iFix Mobile Spare Parts Co.","contact_person":"Chathura Jayasinghe","phone":"+94 11 288 3322","email":"info@ifixparts.lk","category":"Mobile Spare Parts & Batteries","city":"Nugegoda","tax_number":"VAT-990123","payment_terms":"Advance Payment","outstanding_balance":0,"status":"inactive","address":"No. 19, Stanley Thilakaratne Mawatha, Nugegoda"})'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Edit Supplier"
+                        onclick='openEditSupplierModal({"id":6,"supplier_code":"SUP-106","company_name":"iFix Mobile Spare Parts Co.","contact_person":"Chathura Jayasinghe","phone":"+94 11 288 3322","email":"info@ifixparts.lk","category":"Mobile Spare Parts & Batteries","city":"Nugegoda","tax_number":"VAT-990123","payment_terms":"Advance Payment","outstanding_balance":0,"status":"inactive","address":"No. 19, Stanley Thilakaratne Mawatha, Nugegoda"})'>
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Supplier"
+                        onclick='openDeleteSupplierModal({"id":6,"supplier_code":"SUP-106","company_name":"iFix Mobile Spare Parts Co.","contact_person":"Chathura Jayasinghe","phone":"+94 11 288 3322","email":"info@ifixparts.lk","category":"Mobile Spare Parts & Batteries","city":"Nugegoda","tax_number":"VAT-990123","payment_terms":"Advance Payment","outstanding_balance":0,"status":"inactive","address":"No. 19, Stanley Thilakaratne Mawatha, Nugegoda"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <!-- MODAL 1: Add New Supplier -->
+            <div class="modal fade" id="addSupplierModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-primary text-white">
+                            <h6 class="modal-title fw-bold"><i class="bi bi-plus-circle me-2"></i>Add New Supplier</h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleAddSupplier(event)">
+                            <div class="modal-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Supplier Code *</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" id="add_supplier_code" class="form-control" value="SUP-107" required>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="generateSupplierCode('add_supplier_code')">Auto</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="form-label small fw-semibold">Company Name *</label>
+                                        <input type="text" id="add_sup_company" class="form-control form-control-sm" placeholder="e.g. Singer Sri Lanka Mobility" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Status *</label>
+                                        <select id="add_sup_status" class="form-select form-select-sm" required>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Contact Person *</label>
+                                        <input type="text" id="add_sup_contact" class="form-control form-control-sm" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Phone Number *</label>
+                                        <input type="text" id="add_sup_phone" class="form-control form-control-sm" placeholder="+94 77 123 4567" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Email Address</label>
+                                        <input type="email" id="add_sup_email" class="form-control form-control-sm" placeholder="sales@supplier.lk">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Supply Category *</label>
+                                        <select id="add_sup_category" class="form-select form-select-sm" required>
+                                            <option value="iPhones & iOS Devices">iPhones & iOS Devices</option><option value="Smartphones (Android)">Smartphones (Android)</option><option value="Fast Chargers & Adapters">Fast Chargers & Adapters</option><option value="Audio & Wireless Earbuds">Audio & Wireless Earbuds</option><option value="Power Banks & Data Cables">Power Banks & Data Cables</option><option value="Cases & Tempered Glass">Cases & Tempered Glass</option><option value="Smartwatches & Wearables">Smartwatches & Wearables</option><option value="Mobile Spare Parts & Batteries">Mobile Spare Parts & Batteries</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">City</label>
+                                        <input type="text" id="add_sup_city" class="form-control form-control-sm" value="Colombo">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Tax / VAT Reg No.</label>
+                                        <input type="text" id="add_sup_tax" class="form-control form-control-sm" placeholder="VAT-109283">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Payment Terms *</label>
+                                        <select id="add_sup_terms" class="form-select form-select-sm" required>
+                                            <option value="Net 30">Net 30 Days</option>
+                                            <option value="Net 15">Net 15 Days</option>
+                                            <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                                            <option value="Advance Payment">Advance Payment</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Opening Payable Balance (LKR) *</label>
+                                        <input type="number" step="0.01" min="0" id="add_sup_balance" class="form-control form-control-sm" value="0.00" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Office / Warehouse Address</label>
+                                        <textarea id="add_sup_address" rows="2" class="form-control form-control-sm" placeholder="Street address..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-4">
+                                    <i class="bi bi-check2-circle me-1"></i> Save Supplier
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 2: Edit Supplier -->
+            <div class="modal fade" id="editSupplierModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-dark text-white">
+                            <h6 class="modal-title fw-bold"><i class="bi bi-pencil-square me-2"></i>Edit Supplier</h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleUpdateSupplier(event)">
+                            <div class="modal-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Supplier Code *</label>
+                                        <input type="text" id="edit_supplier_code" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="form-label small fw-semibold">Company Name *</label>
+                                        <input type="text" id="edit_company_name" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Status *</label>
+                                        <select id="edit_status" class="form-select form-select-sm" required>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Contact Person *</label>
+                                        <input type="text" id="edit_contact_person" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Phone Number *</label>
+                                        <input type="text" id="edit_phone" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Email Address</label>
+                                        <input type="email" id="edit_email" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Supply Category *</label>
+                                        <input type="text" id="edit_category" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">City</label>
+                                        <input type="text" id="edit_city" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Tax / VAT Reg No.</label>
+                                        <input type="text" id="edit_tax_number" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Payment Terms *</label>
+                                        <select id="edit_payment_terms" class="form-select form-select-sm" required>
+                                            <option value="Net 30">Net 30 Days</option>
+                                            <option value="Net 15">Net 15 Days</option>
+                                            <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                                            <option value="Advance Payment">Advance Payment</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Outstanding Payable Balance (LKR) *</label>
+                                        <input type="number" step="0.01" min="0" id="edit_outstanding_balance" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Office / Warehouse Address</label>
+                                        <textarea id="edit_address" rows="2" class="form-control form-control-sm"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-4">
+                                    <i class="bi bi-save me-1"></i> Update Supplier
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 3: View Supplier Details -->
+            <div class="modal fade" id="viewSupplierModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-primary text-white">
+                            <h6 class="modal-title fw-bold"><i class="bi bi-building me-2"></i>Supplier Profile Details</h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-4 small">
+                            <h6 class="fw-bold text-dark mb-1" id="view_sup_company"></h6>
+                            <p class="text-muted mb-3" id="view_sup_address"></p>
+                            <table class="table table-sm table-bordered mb-0">
+                                <tbody>
+                                    <tr><th class="bg-light w-50">Supplier Code</th><td><code id="view_sup_code"></code></td></tr>
+                                    <tr><th class="bg-light">Contact Person</th><td class="fw-semibold" id="view_sup_contact"></td></tr>
+                                    <tr><th class="bg-light">Phone Number</th><td id="view_sup_phone"></td></tr>
+                                    <tr><th class="bg-light">Email</th><td id="view_sup_email"></td></tr>
+                                    <tr><th class="bg-light">Category / City</th><td id="view_sup_cat_city"></td></tr>
+                                    <tr><th class="bg-light">Tax / VAT Reg No.</th><td id="view_sup_tax"></td></tr>
+                                    <tr><th class="bg-light">Payment Terms</th><td id="view_sup_terms"></td></tr>
+                                    <tr><th class="bg-light">Payable Balance</th><td class="fw-bold text-danger" id="view_sup_balance"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 4: Delete Supplier Confirmation -->
+            <div class="modal fade" id="deleteSupplierModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-danger text-white">
+                            <h6 class="modal-title fw-bold"><i class="bi bi-exclamation-triangle me-2"></i>Delete Supplier</h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleDeleteSupplier(event)">
+                            <div class="modal-body p-4">
+                                <p class="mb-1">Are you sure you want to remove this supplier from the directory?</p>
+                                <div class="p-3 bg-light rounded-3 border mt-2">
+                                    <div class="fw-bold text-dark" id="delete_supplier_name"></div>
+                                    <small class="text-muted" id="delete_supplier_code"></small>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger btn-sm fw-semibold px-3">
+                                    <i class="bi bi-trash me-1"></i> Yes, Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            let activeSupId = null;
+
+            function generateSupplierCode(inputId) {
+                const rand = Math.floor(100 + Math.random() * 900);
+                document.getElementById(inputId).value = 'SUP-' + rand;
+            }
+
+            function filterSuppliers(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('supSearchInput').value || '').trim().toLowerCase();
+                const c = document.getElementById('supCategoryFilter').value;
+                const s = document.getElementById('supStatusFilter').value;
+                let count = 0;
+                document.querySelectorAll('#suppliersTableBody .supplier-row').forEach(r => {
+                    const mQ = !q || (r.getAttribute('data-search') || '').includes(q);
+                    const mC = !c || r.getAttribute('data-category') === c;
+                    const mS = !s || r.getAttribute('data-status') === s;
+                    if (mQ && mC && mS) {
+                        r.style.display = '';
+                        count++;
+                    } else {
+                        r.style.display = 'none';
+                    }
+                });
+                document.getElementById('supVisibleCount').textContent = count;
+            }
+
+            function resetSupFilters() {
+                document.getElementById('supSearchInput').value = '';
+                document.getElementById('supCategoryFilter').value = '';
+                document.getElementById('supStatusFilter').value = '';
+                filterSuppliers();
+            }
+
+            function openViewSupplierModal(supplier) {
+                document.getElementById('view_sup_company').textContent = supplier.company_name;
+                document.getElementById('view_sup_address').textContent = supplier.address || 'No physical address recorded.';
+                document.getElementById('view_sup_code').textContent = supplier.supplier_code;
+                document.getElementById('view_sup_contact').textContent = supplier.contact_person;
+                document.getElementById('view_sup_phone').textContent = supplier.phone;
+                document.getElementById('view_sup_email').textContent = supplier.email || 'N/A';
+                document.getElementById('view_sup_cat_city').textContent = supplier.category + ' • ' + (supplier.city || 'N/A');
+                document.getElementById('view_sup_tax').textContent = supplier.tax_number || 'N/A';
+                document.getElementById('view_sup_terms').textContent = supplier.payment_terms;
+                document.getElementById('view_sup_balance').textContent = 'LKR ' + Number(supplier.outstanding_balance).toLocaleString(undefined, { minimumFractionDigits: 2 });
+                new bootstrap.Modal(document.getElementById('viewSupplierModal')).show();
+            }
+
+            function openEditSupplierModal(supplier) {
+                activeSupId = supplier.id;
+                document.getElementById('edit_supplier_code').value = supplier.supplier_code;
+                document.getElementById('edit_company_name').value = supplier.company_name;
+                document.getElementById('edit_status').value = supplier.status;
+                document.getElementById('edit_contact_person').value = supplier.contact_person;
+                document.getElementById('edit_phone').value = supplier.phone;
+                document.getElementById('edit_email').value = supplier.email || '';
+                document.getElementById('edit_category').value = supplier.category;
+                document.getElementById('edit_city').value = supplier.city || '';
+                document.getElementById('edit_tax_number').value = supplier.tax_number || '';
+                document.getElementById('edit_payment_terms').value = supplier.payment_terms;
+                document.getElementById('edit_outstanding_balance').value = supplier.outstanding_balance;
+                document.getElementById('edit_address').value = supplier.address || '';
+                new bootstrap.Modal(document.getElementById('editSupplierModal')).show();
+            }
+
+            function openDeleteSupplierModal(supplier) {
+                activeSupId = supplier.id;
+                document.getElementById('delete_supplier_name').textContent = supplier.company_name;
+                document.getElementById('delete_supplier_code').textContent = 'Code: ' + supplier.supplier_code + ' | Contact: ' + supplier.contact_person;
+                new bootstrap.Modal(document.getElementById('deleteSupplierModal')).show();
+            }
+
+            function handleAddSupplier(e) {
+                e.preventDefault();
+                const comp = document.getElementById('add_sup_company').value;
+                const code = document.getElementById('add_supplier_code').value;
+                bootstrap.Modal.getInstance(document.getElementById('addSupplierModal')).hide();
+                showStaticAlert('Supplier "' + comp + '" (' + code + ') added to directory!', 'success');
+            }
+
+            function handleUpdateSupplier(e) {
+                e.preventDefault();
+                const comp = document.getElementById('edit_company_name').value;
+                bootstrap.Modal.getInstance(document.getElementById('editSupplierModal')).hide();
+                showStaticAlert('Supplier "' + comp + '" updated successfully!', 'success');
+            }
+
+            function handleDeleteSupplier(e) {
+                e.preventDefault();
+                const r = document.querySelector('.supplier-row[data-id="' + activeSupId + '"]');
+                if (r) r.remove();
+                filterSuppliers();
+                bootstrap.Modal.getInstance(document.getElementById('deleteSupplierModal')).hide();
+                showStaticAlert('Supplier removed from directory (Static Demo Mode).', 'success');
+            }
+        </script>
+        
+</body>
+</html>

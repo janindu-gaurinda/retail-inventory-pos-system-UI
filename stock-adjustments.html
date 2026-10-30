@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Adjustments | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Stock Adjustments</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Full Access (Create &amp; Approve)</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Record phone shop stock recounts, damaged goods, and approve inventory quantity adjustments</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-primary btn-sm fw-semibold d-inline-flex align-items-center gap-1 px-3 py-2 rounded-3"
+                    data-bs-toggle="modal" data-bs-target="#createAdjustmentModal">
+                <i class="bi bi-plus-lg"></i> New Stock Adjustment
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- SECTION A: Summary KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Adjustments</div>
+                            <h4 class="fw-bold mb-0 text-dark">5</h4>
+                            <small class="text-muted">All recorded requests</small>
+                        </div>
+                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-sliders"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Pending Approval</div>
+                            <h4 class="fw-bold mb-0 text-warning">2</h4>
+                            <small class="text-muted">Awaiting Admin / Store Manager</small>
+                        </div>
+                        <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Approved &amp; Applied</div>
+                            <h4 class="fw-bold mb-0 text-success">2</h4>
+                            <small class="text-muted">Stock quantities updated</small>
+                        </div>
+                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Rejected Requests</div>
+                            <h4 class="fw-bold mb-0 text-danger">1</h4>
+                            <small class="text-muted">No stock change applied</small>
+                        </div>
+                        <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION B: Search & Filter Bar -->
+            <div class="content-card p-3 mb-4">
+                <form onsubmit="filterAdjustments(event)" class="row g-2 align-items-end">
+                    <div class="col-12 col-md-5">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Search Ref # / Product / Reason</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                            <input type="text" id="adjSearchInput" class="form-control"
+                                placeholder="Search by ADJ reference, phone/accessory name, SKU, or reason..." oninput="filterAdjustments()">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Adjustment Type</label>
+                        <select id="adjTypeFilter" class="form-select form-select-sm" onchange="filterAdjustments()">
+                            <option value="">All Types (+ / -)</option>
+                            <option value="addition">Stock Addition (+)</option>
+                            <option value="subtraction">Stock Subtraction (-)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Status</label>
+                        <select id="adjStatusFilter" class="form-select form-select-sm" onchange="filterAdjustments()">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending Approval</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-sm w-100 fw-semibold">
+                            <i class="bi bi-funnel me-1"></i> Filter
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" title="Reset" onclick="resetAdjFilters()">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION C: Stock Adjustments Table -->
+            <div class="content-card p-3 p-sm-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-clipboard2-pulse text-primary me-1"></i> Stock Adjustment Log (<span id="adjVisibleCount">5</span> records)
+                        </h6>
+                        <small class="text-muted">
+                            Role Permissions: Admin (Create &amp; Approve) &bull; Store Manager (Approve) &bull; Stock Manager (Create)
+                        </small>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="text-nowrap">Ref # / Date</th>
+                                <th>Product / SKU</th>
+                                <th class="text-nowrap">Type &amp; Qty</th>
+                                <th class="text-center text-nowrap">Stock Impact</th>
+                                <th>Reason / Notes</th>
+                                <th class="text-nowrap">Requested By</th>
+                                <th class="text-nowrap">Status</th>
+                                <th class="text-end text-nowrap">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adjTableBody">
+                            
+        <tr class="adj-row"
+            data-id="1"
+            data-search="adj-2041 apple 20w usb-c power adapter (original mhje3) ism-acc-0201 damaged / defective goods"
+            data-type="subtraction"
+            data-status="pending">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>ADJ-2041</code></div>
+                <small class="text-muted">30 Oct 2026, 10:15 AM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Apple 20W USB-C Power Adapter (Original MHJE3)</div>
+                <small class="text-muted">
+                    <code>ISM-ACC-0201</code> &bull; Current Stock: <strong>3</strong>
+                </small>
+            </td>
+            <td class="text-nowrap">
+                <span class="badge text-bg-danger bg-opacity-10 text-danger border border-danger-subtle fw-bold"><i class="bi bi-dash-circle me-1"></i>-2 pcs</span>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="text-muted">5</span>
+                <i class="bi bi-arrow-right mx-1 text-secondary"></i>
+                <span class="fw-bold text-dark">3</span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Damaged / Defective Goods</div>
+                <small class="text-muted">Outer box crushed during courier transit; moved to RMA warranty claim bin.</small>
+            </td>
+            <td class="text-nowrap">
+                <div class="fw-medium">Ruwan Bandara</div>
+                
+            </td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-warning">Pending Approval</span>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-success text-nowrap" title="Approve & Apply Stock Change"
+                        onclick="approveAdjRow(this, 'ADJ-2041')">
+                        <i class="bi bi-check-lg me-1"></i>Approve
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Reject Request"
+                        onclick="rejectAdjRow(this, 'ADJ-2041')">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="adj-row"
+            data-id="2"
+            data-search="adj-2040 spigen ultra hybrid magfit case + 9h tempered glass (iphone 16 pro) ism-acc-0206 found unrecorded stock"
+            data-type="addition"
+            data-status="pending">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>ADJ-2040</code></div>
+                <small class="text-muted">29 Oct 2026, 05:40 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)</div>
+                <small class="text-muted">
+                    <code>ISM-ACC-0206</code> &bull; Current Stock: <strong>85</strong>
+                </small>
+            </td>
+            <td class="text-nowrap">
+                <span class="badge text-bg-success bg-opacity-10 text-success border border-success-subtle fw-bold"><i class="bi bi-plus-circle me-1"></i>+5 pack</span>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="text-muted">80</span>
+                <i class="bi bi-arrow-right mx-1 text-secondary"></i>
+                <span class="fw-bold text-dark">85</span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Found Unrecorded Stock</div>
+                <small class="text-muted">Found 5 sealed MagFit packs in display cabinet drawer #3 during evening audit.</small>
+            </td>
+            <td class="text-nowrap">
+                <div class="fw-medium">Ruwan Bandara</div>
+                
+            </td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-warning">Pending Approval</span>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-success text-nowrap" title="Approve & Apply Stock Change"
+                        onclick="approveAdjRow(this, 'ADJ-2040')">
+                        <i class="bi bi-check-lg me-1"></i>Approve
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Reject Request"
+                        onclick="rejectAdjRow(this, 'ADJ-2040')">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="adj-row"
+            data-id="3"
+            data-search="adj-2039 apple iphone 16 pro 256gb (desert titanium) ism-phn-0101 sample / internal use"
+            data-type="subtraction"
+            data-status="approved">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>ADJ-2039</code></div>
+                <small class="text-muted">28 Oct 2026, 03:20 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Apple iPhone 16 Pro 256GB (Desert Titanium)</div>
+                <small class="text-muted">
+                    <code>ISM-PHN-0101</code> &bull; Current Stock: <strong>8</strong>
+                </small>
+            </td>
+            <td class="text-nowrap">
+                <span class="badge text-bg-danger bg-opacity-10 text-danger border border-danger-subtle fw-bold"><i class="bi bi-dash-circle me-1"></i>-1 pcs</span>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="text-muted">9</span>
+                <i class="bi bi-arrow-right mx-1 text-secondary"></i>
+                <span class="fw-bold text-dark">8</span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Sample / Internal Use</div>
+                <small class="text-muted">Unboxed 1 unit for showroom live experience table with security tether.</small>
+            </td>
+            <td class="text-nowrap">
+                <div class="fw-medium">Nimali Jayawardena</div>
+                <small class="text-muted">By: Janindu Gaurinda</small>
+            </td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-success">Approved</span>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Log"
+                        onclick="deleteAdjRow(this, 'ADJ-2039')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="adj-row"
+            data-id="4"
+            data-search="adj-2038 xiaomi redmi note 13 pro 5g (8gb/256gb midnight black) ism-phn-0106 physical audit recount"
+            data-type="addition"
+            data-status="approved">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>ADJ-2038</code></div>
+                <small class="text-muted">27 Oct 2026, 11:10 AM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)</div>
+                <small class="text-muted">
+                    <code>ISM-PHN-0106</code> &bull; Current Stock: <strong>18</strong>
+                </small>
+            </td>
+            <td class="text-nowrap">
+                <span class="badge text-bg-success bg-opacity-10 text-success border border-success-subtle fw-bold"><i class="bi bi-plus-circle me-1"></i>+3 pcs</span>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="text-muted">15</span>
+                <i class="bi bi-arrow-right mx-1 text-secondary"></i>
+                <span class="fw-bold text-dark">18</span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Physical Audit Recount</div>
+                <small class="text-muted">Stock recount verified against supplier GRN batch #XM-882.</small>
+            </td>
+            <td class="text-nowrap">
+                <div class="fw-medium">Ruwan Bandara</div>
+                <small class="text-muted">By: Janindu Gaurinda</small>
+            </td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-success">Approved</span>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Log"
+                        onclick="deleteAdjRow(this, 'ADJ-2038')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="adj-row"
+            data-id="5"
+            data-search="adj-2037 apple iphone 13 128gb (midnight black) ism-phn-0103 physical audit recount"
+            data-type="subtraction"
+            data-status="rejected">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>ADJ-2037</code></div>
+                <small class="text-muted">25 Oct 2026, 04:00 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Apple iPhone 13 128GB (Midnight Black)</div>
+                <small class="text-muted">
+                    <code>ISM-PHN-0103</code> &bull; Current Stock: <strong>3</strong>
+                </small>
+            </td>
+            <td class="text-nowrap">
+                <span class="badge text-bg-danger bg-opacity-10 text-danger border border-danger-subtle fw-bold"><i class="bi bi-dash-circle me-1"></i>-1 pcs</span>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="text-muted">3</span>
+                <i class="bi bi-arrow-right mx-1 text-secondary"></i>
+                <span class="fw-bold text-dark">2</span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Physical Audit Recount</div>
+                <small class="text-muted">Duplicate entry — unit was already invoiced on INV-1029.</small>
+            </td>
+            <td class="text-nowrap">
+                <div class="fw-medium">Ruwan Bandara</div>
+                <small class="text-muted">By: Nimali Jayawardena</small>
+            </td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-danger">Rejected</span>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Log"
+                        onclick="deleteAdjRow(this, 'ADJ-2037')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <div class="modal fade" id="createAdjustmentModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-primary text-white">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-sliders me-2"></i>Create Stock Adjustment
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleCreateAdjustment(event)">
+                            <div class="modal-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Select Product <span class="text-danger">*</span></label>
+                                        <select id="adjProductSelect" class="form-select form-select-sm" required onchange="updateStockPreview()">
+                                            
+        <option value="1" data-name="Apple iPhone 16 Pro 256GB (Desert Titanium)" data-sku="ISM-PHN-0101" data-stock="8" data-unit="pcs">
+            Apple iPhone 16 Pro 256GB (Desert Titanium) (ISM-PHN-0101) — Current Stock: 8 pcs
+        </option>
+    
+        <option value="2" data-name="Apple iPhone 15 128GB (Blue) - Official Warranty" data-sku="ISM-PHN-0102" data-stock="11" data-unit="pcs">
+            Apple iPhone 15 128GB (Blue) - Official Warranty (ISM-PHN-0102) — Current Stock: 11 pcs
+        </option>
+    
+        <option value="3" data-name="Apple iPhone 13 128GB (Midnight Black)" data-sku="ISM-PHN-0103" data-stock="3" data-unit="pcs">
+            Apple iPhone 13 128GB (Midnight Black) (ISM-PHN-0103) — Current Stock: 3 pcs
+        </option>
+    
+        <option value="4" data-name="Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)" data-sku="ISM-PHN-0104" data-stock="6" data-unit="pcs">
+            Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray) (ISM-PHN-0104) — Current Stock: 6 pcs
+        </option>
+    
+        <option value="5" data-name="Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)" data-sku="ISM-PHN-0105" data-stock="15" data-unit="pcs">
+            Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue) (ISM-PHN-0105) — Current Stock: 15 pcs
+        </option>
+    
+        <option value="6" data-name="Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)" data-sku="ISM-PHN-0106" data-stock="18" data-unit="pcs">
+            Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black) (ISM-PHN-0106) — Current Stock: 18 pcs
+        </option>
+    
+        <option value="7" data-name="Apple 20W USB-C Power Adapter (Original MHJE3)" data-sku="ISM-ACC-0201" data-stock="3" data-unit="pcs">
+            Apple 20W USB-C Power Adapter (Original MHJE3) (ISM-ACC-0201) — Current Stock: 3 pcs
+        </option>
+    
+        <option value="8" data-name="Anker 45W Nano II GaN Type-C Super Fast Charger" data-sku="ISM-ACC-0202" data-stock="45" data-unit="pcs">
+            Anker 45W Nano II GaN Type-C Super Fast Charger (ISM-ACC-0202) — Current Stock: 45 pcs
+        </option>
+    
+        <option value="9" data-name="Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)" data-sku="ISM-ACC-0203" data-stock="2" data-unit="pcs">
+            Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) (ISM-ACC-0203) — Current Stock: 2 pcs
+        </option>
+    
+        <option value="10" data-name="Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)" data-sku="ISM-ACC-0204" data-stock="20" data-unit="pcs">
+            Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver) (ISM-ACC-0204) — Current Stock: 20 pcs
+        </option>
+    
+        <option value="11" data-name="Baseus 20000mAh 65W PD Fast Charging Power Bank" data-sku="ISM-ACC-0205" data-stock="0" data-unit="pcs">
+            Baseus 20000mAh 65W PD Fast Charging Power Bank (ISM-ACC-0205) — Current Stock: 0 pcs
+        </option>
+    
+        <option value="12" data-name="Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)" data-sku="ISM-ACC-0206" data-stock="85" data-unit="pack">
+            Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro) (ISM-ACC-0206) — Current Stock: 85 pack
+        </option>
+    
+        <option value="13" data-name="Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)" data-sku="ISM-WCH-0301" data-stock="3" data-unit="pcs">
+            Apple Watch Series 10 GPS 46mm (Jet Black Aluminum) (ISM-WCH-0301) — Current Stock: 3 pcs
+        </option>
+    
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Adjustment Type <span class="text-danger">*</span></label>
+                                        <select id="adjTypeSelect" class="form-select form-select-sm" required onchange="updateStockPreview()">
+                                            <option value="subtraction">Subtraction (- Reduce Stock)</option>
+                                            <option value="addition">Addition (+ Add Stock)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Adjustment Quantity <span class="text-danger">*</span></label>
+                                        <input type="number" id="adjQtyInput" min="1" value="1" class="form-control form-control-sm" required oninput="updateStockPreview()">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light border d-flex justify-content-between align-items-center small">
+                                            <span class="text-muted">Projected Stock Change:</span>
+                                            <span class="fw-bold text-dark" id="liveStockImpactText">0 → 0</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Adjustment Reason <span class="text-danger">*</span></label>
+                                        <select id="adjReasonSelect" class="form-select form-select-sm" required>
+                                            <option value="Physical Audit Recount">Physical Audit Recount</option>
+                                            <option value="Damaged / Defective Goods">Damaged / Defective Goods</option>
+                                            <option value="Expired / Write-off">Expired / Write-off</option>
+                                            <option value="Found Unrecorded Stock">Found Unrecorded Stock</option>
+                                            <option value="Sample / Internal Use">Sample / Internal Use</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Additional Notes</label>
+                                        <textarea id="adjNotesInput" rows="2" class="form-control form-control-sm" placeholder="Optional explanation for manager approval..."></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="1" id="autoApproveCheck" checked>
+                                            <label class="form-check-label small fw-semibold text-success" for="autoApproveCheck">
+                                                Immediately approve and update product stock now
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-4">
+                                    <i class="bi bi-check2-circle me-1"></i> Submit Adjustment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            function updateStockPreview() {
+                const prodSelect = document.getElementById('adjProductSelect');
+                const typeSelect = document.getElementById('adjTypeSelect');
+                const qtyInput = document.getElementById('adjQtyInput');
+                const previewEl = document.getElementById('liveStockImpactText');
+                if (!prodSelect || !typeSelect || !qtyInput || !previewEl) return;
+
+                const selectedOpt = prodSelect.options[prodSelect.selectedIndex];
+                const currentStock = parseInt(selectedOpt.getAttribute('data-stock'), 10) || 0;
+                const unit = selectedOpt.getAttribute('data-unit') || 'pcs';
+                const qty = Math.max(1, parseInt(qtyInput.value, 10) || 0);
+                const isAdd = typeSelect.value === 'addition';
+
+                const newStock = isAdd ? (currentStock + qty) : Math.max(0, currentStock - qty);
+                previewEl.textContent = `${currentStock} ${unit} → ${newStock} ${unit} (${isAdd ? '+' : '-'}${qty})`;
+            }
+
+            function filterAdjustments(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('adjSearchInput').value || '').trim().toLowerCase();
+                const t = document.getElementById('adjTypeFilter').value;
+                const s = document.getElementById('adjStatusFilter').value;
+                let count = 0;
+                document.querySelectorAll('#adjTableBody .adj-row').forEach(r => {
+                    const mQ = !q || (r.getAttribute('data-search') || '').includes(q);
+                    const mT = !t || r.getAttribute('data-type') === t;
+                    const mS = !s || r.getAttribute('data-status') === s;
+                    if (mQ && mT && mS) {
+                        r.style.display = '';
+                        count++;
+                    } else {
+                        r.style.display = 'none';
+                    }
+                });
+                document.getElementById('adjVisibleCount').textContent = count;
+            }
+
+            function resetAdjFilters() {
+                document.getElementById('adjSearchInput').value = '';
+                document.getElementById('adjTypeFilter').value = '';
+                document.getElementById('adjStatusFilter').value = '';
+                filterAdjustments();
+            }
+
+            function approveAdjRow(btn, refNo) {
+                const tr = btn.closest('tr');
+                tr.setAttribute('data-status', 'approved');
+                tr.querySelector('.status-cell').innerHTML = '<span class="badge text-bg-success">Approved</span>';
+                tr.querySelector('.action-cell').innerHTML = '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteAdjRow(this, \'' + refNo + '\')"><i class="bi bi-trash"></i></button>';
+                showStaticAlert('Stock Adjustment ' + refNo + ' approved and applied to inventory!', 'success');
+            }
+
+            function rejectAdjRow(btn, refNo) {
+                const tr = btn.closest('tr');
+                tr.setAttribute('data-status', 'rejected');
+                tr.querySelector('.status-cell').innerHTML = '<span class="badge text-bg-danger">Rejected</span>';
+                tr.querySelector('.action-cell').innerHTML = '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteAdjRow(this, \'' + refNo + '\')"><i class="bi bi-trash"></i></button>';
+                showStaticAlert('Stock Adjustment ' + refNo + ' rejected.', 'danger');
+            }
+
+            function deleteAdjRow(btn, refNo) {
+                if (confirm('Delete adjustment record ' + refNo + '?')) {
+                    btn.closest('tr').remove();
+                    filterAdjustments();
+                    showStaticAlert('Adjustment log ' + refNo + ' deleted.', 'success');
+                }
+            }
+
+            function handleCreateAdjustment(e) {
+                e.preventDefault();
+                const prodSelect = document.getElementById('adjProductSelect');
+                const opt = prodSelect.options[prodSelect.selectedIndex];
+                const prodName = opt.getAttribute('data-name');
+                const prodSku = opt.getAttribute('data-sku');
+                const prevStock = parseInt(opt.getAttribute('data-stock'), 10) || 0;
+                const unit = opt.getAttribute('data-unit') || 'pcs';
+                const isAdd = document.getElementById('adjTypeSelect').value === 'addition';
+                const qty = parseInt(document.getElementById('adjQtyInput').value, 10) || 1;
+                const newStock = isAdd ? (prevStock + qty) : Math.max(0, prevStock - qty);
+                const reason = document.getElementById('adjReasonSelect').value;
+                const notes = document.getElementById('adjNotesInput').value;
+                const autoApprove = document.getElementById('autoApproveCheck').checked;
+                const refNo = 'ADJ-' + Math.floor(2042 + Math.random() * 900);
+
+                const tbody = document.getElementById('adjTableBody');
+                const tr = document.createElement('tr');
+                tr.className = 'adj-row';
+                tr.setAttribute('data-search', (refNo + ' ' + prodName + ' ' + prodSku + ' ' + reason).toLowerCase());
+                tr.setAttribute('data-type', isAdd ? 'addition' : 'subtraction');
+                tr.setAttribute('data-status', autoApprove ? 'approved' : 'pending');
+                tr.innerHTML = `
+                    <td class="text-nowrap"><div class="fw-bold text-primary"><code>${refNo}</code></div><small class="text-muted">Just now</small></td>
+                    <td><div class="fw-semibold text-dark">${prodName}</div><small class="text-muted"><code>${prodSku}</code> &bull; Current Stock: <strong>${newStock}</strong></small></td>
+                    <td class="text-nowrap">${isAdd
+                        ? `<span class="badge text-bg-success bg-opacity-10 text-success border border-success-subtle fw-bold"><i class="bi bi-plus-circle me-1"></i>+${qty} ${unit}</span>`
+                        : `<span class="badge text-bg-danger bg-opacity-10 text-danger border border-danger-subtle fw-bold"><i class="bi bi-dash-circle me-1"></i>-${qty} ${unit}</span>`}</td>
+                    <td class="text-center text-nowrap"><span class="text-muted">${prevStock}</span><i class="bi bi-arrow-right mx-1 text-secondary"></i><span class="fw-bold text-dark">${newStock}</span></td>
+                    <td><div class="fw-medium text-dark">${reason}</div><small class="text-muted">${notes}</small></td>
+                    <td class="text-nowrap"><div class="fw-medium">Janindu Gaurinda</div></td>
+                    <td class="text-nowrap status-cell">${autoApprove ? '<span class="badge text-bg-success">Approved</span>' : '<span class="badge text-bg-warning">Pending Approval</span>'}</td>
+                    <td class="text-end text-nowrap action-cell"><button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteAdjRow(this, '${refNo}')"><i class="bi bi-trash"></i></button></td>
+                `;
+                tbody.insertBefore(tr, tbody.firstChild);
+                filterAdjustments();
+                bootstrap.Modal.getInstance(document.getElementById('createAdjustmentModal')).hide();
+                showStaticAlert('Stock adjustment ' + refNo + ' recorded successfully!', 'success');
+            }
+
+            document.addEventListener('DOMContentLoaded', updateStockPreview);
+        </script>
+        
+</body>
+</html>

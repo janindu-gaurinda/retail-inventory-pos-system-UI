@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings — ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">System Settings & Configuration</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Module 12 · Admin Only</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Configure phone shop profile, currency, tax/VAT rate, thermal POS receipt layout, inventory thresholds, and role security policies.</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1"
+                    onclick="if(confirm('Restore all System Settings to factory default values?')) showStaticAlert('System settings restored to defaults.', 'success');">
+                <i class="bi bi-arrow-counterclockwise"></i>
+                <span class="d-none d-sm-inline">Reset Defaults</span>
+            </button>
+            <button type="submit" form="systemSettingsForm" class="btn btn-primary btn-sm d-flex align-items-center gap-1 fw-semibold px-3">
+                <i class="bi bi-check2-circle"></i>
+                <span>Save All Settings</span>
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- PART 4: Quick Configuration Summary Strip (4 KPI Cards) -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-primary">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Active Store Branch</div>
+                                <div class="fw-bold text-dark mt-1 text-truncate" style="max-width: 180px;">BR-CMB-01</div>
+                                <small class="text-secondary text-truncate d-block" style="max-width: 190px;">ISM Mobile & Phone Shop</small>
+                            </div>
+                            <div class="kpi-icon bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-shop"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-success">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Base Currency &amp; Tax</div>
+                                <div class="fw-bold text-dark mt-1">LKR (LKR)</div>
+                                <span class="badge bg-success-subtle text-success rounded-pill">Default Tax: 0.00%</span>
+                            </div>
+                            <div class="kpi-icon bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-currency-exchange"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-info">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">POS Receipt Format</div>
+                                <div class="fw-bold text-dark mt-1">80mm Thermal</div>
+                                <span class="badge bg-info-subtle text-info-emphasis rounded-pill">Prefix: INV-</span>
+                            </div>
+                            <div class="kpi-icon bg-info bg-opacity-10 text-info">
+                                <i class="bi bi-printer-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-warning">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Low Stock Alert Default</div>
+                                <div class="fw-bold text-dark mt-1">5 Units</div>
+                                <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill">RBAC Policies Enforced</span>
+                            </div>
+                            <div class="kpi-icon bg-warning bg-opacity-10 text-warning">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 5: Main System Settings Form + Live Thermal Receipt Preview -->
+            <form id="systemSettingsForm" onsubmit="event.preventDefault(); showStaticAlert('System Settings saved and applied across POS receipts and reports!', 'success');">
+                <div class="row g-4">
+                    <!-- Left Column: Configuration Sections -->
+                    <div class="col-12 col-xl-8">
+                        <!-- SECTION 1: Store Profile & Business Identity -->
+                        <div class="card table-card mb-4">
+                            <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">
+                                        <i class="bi bi-building text-primary me-2"></i>1. Store Profile &amp; Business Identity
+                                    </h6>
+                                    <small class="text-secondary">Displayed on POS thermal receipts, Purchase Orders, and analytical reports.</small>
+                                </div>
+                                <span class="badge bg-primary-subtle text-primary">Store Info</span>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <label class="form-label small fw-semibold">Store / Company Name <span class="text-danger">*</span></label>
+                                        <input type="text" id="inputStoreName" class="form-control" required value="ISM Mobile & Phone Shop">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Branch / Store Code <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" required value="BR-CMB-01">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Official Contact Email <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" required value="support@ismmobile.lk">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Store Hotline / Phone <span class="text-danger">*</span></label>
+                                        <input type="text" id="inputStorePhone" class="form-control" required value="+94 11 255 8899">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Store Tagline / Subtitle</label>
+                                        <input type="text" class="form-control" value="Authorized Smartphones, iPhones, Accessories & Repair POS">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Tax / VAT Registration No.</label>
+                                        <input type="text" id="inputTaxReg" class="form-control" value="VAT-SL-8849201">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Physical Store Address <span class="text-danger">*</span></label>
+                                        <input type="text" id="inputStoreAddress" class="form-control" required value="No. 42, Galle Road, Bambalapitiya, Colombo 04">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 2: Currency, Tax / VAT & Localization -->
+                        <div class="card table-card mb-4">
+                            <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">
+                                        <i class="bi bi-cash-coin text-success me-2"></i>2. Currency, Tax / VAT &amp; Localization
+                                    </h6>
+                                    <small class="text-secondary">Controls pricing display, POS tax calculation, and cashier discount limits.</small>
+                                </div>
+                                <span class="badge bg-success-subtle text-success">Financial</span>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Currency Code <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" required value="LKR">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Currency Symbol <span class="text-danger">*</span></label>
+                                        <input type="text" id="inputCurrencySymbol" class="form-control" required value="LKR">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Default Tax / VAT (%) <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="number" step="0.01" min="0" max="50" class="form-control" required value="0.00">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Max Cashier Discount <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="number" step="1" min="0" max="100" class="form-control" required value="10">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">System Timezone <span class="text-danger">*</span></label>
+                                        <select class="form-select">
+                                            <option value="Asia/Colombo" selected>Asia/Colombo (GMT+05:30)</option>
+                                            <option value="UTC">UTC (GMT+00:00)</option>
+                                            <option value="Asia/Dubai">Asia/Dubai (GMT+04:00)</option>
+                                            <option value="Asia/Singapore">Asia/Singapore (GMT+08:00)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Display Date Format <span class="text-danger">*</span></label>
+                                        <select class="form-select">
+                                            <option value="d M Y" selected>30 Oct 2026 (d M Y)</option>
+                                            <option value="Y-m-d">2026-10-30 (Y-m-d)</option>
+                                            <option value="d/m/Y">30/10/2026 (d/m/Y)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 3: POS Register, Document Prefixes & Thermal Receipt Customization -->
+                        <div class="card table-card mb-4">
+                            <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">
+                                        <i class="bi bi-receipt-cutoff text-info me-2"></i>3. POS Register, Document Prefixes &amp; Receipt Layout
+                                    </h6>
+                                    <small class="text-secondary">Customize document numbering prefixes and live thermal receipt header/footer text.</small>
+                                </div>
+                                <span class="badge bg-info-subtle text-info-emphasis">POS &amp; Receipts</span>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Sales Invoice Prefix <span class="text-danger">*</span></label>
+                                        <input type="text" id="inputInvoicePrefix" class="form-control font-monospace" required value="INV-">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Purchase Order Prefix <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control font-monospace" required value="PO-">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Stock Adj. Prefix <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control font-monospace" required value="ADJ-">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Receipt Paper Size <span class="text-danger">*</span></label>
+                                        <select class="form-select">
+                                            <option value="80mm" selected>80mm Thermal Roll</option>
+                                            <option value="58mm">58mm Compact Roll</option>
+                                            <option value="A4">A4 Full Invoice</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Receipt Header Note</label>
+                                        <input type="text" id="inputReceiptHeader" class="form-control" value="1 Year Official Company / AppleCare Warranty Included">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Receipt Footer Note / Return Policy</label>
+                                        <textarea id="inputReceiptFooter" rows="2" class="form-control">Thank you for shopping at ISM Mobile & Phone Shop! Keep invoice for warranty claims.</textarea>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch p-3 border rounded-3 bg-light">
+                                            <input class="form-check-input ms-0 me-2" type="checkbox" role="switch" id="switchAutoPrint" checked>
+                                            <label class="form-check-label fw-semibold small" for="switchAutoPrint">
+                                                Auto-Open Receipt Print Dialog After POS Checkout
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch p-3 border rounded-3 bg-light">
+                                            <input class="form-check-input ms-0 me-2" type="checkbox" role="switch" id="switchNegStock">
+                                            <label class="form-check-label fw-semibold small" for="switchNegStock">
+                                                Allow POS Sales When Product Stock is Zero
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 4: Inventory Thresholds & Role-Based Security Policies -->
+                        <div class="card table-card mb-4">
+                            <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">
+                                        <i class="bi bi-shield-lock text-warning me-2"></i>4. Inventory Alerts &amp; Role Security Policies
+                                    </h6>
+                                    <small class="text-secondary">Global inventory alert defaults and role-based security rules.</small>
+                                </div>
+                                <span class="badge bg-warning-subtle text-warning-emphasis">Security &amp; Inventory</span>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Default Minimum Stock Alert Level <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="number" min="1" max="1000" class="form-control" required value="5">
+                                            <span class="input-group-text">Units</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Idle Session Timeout <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="number" min="15" max="1440" class="form-control" required value="60">
+                                            <span class="input-group-text">Minutes</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch p-3 border rounded-3 bg-light h-100">
+                                            <input class="form-check-input ms-0 me-2" type="checkbox" role="switch" id="switchAdjApproval" checked>
+                                            <label class="form-check-label fw-semibold small d-block" for="switchAdjApproval">
+                                                Require Manager Approval for Stock Adjustments
+                                            </label>
+                                            <small class="text-secondary d-block mt-1">Stock Manager adjustments stay Pending until Admin/Store Manager approves.</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch p-3 border rounded-3 bg-light h-100">
+                                            <input class="form-check-input ms-0 me-2" type="checkbox" role="switch" id="switchHideCost" checked>
+                                            <label class="form-check-label fw-semibold small d-block" for="switchHideCost">
+                                                Hide Cost Price &amp; Profit Margin from Cashiers
+                                            </label>
+                                            <small class="text-secondary d-block mt-1">Cashiers see selling price &amp; stock only in Products List.</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-check form-switch p-3 border rounded-3 bg-light h-100">
+                                            <input class="form-check-input ms-0 me-2" type="checkbox" role="switch" id="switchCashierShift" checked>
+                                            <label class="form-check-label fw-semibold small d-block" for="switchCashierShift">
+                                                Restrict Cashiers to Own-Shift Invoices Only
+                                            </label>
+                                            <small class="text-secondary d-block mt-1">Cashiers only view sales processed under their own login.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer bg-white py-3 px-4 d-flex justify-content-end gap-2 border-top">
+                                <button type="submit" class="btn btn-primary px-4 fw-semibold">
+                                    <i class="bi bi-check2-circle me-1"></i> Save System Configuration
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Live Thermal Receipt Preview & System Environment Diagnostics -->
+                    <div class="col-12 col-xl-4">
+                        <div class="card table-card mb-4">
+                            <div class="card-header bg-dark text-white py-3 px-4 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-0">
+                                        <i class="bi bi-printer me-2 text-info"></i>Live Thermal Receipt Preview
+                                    </h6>
+                                    <small class="text-white-50">Updates in real time as you type</small>
+                                </div>
+                                <span class="badge bg-info text-dark">80mm</span>
+                            </div>
+                            <div class="card-body p-4 bg-light">
+                                <div class="bg-white border rounded-3 shadow-sm p-3 mx-auto font-monospace" style="max-width: 320px; font-size: 0.78rem;">
+                                    <div class="text-center border-bottom border-dark border-opacity-25 pb-2 mb-2">
+                                        <div id="previewStoreName" class="fw-bold fs-6">ISM Mobile & Phone Shop</div>
+                                        <div id="previewStoreAddress" class="text-secondary small">No. 42, Galle Road, Bambalapitiya, Colombo 04</div>
+                                        <div class="text-secondary small">Tel: <span id="previewStorePhone">+94 11 255 8899</span></div>
+                                        <div class="text-secondary small">Tax Reg: <span id="previewTaxReg">VAT-SL-8849201</span></div>
+                                        <div id="previewHeaderNote" class="badge bg-light text-dark border mt-1 text-wrap">1 Year Official Company / AppleCare Warranty Included</div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between small mb-1">
+                                        <span>Invoice: <strong id="previewInvoiceNo">INV-1048</strong></span>
+                                        <span>30/10/2026 13:15</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between small border-bottom border-dark border-opacity-25 pb-2 mb-2">
+                                        <span>Cashier: Janindu Gaurinda</span>
+                                        <span>Pay: CARD</span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>1x iPhone 16 Pro 256GB</span>
+                                            <span>429,900.00</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span>1x Apple 20W USB-C Charger</span>
+                                            <span>8,500.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-top border-bottom border-dark border-opacity-25 py-2 my-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Subtotal:</span>
+                                            <span>438,400.00</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between fw-bold fs-6 mt-1">
+                                            <span>GRAND TOTAL (<span id="previewCurrency">LKR</span>):</span>
+                                            <span>438,400.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div id="previewFooterNote" class="text-center text-secondary small mt-2">
+                                        Thank you for shopping at ISM Mobile & Phone Shop! Keep invoice for warranty claims.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Environment & Database Health Card -->
+                        <div class="card table-card">
+                            <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">
+                                        <i class="bi bi-cpu text-primary me-2"></i>System Environment &amp; Catalog
+                                    </h6>
+                                    <small class="text-secondary">Static HTML5 UI &amp; Sample Dataset</small>
+                                </div>
+                                <span class="badge bg-success-subtle text-success">Ready</span>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">UI Mode</span>
+                                        <span class="fw-semibold badge bg-light text-dark border">Static HTML5 + Bootstrap 5.3</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">Domain Preset</span>
+                                        <span class="fw-semibold badge bg-primary-subtle text-primary">Phone Shop &amp; POS</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">Registered Staff Users</span>
+                                        <a href="users.html" class="fw-semibold text-decoration-none">5 Accounts</a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">Catalog Products (SKUs)</span>
+                                        <a href="products.html" class="fw-semibold text-decoration-none">13 Products</a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">Active Suppliers</span>
+                                        <a href="suppliers.html" class="fw-semibold text-decoration-none">6 Suppliers</a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">Purchase Orders / Adjustments</span>
+                                        <span class="fw-semibold">6 POs · 5 Adj</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-2">
+                                        <span class="text-secondary">POS Sales Invoices</span>
+                                        <a href="sales.html" class="fw-semibold text-decoration-none">6 Invoices</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const bindings = [
+                    { input: 'inputStoreName', preview: 'previewStoreName' },
+                    { input: 'inputStoreAddress', preview: 'previewStoreAddress' },
+                    { input: 'inputStorePhone', preview: 'previewStorePhone' },
+                    { input: 'inputTaxReg', preview: 'previewTaxReg' },
+                    { input: 'inputReceiptHeader', preview: 'previewHeaderNote' },
+                    { input: 'inputReceiptFooter', preview: 'previewFooterNote' },
+                    { input: 'inputCurrencySymbol', preview: 'previewCurrency' },
+                ];
+
+                bindings.forEach(function (pair) {
+                    const inputEl = document.getElementById(pair.input);
+                    const previewEl = document.getElementById(pair.preview);
+                    if (inputEl && previewEl) {
+                        inputEl.addEventListener('input', function () {
+                            previewEl.textContent = inputEl.value;
+                        });
+                    }
+                });
+
+                const prefixInput = document.getElementById('inputInvoicePrefix');
+                const previewInvoice = document.getElementById('previewInvoiceNo');
+                if (prefixInput && previewInvoice) {
+                    prefixInput.addEventListener('input', function () {
+                        previewInvoice.textContent = (prefixInput.value || 'INV-') + '1048';
+                    });
+                }
+            });
+        </script>
+        
+</body>
+</html>

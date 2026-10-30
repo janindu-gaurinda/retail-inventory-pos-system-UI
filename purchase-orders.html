@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Orders (POs) | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Purchase Orders (POs)</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Create &amp; Receive Stock</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Create supplier purchase orders for phones & accessories, track deliveries, and receive incoming stock</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-primary btn-sm fw-semibold d-inline-flex align-items-center gap-1 px-3 py-2 rounded-3"
+                    data-bs-toggle="modal" data-bs-target="#createPoModal">
+                <i class="bi bi-plus-lg"></i> Create Purchase Order
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- SECTION A: PO Summary KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Purchase Orders</div>
+                            <h4 class="fw-bold mb-0 text-dark">6</h4>
+                            <small class="text-muted">All PO records</small>
+                        </div>
+                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-receipt-cutoff"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Open POs (Awaiting Delivery)</div>
+                            <h4 class="fw-bold mb-0 text-warning">3</h4>
+                            <small class="text-muted">LKR 1,121,500.00</small>
+                        </div>
+                        <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                            <i class="bi bi-truck-flatbed"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Received POs</div>
+                            <h4 class="fw-bold mb-0 text-success">2</h4>
+                            <small class="text-muted">Added to inventory stock</small>
+                        </div>
+                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-box-arrow-in-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Received Stock Value</div>
+                            <h5 class="fw-bold mb-0 text-dark">LKR 2,377,500.00</h5>
+                            <small class="text-success fw-medium">Total procured goods</small>
+                        </div>
+                        <div class="stat-icon bg-info bg-opacity-10 text-info">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION B: Search & Filter Bar -->
+            <div class="content-card p-3 mb-4">
+                <form onsubmit="filterPos(event)" class="row g-2 align-items-end">
+                    <div class="col-12 col-md-5">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Search PO # / Supplier / Product</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                            <input type="text" id="poSearchInput" class="form-control"
+                                placeholder="Search by PO number, supplier company, phone model, or SKU..." oninput="filterPos()">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Supplier</label>
+                        <select id="poSupplierFilter" class="form-select form-select-sm" onchange="filterPos()">
+                            <option value="">All Suppliers</option>
+                            <option value="1">FutureWorld Apple Authorized SL</option><option value="2">Samsung Lanka Mobility Pvt Ltd</option><option value="3">Anker & Baseus Accessories Hub</option><option value="4">Xiaomi Lanka Official Imports</option><option value="5">Spigen & Shield Case Wholesale</option><option value="6">iFix Mobile Spare Parts Co.</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">PO Status</label>
+                        <select id="poStatusFilter" class="form-select form-select-sm" onchange="filterPos()">
+                            <option value="">All Statuses</option>
+                            <option value="ordered">Ordered (Open)</option>
+                            <option value="received">Received</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-sm w-100 fw-semibold">
+                            <i class="bi bi-funnel me-1"></i> Filter
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" title="Reset Filters" onclick="resetPoFilters()">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION C: Purchase Orders Data Table -->
+            <div class="content-card p-3 p-sm-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-receipt-cutoff text-primary me-1"></i> Purchase Orders Register (<span id="poVisibleCount">6</span> orders)
+                        </h6>
+                        <small class="text-muted">Click "Receive" when goods arrive to automatically increase product inventory</small>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="text-nowrap">PO # / Date</th>
+                                <th>Supplier</th>
+                                <th>Product / SKU</th>
+                                <th class="text-center text-nowrap">Ordered Qty</th>
+                                <th class="text-end text-nowrap">Unit Cost</th>
+                                <th class="text-end text-nowrap">Total (LKR)</th>
+                                <th class="text-nowrap">Status</th>
+                                <th class="text-end text-nowrap">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="poTableBody">
+                            
+        <tr class="po-row"
+            data-id="1"
+            data-search="po-3091 anker & baseus accessories hub baseus 20000mah 65w pd fast charging power bank ism-acc-0205"
+            data-supplier="3"
+            data-status="ordered">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>PO-3091</code></div>
+                <small class="text-muted">Due: 03 Nov 2026</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Anker & Baseus Accessories Hub</div>
+                <small class="text-muted"><code>SUP-103</code></small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Baseus 20000mAh 65W PD Fast Charging Power Bank</div>
+                <small class="text-muted"><code>ISM-ACC-0205</code> &bull; Current Stock: <strong>0</strong></small>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="fw-bold fs-6 text-dark">25</span>
+                <small class="text-muted d-block">pcs</small>
+            </td>
+            <td class="text-end text-secondary text-nowrap">LKR 11,500.00</td>
+            <td class="text-end fw-bold text-dark text-nowrap">LKR 287,500.00</td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-warning">Ordered (Open)</span>
+                
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-success text-nowrap" title="Receive Goods & Add to Stock"
+                        onclick="receivePoRow(this, 'PO-3091')">
+                        <i class="bi bi-box-arrow-in-down me-1"></i>Receive
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Cancel PO"
+                        onclick="cancelPoRow(this, 'PO-3091')">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="po-row"
+            data-id="2"
+            data-search="po-3090 futureworld apple authorized sl apple 20w usb-c power adapter (original mhje3) ism-acc-0201"
+            data-supplier="1"
+            data-status="ordered">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>PO-3090</code></div>
+                <small class="text-muted">Due: 02 Nov 2026</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">FutureWorld Apple Authorized SL</div>
+                <small class="text-muted"><code>SUP-101</code></small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Apple 20W USB-C Power Adapter (Original MHJE3)</div>
+                <small class="text-muted"><code>ISM-ACC-0201</code> &bull; Current Stock: <strong>3</strong></small>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="fw-bold fs-6 text-dark">30</span>
+                <small class="text-muted d-block">pcs</small>
+            </td>
+            <td class="text-end text-secondary text-nowrap">LKR 5,800.00</td>
+            <td class="text-end fw-bold text-dark text-nowrap">LKR 174,000.00</td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-warning">Ordered (Open)</span>
+                
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-success text-nowrap" title="Receive Goods & Add to Stock"
+                        onclick="receivePoRow(this, 'PO-3090')">
+                        <i class="bi bi-box-arrow-in-down me-1"></i>Receive
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Cancel PO"
+                        onclick="cancelPoRow(this, 'PO-3090')">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="po-row"
+            data-id="3"
+            data-search="po-3089 futureworld apple authorized sl apple airpods pro (2nd gen) with magsafe case (usb-c) ism-acc-0203"
+            data-supplier="1"
+            data-status="ordered">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>PO-3089</code></div>
+                <small class="text-muted">Due: 04 Nov 2026</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">FutureWorld Apple Authorized SL</div>
+                <small class="text-muted"><code>SUP-101</code></small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)</div>
+                <small class="text-muted"><code>ISM-ACC-0203</code> &bull; Current Stock: <strong>2</strong></small>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="fw-bold fs-6 text-dark">10</span>
+                <small class="text-muted d-block">pcs</small>
+            </td>
+            <td class="text-end text-secondary text-nowrap">LKR 66,000.00</td>
+            <td class="text-end fw-bold text-dark text-nowrap">LKR 660,000.00</td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-warning">Ordered (Open)</span>
+                
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-success text-nowrap" title="Receive Goods & Add to Stock"
+                        onclick="receivePoRow(this, 'PO-3089')">
+                        <i class="bi bi-box-arrow-in-down me-1"></i>Receive
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Cancel PO"
+                        onclick="cancelPoRow(this, 'PO-3089')">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="po-row"
+            data-id="4"
+            data-search="po-3088 samsung lanka mobility pvt ltd samsung galaxy a55 5g (8gb/256gb awesome iceblue) ism-phn-0105"
+            data-supplier="2"
+            data-status="received">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>PO-3088</code></div>
+                <small class="text-muted">Due: 28 Oct 2026</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Samsung Lanka Mobility Pvt Ltd</div>
+                <small class="text-muted"><code>SUP-102</code></small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)</div>
+                <small class="text-muted"><code>ISM-PHN-0105</code> &bull; Current Stock: <strong>15</strong></small>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="fw-bold fs-6 text-dark">10</span>
+                <small class="text-muted d-block">pcs</small>
+            </td>
+            <td class="text-end text-secondary text-nowrap">LKR 108,000.00</td>
+            <td class="text-end fw-bold text-dark text-nowrap">LKR 1,080,000.00</td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-success">Received</span>
+                <div class="text-muted" style="font-size: 0.7rem;">By Ruwan Bandara</div>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Record"
+                        onclick="deletePoRow(this, 'PO-3088')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="po-row"
+            data-id="5"
+            data-search="po-3087 xiaomi lanka official imports xiaomi redmi note 13 pro 5g (8gb/256gb midnight black) ism-phn-0106"
+            data-supplier="4"
+            data-status="received">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>PO-3087</code></div>
+                <small class="text-muted">Due: 26 Oct 2026</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Xiaomi Lanka Official Imports</div>
+                <small class="text-muted"><code>SUP-104</code></small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)</div>
+                <small class="text-muted"><code>ISM-PHN-0106</code> &bull; Current Stock: <strong>18</strong></small>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="fw-bold fs-6 text-dark">15</span>
+                <small class="text-muted d-block">pcs</small>
+            </td>
+            <td class="text-end text-secondary text-nowrap">LKR 86,500.00</td>
+            <td class="text-end fw-bold text-dark text-nowrap">LKR 1,297,500.00</td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-success">Received</span>
+                <div class="text-muted" style="font-size: 0.7rem;">By Janindu Gaurinda</div>
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Record"
+                        onclick="deletePoRow(this, 'PO-3087')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="po-row"
+            data-id="6"
+            data-search="po-3086 ifix mobile spare parts co. apple iphone 13 128gb (midnight black) ism-phn-0103"
+            data-supplier="6"
+            data-status="cancelled">
+            <td class="text-nowrap">
+                <div class="fw-bold text-primary"><code>PO-3086</code></div>
+                <small class="text-muted">Due: 22 Oct 2026</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">iFix Mobile Spare Parts Co.</div>
+                <small class="text-muted"><code>SUP-106</code></small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Apple iPhone 13 128GB (Midnight Black)</div>
+                <small class="text-muted"><code>ISM-PHN-0103</code> &bull; Current Stock: <strong>3</strong></small>
+            </td>
+            <td class="text-center text-nowrap">
+                <span class="fw-bold fs-6 text-dark">5</span>
+                <small class="text-muted d-block">pcs</small>
+            </td>
+            <td class="text-end text-secondary text-nowrap">LKR 158,000.00</td>
+            <td class="text-end fw-bold text-dark text-nowrap">LKR 790,000.00</td>
+            <td class="text-nowrap status-cell">
+                <span class="badge text-bg-secondary">Cancelled</span>
+                
+            </td>
+            <td class="text-end text-nowrap action-cell">
+                
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Record"
+                        onclick="deletePoRow(this, 'PO-3086')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <div class="modal fade" id="createPoModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-primary text-white">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-receipt-cutoff me-2"></i>Create New Purchase Order (PO)
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleCreatePo(event)">
+                            <div class="modal-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Select Supplier <span class="text-danger">*</span></label>
+                                        <select id="poModalSupplier" class="form-select form-select-sm" required>
+                                            <option value="1" data-name="FutureWorld Apple Authorized SL" data-code="SUP-101">FutureWorld Apple Authorized SL (SUP-101 • Net 30)</option><option value="2" data-name="Samsung Lanka Mobility Pvt Ltd" data-code="SUP-102">Samsung Lanka Mobility Pvt Ltd (SUP-102 • Net 30)</option><option value="3" data-name="Anker & Baseus Accessories Hub" data-code="SUP-103">Anker & Baseus Accessories Hub (SUP-103 • Net 15)</option><option value="4" data-name="Xiaomi Lanka Official Imports" data-code="SUP-104">Xiaomi Lanka Official Imports (SUP-104 • Net 15)</option><option value="5" data-name="Spigen & Shield Case Wholesale" data-code="SUP-105">Spigen & Shield Case Wholesale (SUP-105 • Cash on Delivery)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Expected Delivery Date</label>
+                                        <input type="date" id="poModalDate" class="form-control form-control-sm" value="2026-11-05">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Select Product to Order <span class="text-danger">*</span></label>
+                                        <select id="poProductSelect" class="form-select form-select-sm" required onchange="syncPoCostPrice()">
+                                            <option value="1" data-name="Apple iPhone 16 Pro 256GB (Desert Titanium)" data-sku="ISM-PHN-0101" data-cost="385000" data-stock="8" data-unit="pcs">Apple iPhone 16 Pro 256GB (Desert Titanium) (ISM-PHN-0101) — Current Stock: 8 pcs</option><option value="2" data-name="Apple iPhone 15 128GB (Blue) - Official Warranty" data-sku="ISM-PHN-0102" data-cost="228000" data-stock="11" data-unit="pcs">Apple iPhone 15 128GB (Blue) - Official Warranty (ISM-PHN-0102) — Current Stock: 11 pcs</option><option value="3" data-name="Apple iPhone 13 128GB (Midnight Black)" data-sku="ISM-PHN-0103" data-cost="158000" data-stock="3" data-unit="pcs">Apple iPhone 13 128GB (Midnight Black) (ISM-PHN-0103) — Current Stock: 3 pcs</option><option value="4" data-name="Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)" data-sku="ISM-PHN-0104" data-cost="335000" data-stock="6" data-unit="pcs">Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray) (ISM-PHN-0104) — Current Stock: 6 pcs</option><option value="5" data-name="Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)" data-sku="ISM-PHN-0105" data-cost="108000" data-stock="15" data-unit="pcs">Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue) (ISM-PHN-0105) — Current Stock: 15 pcs</option><option value="6" data-name="Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)" data-sku="ISM-PHN-0106" data-cost="86500" data-stock="18" data-unit="pcs">Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black) (ISM-PHN-0106) — Current Stock: 18 pcs</option><option value="7" data-name="Apple 20W USB-C Power Adapter (Original MHJE3)" data-sku="ISM-ACC-0201" data-cost="5800" data-stock="3" data-unit="pcs">Apple 20W USB-C Power Adapter (Original MHJE3) (ISM-ACC-0201) — Current Stock: 3 pcs</option><option value="8" data-name="Anker 45W Nano II GaN Type-C Super Fast Charger" data-sku="ISM-ACC-0202" data-cost="7200" data-stock="45" data-unit="pcs">Anker 45W Nano II GaN Type-C Super Fast Charger (ISM-ACC-0202) — Current Stock: 45 pcs</option><option value="9" data-name="Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)" data-sku="ISM-ACC-0203" data-cost="66000" data-stock="2" data-unit="pcs">Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) (ISM-ACC-0203) — Current Stock: 2 pcs</option><option value="10" data-name="Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)" data-sku="ISM-ACC-0204" data-cost="46000" data-stock="20" data-unit="pcs">Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver) (ISM-ACC-0204) — Current Stock: 20 pcs</option><option value="11" data-name="Baseus 20000mAh 65W PD Fast Charging Power Bank" data-sku="ISM-ACC-0205" data-cost="11500" data-stock="0" data-unit="pcs">Baseus 20000mAh 65W PD Fast Charging Power Bank (ISM-ACC-0205) — Current Stock: 0 pcs</option><option value="12" data-name="Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)" data-sku="ISM-ACC-0206" data-cost="3200" data-stock="85" data-unit="pack">Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro) (ISM-ACC-0206) — Current Stock: 85 pack</option><option value="13" data-name="Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)" data-sku="ISM-WCH-0301" data-cost="122000" data-stock="3" data-unit="pcs">Apple Watch Series 10 GPS 46mm (Jet Black Aluminum) (ISM-WCH-0301) — Current Stock: 3 pcs</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Order Quantity <span class="text-danger">*</span></label>
+                                        <input type="number" id="poQtyInput" min="1" value="10" class="form-control form-control-sm" required oninput="calcPoTotal()">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Unit Cost Price (LKR) <span class="text-danger">*</span></label>
+                                        <input type="number" step="0.01" min="0" id="poCostInput" class="form-control form-control-sm" required oninput="calcPoTotal()">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold text-secondary">Total PO Amount</label>
+                                        <div class="p-2 px-3 rounded-3 border bg-light d-flex justify-content-between align-items-center" style="height: 31px;">
+                                            <span class="fw-bold text-primary small" id="poTotalPreview">LKR 0.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">PO Notes / Delivery Instructions</label>
+                                        <textarea id="poNotesInput" rows="2" class="form-control form-control-sm" placeholder="Optional delivery terms or batch notes..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-4">
+                                    <i class="bi bi-send-check me-1"></i> Issue Purchase Order
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            const poProductSelect = document.getElementById('poProductSelect');
+            const poQtyInput = document.getElementById('poQtyInput');
+            const poCostInput = document.getElementById('poCostInput');
+            const poTotalPreview = document.getElementById('poTotalPreview');
+
+            function syncPoCostPrice() {
+                if (!poProductSelect || !poCostInput) return;
+                const opt = poProductSelect.options[poProductSelect.selectedIndex];
+                if (opt) {
+                    poCostInput.value = opt.getAttribute('data-cost') || '0.00';
+                    calcPoTotal();
+                }
+            }
+
+            function calcPoTotal() {
+                if (!poQtyInput || !poCostInput || !poTotalPreview) return;
+                const qty = parseInt(poQtyInput.value, 10) || 0;
+                const cost = parseFloat(poCostInput.value) || 0;
+                const total = qty * cost;
+                poTotalPreview.textContent = 'LKR ' + total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function filterPos(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('poSearchInput').value || '').trim().toLowerCase();
+                const sup = document.getElementById('poSupplierFilter').value;
+                const st = document.getElementById('poStatusFilter').value;
+                let count = 0;
+                document.querySelectorAll('#poTableBody .po-row').forEach(r => {
+                    const mQ = !q || (r.getAttribute('data-search') || '').includes(q);
+                    const mSup = !sup || r.getAttribute('data-supplier') === sup;
+                    const mSt = !st || r.getAttribute('data-status') === st;
+                    if (mQ && mSup && mSt) {
+                        r.style.display = '';
+                        count++;
+                    } else {
+                        r.style.display = 'none';
+                    }
+                });
+                document.getElementById('poVisibleCount').textContent = count;
+            }
+
+            function resetPoFilters() {
+                document.getElementById('poSearchInput').value = '';
+                document.getElementById('poSupplierFilter').value = '';
+                document.getElementById('poStatusFilter').value = '';
+                filterPos();
+            }
+
+            function receivePoRow(btn, poNo) {
+                const tr = btn.closest('tr');
+                tr.setAttribute('data-status', 'received');
+                tr.querySelector('.status-cell').innerHTML = '<span class="badge text-bg-success">Received</span><div class="text-muted" style="font-size: 0.7rem;">By Janindu Gaurinda</div>';
+                tr.querySelector('.action-cell').innerHTML = '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePoRow(this, \'' + poNo + '\')"><i class="bi bi-trash"></i></button>';
+                showStaticAlert('Purchase Order ' + poNo + ' marked as Received and stock quantities updated!', 'success');
+            }
+
+            function cancelPoRow(btn, poNo) {
+                const tr = btn.closest('tr');
+                tr.setAttribute('data-status', 'cancelled');
+                tr.querySelector('.status-cell').innerHTML = '<span class="badge text-bg-secondary">Cancelled</span>';
+                tr.querySelector('.action-cell').innerHTML = '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePoRow(this, \'' + poNo + '\')"><i class="bi bi-trash"></i></button>';
+                showStaticAlert('Purchase Order ' + poNo + ' cancelled.', 'danger');
+            }
+
+            function deletePoRow(btn, poNo) {
+                if (confirm('Delete Purchase Order ' + poNo + '?')) {
+                    btn.closest('tr').remove();
+                    filterPos();
+                    showStaticAlert('Purchase Order ' + poNo + ' deleted.', 'success');
+                }
+            }
+
+            function handleCreatePo(e) {
+                e.preventDefault();
+                const supSel = document.getElementById('poModalSupplier');
+                const supOpt = supSel.options[supSel.selectedIndex];
+                const supName = supOpt.getAttribute('data-name');
+                const supCode = supOpt.getAttribute('data-code');
+                const prodOpt = poProductSelect.options[poProductSelect.selectedIndex];
+                const prodName = prodOpt.getAttribute('data-name');
+                const prodSku = prodOpt.getAttribute('data-sku');
+                const stock = prodOpt.getAttribute('data-stock');
+                const unit = prodOpt.getAttribute('data-unit');
+                const qty = parseInt(poQtyInput.value, 10) || 1;
+                const cost = parseFloat(poCostInput.value) || 0;
+                const total = qty * cost;
+                const poNo = 'PO-' + Math.floor(3092 + Math.random() * 900);
+
+                const tbody = document.getElementById('poTableBody');
+                const tr = document.createElement('tr');
+                tr.className = 'po-row';
+                tr.setAttribute('data-search', (poNo + ' ' + supName + ' ' + prodName + ' ' + prodSku).toLowerCase());
+                tr.setAttribute('data-supplier', supSel.value);
+                tr.setAttribute('data-status', 'ordered');
+                tr.innerHTML = `
+                    <td class="text-nowrap"><div class="fw-bold text-primary"><code>${poNo}</code></div><small class="text-muted">Due: 05 Nov 2026</small></td>
+                    <td><div class="fw-semibold text-dark">${supName}</div><small class="text-muted"><code>${supCode}</code></small></td>
+                    <td><div class="fw-semibold text-dark">${prodName}</div><small class="text-muted"><code>${prodSku}</code> &bull; Current Stock: <strong>${stock}</strong></small></td>
+                    <td class="text-center text-nowrap"><span class="fw-bold fs-6 text-dark">${qty}</span><small class="text-muted d-block">${unit}</small></td>
+                    <td class="text-end text-secondary text-nowrap">LKR ${cost.toLocaleString(undefined,{minimumFractionDigits:2})}</td>
+                    <td class="text-end fw-bold text-dark text-nowrap">LKR ${total.toLocaleString(undefined,{minimumFractionDigits:2})}</td>
+                    <td class="text-nowrap status-cell"><span class="badge text-bg-warning">Ordered (Open)</span></td>
+                    <td class="text-end text-nowrap action-cell">
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-outline-success" onclick="receivePoRow(this, '${poNo}')"><i class="bi bi-box-arrow-in-down me-1"></i>Receive</button>
+                            <button type="button" class="btn btn-outline-danger" onclick="cancelPoRow(this, '${poNo}')"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                    </td>
+                `;
+                tbody.insertBefore(tr, tbody.firstChild);
+                filterPos();
+                bootstrap.Modal.getInstance(document.getElementById('createPoModal')).hide();
+                showStaticAlert('Purchase Order ' + poNo + ' issued to ' + supName + '!', 'success');
+            }
+
+            document.addEventListener('DOMContentLoaded', syncPoCostPrice);
+        </script>
+        
+</body>
+</html>

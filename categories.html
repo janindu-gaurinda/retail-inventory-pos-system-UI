@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Categories — ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Product Categories</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Admin · Store Manager · Stock Manager</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Create, edit, and manage phone & accessory categories used in the Add / Edit Product dropdown.</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <a href="product-form.html" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1">
+                <i class="bi bi-plus-square"></i>
+                <span class="d-none d-sm-inline">Add Product</span>
+            </a>
+            <button type="button" class="btn btn-primary btn-sm d-flex align-items-center gap-1 fw-semibold"
+                data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+                <i class="bi bi-plus-lg"></i>
+                <span>Add New Category</span>
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- PART 1: Summary KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-primary">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Total Categories</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">8</div>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill">Database Records</span>
+                            </div>
+                            <div class="kpi-icon bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-tags-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-success">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Active in Dropdown</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">7</div>
+                                <span class="badge bg-success-subtle text-success rounded-pill">Selectable in Products</span>
+                            </div>
+                            <div class="kpi-icon bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-check2-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-secondary">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Inactive Categories</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">1</div>
+                                <span class="badge bg-secondary-subtle text-secondary rounded-pill">Hidden from Dropdown</span>
+                            </div>
+                            <div class="kpi-icon bg-secondary bg-opacity-10 text-secondary">
+                                <i class="bi bi-eye-slash"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-xl-3">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-info">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Linked Products</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">13</div>
+                                <span class="badge bg-info-subtle text-info-emphasis rounded-pill">Catalog Items</span>
+                            </div>
+                            <div class="kpi-icon bg-info bg-opacity-10 text-info">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 2: Search & Filter Bar -->
+            <div class="card table-card mb-4">
+                <div class="card-body p-3">
+                    <form onsubmit="filterCategories(event)" class="row g-2 align-items-center">
+                        <div class="col-12 col-md-6">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-light"><i class="bi bi-search text-secondary"></i></span>
+                                <input type="text" id="catSearchInput" class="form-control"
+                                    placeholder="Search by category name, code, or description..." oninput="filterCategories()">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <select id="catStatusFilter" class="form-select form-select-sm" onchange="filterCategories()">
+                                <option value="">All Statuses</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-3 d-flex gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-sm btn-primary px-3">
+                                <i class="bi bi-funnel me-1"></i> Filter
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetCatFilters()">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- PART 3: Categories Table -->
+            <div class="card table-card">
+                <div class="card-header bg-white py-3 px-4 d-flex flex-wrap justify-content-between align-items-center border-bottom">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-tags text-primary me-1"></i> Phone Shop Categories Directory (<span id="catVisibleCount">8</span>)
+                        </h6>
+                        <small class="text-secondary">Accessible by <strong>Admin</strong>, <strong>Store Manager</strong>, and <strong>Stock Manager</strong>.</small>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+                        <i class="bi bi-plus-circle me-1"></i> New Category
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Code</th>
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                <th class="text-center">Products Count</th>
+                                <th class="text-center">Total Stock Units</th>
+                                <th>Status</th>
+                                <th class="text-end pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriesTableBody">
+                            
+        <tr class="category-row"
+            data-id="1"
+            data-search="cat-101 iphones & ios devices brand new apple iphones & ipads with applecare / genxt warranty"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-101</code>
+            </td>
+            <td class="fw-bold text-dark">iPhones & iOS Devices</td>
+            <td class="text-secondary">Brand new Apple iPhones & iPads with AppleCare / Genxt warranty</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">3 Products</span>
+            </td>
+            <td class="text-center fw-semibold">22</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":1,"category_code":"CAT-101","name":"iPhones & iOS Devices","description":"Brand new Apple iPhones & iPads with AppleCare / Genxt warranty","count":3,"total_stock":22,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":1,"category_code":"CAT-101","name":"iPhones & iOS Devices","description":"Brand new Apple iPhones & iPads with AppleCare / Genxt warranty","count":3,"total_stock":22,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="2"
+            data-search="cat-102 smartphones (android) 5g flagship & mid-range android phones (samsung, xiaomi, pixel)"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-102</code>
+            </td>
+            <td class="fw-bold text-dark">Smartphones (Android)</td>
+            <td class="text-secondary">5G Flagship & Mid-range Android phones (Samsung, Xiaomi, Pixel)</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">3 Products</span>
+            </td>
+            <td class="text-center fw-semibold">39</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":2,"category_code":"CAT-102","name":"Smartphones (Android)","description":"5G Flagship & Mid-range Android phones (Samsung, Xiaomi, Pixel)","count":3,"total_stock":39,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":2,"category_code":"CAT-102","name":"Smartphones (Android)","description":"5G Flagship & Mid-range Android phones (Samsung, Xiaomi, Pixel)","count":3,"total_stock":39,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="3"
+            data-search="cat-103 fast chargers & adapters original apple 20w, samsung 45w & anker gan super fast chargers"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-103</code>
+            </td>
+            <td class="fw-bold text-dark">Fast Chargers & Adapters</td>
+            <td class="text-secondary">Original Apple 20W, Samsung 45W & Anker GaN Super Fast Chargers</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">2 Products</span>
+            </td>
+            <td class="text-center fw-semibold">48</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":3,"category_code":"CAT-103","name":"Fast Chargers & Adapters","description":"Original Apple 20W, Samsung 45W & Anker GaN Super Fast Chargers","count":2,"total_stock":48,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":3,"category_code":"CAT-103","name":"Fast Chargers & Adapters","description":"Original Apple 20W, Samsung 45W & Anker GaN Super Fast Chargers","count":2,"total_stock":48,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="4"
+            data-search="cat-104 audio & wireless earbuds airpods pro, galaxy buds & anc bluetooth earbuds"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-104</code>
+            </td>
+            <td class="fw-bold text-dark">Audio & Wireless Earbuds</td>
+            <td class="text-secondary">AirPods Pro, Galaxy Buds & ANC Bluetooth Earbuds</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">2 Products</span>
+            </td>
+            <td class="text-center fw-semibold">22</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":4,"category_code":"CAT-104","name":"Audio & Wireless Earbuds","description":"AirPods Pro, Galaxy Buds & ANC Bluetooth Earbuds","count":2,"total_stock":22,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":4,"category_code":"CAT-104","name":"Audio & Wireless Earbuds","description":"AirPods Pro, Galaxy Buds & ANC Bluetooth Earbuds","count":2,"total_stock":22,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="5"
+            data-search="cat-105 power banks & data cables magsafe & 20000mah pd fast charging power banks and braided cables"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-105</code>
+            </td>
+            <td class="fw-bold text-dark">Power Banks & Data Cables</td>
+            <td class="text-secondary">MagSafe & 20000mAh PD Fast Charging Power Banks and Braided Cables</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">1 Products</span>
+            </td>
+            <td class="text-center fw-semibold">0</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":5,"category_code":"CAT-105","name":"Power Banks & Data Cables","description":"MagSafe & 20000mAh PD Fast Charging Power Banks and Braided Cables","count":1,"total_stock":0,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":5,"category_code":"CAT-105","name":"Power Banks & Data Cables","description":"MagSafe & 20000mAh PD Fast Charging Power Banks and Braided Cables","count":1,"total_stock":0,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="6"
+            data-search="cat-106 cases & tempered glass spigen magfit armor cases, camera lens protectors & 9h privacy glass"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-106</code>
+            </td>
+            <td class="fw-bold text-dark">Cases & Tempered Glass</td>
+            <td class="text-secondary">Spigen MagFit armor cases, camera lens protectors & 9H privacy glass</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">1 Products</span>
+            </td>
+            <td class="text-center fw-semibold">85</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":6,"category_code":"CAT-106","name":"Cases & Tempered Glass","description":"Spigen MagFit armor cases, camera lens protectors & 9H privacy glass","count":1,"total_stock":85,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":6,"category_code":"CAT-106","name":"Cases & Tempered Glass","description":"Spigen MagFit armor cases, camera lens protectors & 9H privacy glass","count":1,"total_stock":85,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="7"
+            data-search="cat-107 smartwatches & wearables apple watch series 10, galaxy watch & fitness bands"
+            data-status="active">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-107</code>
+            </td>
+            <td class="fw-bold text-dark">Smartwatches & Wearables</td>
+            <td class="text-secondary">Apple Watch Series 10, Galaxy Watch & fitness bands</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">1 Products</span>
+            </td>
+            <td class="text-center fw-semibold">3</td>
+            <td>
+                <span class="badge text-bg-success">Active</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":7,"category_code":"CAT-107","name":"Smartwatches & Wearables","description":"Apple Watch Series 10, Galaxy Watch & fitness bands","count":1,"total_stock":3,"status":"active"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":7,"category_code":"CAT-107","name":"Smartwatches & Wearables","description":"Apple Watch Series 10, Galaxy Watch & fitness bands","count":1,"total_stock":3,"status":"active"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="category-row"
+            data-id="8"
+            data-search="cat-108 mobile spare parts & batteries original replacement oled displays and internal batteries (service only)"
+            data-status="inactive">
+            <td class="ps-4">
+                <code class="fw-semibold text-primary">CAT-108</code>
+            </td>
+            <td class="fw-bold text-dark">Mobile Spare Parts & Batteries</td>
+            <td class="text-secondary">Original replacement OLED displays and internal batteries (Service Only)</td>
+            <td class="text-center">
+                <span class="badge bg-light text-dark border">0 Products</span>
+            </td>
+            <td class="text-center fw-semibold">0</td>
+            <td>
+                <span class="badge text-bg-secondary">Inactive</span>
+            </td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap" title="Edit Category"
+                        onclick='openEditCategoryModal({"id":8,"category_code":"CAT-108","name":"Mobile Spare Parts & Batteries","description":"Original replacement OLED displays and internal batteries (Service Only)","count":0,"total_stock":0,"status":"inactive"})'>
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Category"
+                        onclick='openDeleteCategoryModal({"id":8,"category_code":"CAT-108","name":"Mobile Spare Parts & Batteries","description":"Original replacement OLED displays and internal batteries (Service Only)","count":0,"total_stock":0,"status":"inactive"})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <!-- Create Category Modal -->
+            <div class="modal fade" id="createCategoryModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <form onsubmit="handleCreateCategory(event)">
+                            <div class="modal-header bg-primary text-white">
+                                <h6 class="modal-title fw-bold">
+                                    <i class="bi bi-tags-fill me-2"></i>Add New Product Category
+                                </h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Category Code <span class="text-danger">*</span></label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" id="new_cat_code" class="form-control font-monospace" value="CAT-109" required>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="document.getElementById('new_cat_code').value = 'CAT-' + Math.floor(100 + Math.random() * 900)">
+                                            Auto
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Category Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="new_cat_name" class="form-control" required placeholder="e.g., Car Mounts & Holders">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Status <span class="text-danger">*</span></label>
+                                    <select id="new_cat_status" class="form-select" required>
+                                        <option value="active" selected>Active (Shown in Product Dropdown)</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-label small fw-semibold">Description (Optional)</label>
+                                    <textarea id="new_cat_desc" rows="2" class="form-control" placeholder="Short description of products in this category..."></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm px-4 fw-semibold">
+                                    <i class="bi bi-check2-circle me-1"></i> Create Category
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Category Modal -->
+            <div class="modal fade" id="editCategoryModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <form onsubmit="handleUpdateCategory(event)">
+                            <div class="modal-header bg-dark text-white">
+                                <h6 class="modal-title fw-bold">
+                                    <i class="bi bi-pencil-square me-2 text-info"></i>Edit Product Category
+                                </h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Category Code <span class="text-danger">*</span></label>
+                                    <input type="text" id="edit_cat_code" class="form-control font-monospace" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Category Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="edit_cat_name" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Status <span class="text-danger">*</span></label>
+                                    <select id="edit_cat_status" class="form-select" required>
+                                        <option value="active">Active (Shown in Product Dropdown)</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-label small fw-semibold">Description (Optional)</label>
+                                    <textarea id="edit_cat_description" rows="2" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm px-4 fw-semibold">
+                                    <i class="bi bi-save me-1"></i> Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Category Confirmation Modal -->
+            <div class="modal fade" id="deleteCategoryModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-danger text-white">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-exclamation-triangle me-2"></i>Delete Product Category
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleDeleteCategory(event)">
+                            <div class="modal-body p-4">
+                                <p class="mb-1">Are you sure you want to delete this category?</p>
+                                <div class="p-3 bg-light rounded-3 border mt-2">
+                                    <div class="fw-bold text-dark" id="delete_cat_name"></div>
+                                    <small class="text-muted" id="delete_cat_code"></small>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger btn-sm fw-semibold px-3">
+                                    <i class="bi bi-trash me-1"></i> Yes, Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            let activeCatId = null;
+
+            function filterCategories(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('catSearchInput').value || '').trim().toLowerCase();
+                const st = document.getElementById('catStatusFilter').value;
+                let count = 0;
+                document.querySelectorAll('#categoriesTableBody .category-row').forEach(r => {
+                    const matchQ = !q || (r.getAttribute('data-search') || '').includes(q);
+                    const matchSt = !st || r.getAttribute('data-status') === st;
+                    if (matchQ && matchSt) {
+                        r.style.display = '';
+                        count++;
+                    } else {
+                        r.style.display = 'none';
+                    }
+                });
+                document.getElementById('catVisibleCount').textContent = count;
+            }
+
+            function resetCatFilters() {
+                document.getElementById('catSearchInput').value = '';
+                document.getElementById('catStatusFilter').value = '';
+                filterCategories();
+            }
+
+            function openEditCategoryModal(category) {
+                activeCatId = category.id;
+                document.getElementById('edit_cat_code').value = category.category_code || '';
+                document.getElementById('edit_cat_name').value = category.name || '';
+                document.getElementById('edit_cat_description').value = category.description || '';
+                document.getElementById('edit_cat_status').value = category.status || 'active';
+                new bootstrap.Modal(document.getElementById('editCategoryModal')).show();
+            }
+
+            function openDeleteCategoryModal(category) {
+                activeCatId = category.id;
+                document.getElementById('delete_cat_name').textContent = category.name;
+                document.getElementById('delete_cat_code').textContent = 'Code: ' + category.category_code;
+                new bootstrap.Modal(document.getElementById('deleteCategoryModal')).show();
+            }
+
+            function handleCreateCategory(e) {
+                e.preventDefault();
+                const code = document.getElementById('new_cat_code').value;
+                const name = document.getElementById('new_cat_name').value;
+                const desc = document.getElementById('new_cat_desc').value || '—';
+                const status = document.getElementById('new_cat_status').value;
+                const tbody = document.getElementById('categoriesTableBody');
+                const tr = document.createElement('tr');
+                tr.className = 'category-row';
+                tr.setAttribute('data-id', Date.now());
+                tr.setAttribute('data-search', (code + ' ' + name + ' ' + desc).toLowerCase());
+                tr.setAttribute('data-status', status);
+                tr.innerHTML = `
+                    <td class="ps-4"><code class="fw-semibold text-primary">${code}</code></td>
+                    <td class="fw-bold text-dark">${name}</td>
+                    <td class="text-secondary">${desc}</td>
+                    <td class="text-center"><span class="badge bg-light text-dark border">0 Products</span></td>
+                    <td class="text-center fw-semibold">0</td>
+                    <td>${status === 'active' ? '<span class="badge text-bg-success">Active</span>' : '<span class="badge text-bg-secondary">Inactive</span>'}</td>
+                    <td class="text-end pe-4 text-nowrap"><span class="badge text-bg-light border">Added</span></td>
+                `;
+                tbody.insertBefore(tr, tbody.firstChild);
+                filterCategories();
+                bootstrap.Modal.getInstance(document.getElementById('createCategoryModal')).hide();
+                showStaticAlert('Category "' + name + '" (' + code + ') created!', 'success');
+            }
+
+            function handleUpdateCategory(e) {
+                e.preventDefault();
+                const name = document.getElementById('edit_cat_name').value;
+                bootstrap.Modal.getInstance(document.getElementById('editCategoryModal')).hide();
+                showStaticAlert('Category "' + name + '" updated successfully!', 'success');
+            }
+
+            function handleDeleteCategory(e) {
+                e.preventDefault();
+                const row = document.querySelector('.category-row[data-id="' + activeCatId + '"]');
+                if (row) row.remove();
+                filterCategories();
+                bootstrap.Modal.getInstance(document.getElementById('deleteCategoryModal')).hide();
+                showStaticAlert('Category deleted (Static Demo Mode).', 'success');
+            }
+        </script>
+        
+</body>
+</html>

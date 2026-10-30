@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management — ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">User Management & Roles</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Module 11 · Admin Only</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Manage phone shop staff accounts, assign system roles (Admin, Store Manager, Stock Manager, Cashier), and reset credentials.</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <a href="#rbacMatrixSection" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1">
+                <i class="bi bi-shield-check"></i>
+                <span class="d-none d-sm-inline">Role Permissions Matrix</span>
+            </a>
+            <button type="button" class="btn btn-primary btn-sm d-flex align-items-center gap-1 fw-semibold"
+                    data-bs-toggle="modal" data-bs-target="#createUserModal">
+                <i class="bi bi-person-plus-fill"></i>
+                <span>Add New User</span>
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- PART 4: Role Summary KPI Cards (5 Cards) -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-4 col-xl">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-primary">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Total Staff</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">5</div>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill">All Active Accounts</span>
+                            </div>
+                            <div class="kpi-icon bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-xl">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-danger">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Admins</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">1</div>
+                                <span class="badge bg-danger-subtle text-danger rounded-pill">All 12 Modules</span>
+                            </div>
+                            <div class="kpi-icon bg-danger bg-opacity-10 text-danger">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-xl">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-info">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Store Managers</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">1</div>
+                                <span class="badge bg-info-subtle text-info-emphasis rounded-pill">Store + POS + Reports</span>
+                            </div>
+                            <div class="kpi-icon bg-info bg-opacity-10 text-info">
+                                <i class="bi bi-shop-window"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-6 col-xl">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-warning">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">Stock Managers</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">1</div>
+                                <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill">Inventory &amp; POs Only</span>
+                            </div>
+                            <div class="kpi-icon bg-warning bg-opacity-10 text-warning">
+                                <i class="bi bi-boxes"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl">
+                    <div class="card kpi-card h-100 p-3 border-start border-4 border-success">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="text-secondary small fw-semibold text-uppercase" style="font-size: 0.72rem;">POS Cashiers</div>
+                                <div class="fs-3 fw-bold text-dark mt-1">2</div>
+                                <span class="badge bg-success-subtle text-success rounded-pill">POS + Own Shift Sales</span>
+                            </div>
+                            <div class="kpi-icon bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-cash-coin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 5: Search & Role Filter Bar -->
+            <div class="card table-card mb-4">
+                <div class="card-body p-3">
+                    <form onsubmit="filterUsers(event)" class="row g-2 align-items-center">
+                        <div class="col-12 col-md-5">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-secondary"></i></span>
+                                <input type="text" id="userSearchInput" class="form-control border-start-0"
+                                       placeholder="Search staff by name, email address, or role..." oninput="filterUsers()">
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-4">
+                            <select id="userRoleFilter" class="form-select form-select-sm" onchange="filterUsers()">
+                                <option value="">All System Roles (5)</option>
+                                <option value="admin">Admin (1)</option>
+                                <option value="store_manager">Store Manager (1)</option>
+                                <option value="stock_manager">Stock Manager (1)</option>
+                                <option value="cashier">Cashier (2)</option>
+                            </select>
+                        </div>
+                        <div class="col-5 col-md-3 d-flex gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-sm btn-dark px-3">
+                                <i class="bi bi-funnel me-1"></i> Filter
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetUserFilters()">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- PART 6: Users Directory Table -->
+            <div class="card table-card mb-4">
+                <div class="card-header bg-white py-3 px-4 d-flex flex-wrap align-items-center justify-content-between gap-2 border-bottom">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-people text-primary me-1"></i> Registered System Users (<span id="usersVisibleCount">5</span>)
+                        </h6>
+                        <small class="text-secondary">Click <strong>Edit / Role</strong> to update permissions or reset a user's password.</small>
+                    </div>
+                    <span class="badge bg-light text-secondary border">
+                        Logged in as: <strong>Janindu Gaurinda</strong> (Admin)
+                    </span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">ID</th>
+                                <th>Staff Member</th>
+                                <th>Assigned Role</th>
+                                <th>Module Access Scope</th>
+                                <th>System Activity</th>
+                                <th>Joined Date</th>
+                                <th class="text-end pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            
+        <tr class="user-row table-primary bg-opacity-10"
+            data-id="1"
+            data-search="janindu gaurinda superadmin@ism.com admin"
+            data-role="admin">
+            <td class="ps-4 fw-semibold text-secondary">#1</td>
+            <td>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-circle flex-shrink-0" style="background: #dc2626;">
+                        JA
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark d-flex align-items-center gap-2">
+                            Janindu Gaurinda
+                            <span class="badge text-bg-primary" style="font-size: 0.65rem;">YOU</span>
+                        </div>
+                        <div class="text-secondary small">
+                            <i class="bi bi-envelope me-1"></i>superadmin@ism.com
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge rounded-pill px-3 py-2 bg-danger-subtle text-danger border border-danger-subtle">
+                    <i class="bi bi-shield-lock-fill me-1"></i> Admin
+                </span>
+            </td>
+            <td style="max-width: 260px;">
+                <div class="small text-dark">Full Access (All 12 Modules + Users & Settings)</div>
+            </td>
+            <td>
+                <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border" title="Completed POS Invoices">
+                        <i class="bi bi-receipt text-success me-1"></i>18 Sales
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Stock Adjustments Logged">
+                        <i class="bi bi-sliders text-warning me-1"></i>4 Adj
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Purchase Orders Created">
+                        <i class="bi bi-truck text-info me-1"></i>5 POs
+                    </span>
+                </div>
+            </td>
+            <td class="small text-secondary">01 Jan 2026</td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editUserModal"
+                            data-user-id="1"
+                            data-user-name="Janindu Gaurinda"
+                            data-user-email="superadmin@ism.com"
+                            data-user-role="admin"
+                            data-is-self="1"
+                            title="Edit Profile, Role or Reset Password">
+                        <i class="bi bi-pencil-square me-1"></i> Edit / Role
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-secondary text-nowrap" disabled title="You cannot delete your own active account">
+                        <i class="bi bi-lock"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="user-row "
+            data-id="2"
+            data-search="nimali jayawardena storemanager@ism.com store manager"
+            data-role="store_manager">
+            <td class="ps-4 fw-semibold text-secondary">#2</td>
+            <td>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-circle flex-shrink-0" style="background: #0284c7;">
+                        NI
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark d-flex align-items-center gap-2">
+                            Nimali Jayawardena
+                            
+                        </div>
+                        <div class="text-secondary small">
+                            <i class="bi bi-envelope me-1"></i>storemanager@ism.com
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge rounded-pill px-3 py-2 bg-info-subtle text-info-emphasis border border-info-subtle">
+                    <i class="bi bi-shop me-1"></i> Store Manager
+                </span>
+            </td>
+            <td style="max-width: 260px;">
+                <div class="small text-dark">Inventory, POs, Approve Adjustments, POS & Reports</div>
+            </td>
+            <td>
+                <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border" title="Completed POS Invoices">
+                        <i class="bi bi-receipt text-success me-1"></i>14 Sales
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Stock Adjustments Logged">
+                        <i class="bi bi-sliders text-warning me-1"></i>2 Adj
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Purchase Orders Created">
+                        <i class="bi bi-truck text-info me-1"></i>3 POs
+                    </span>
+                </div>
+            </td>
+            <td class="small text-secondary">15 Jan 2026</td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editUserModal"
+                            data-user-id="2"
+                            data-user-name="Nimali Jayawardena"
+                            data-user-email="storemanager@ism.com"
+                            data-user-role="store_manager"
+                            data-is-self="0"
+                            title="Edit Profile, Role or Reset Password">
+                        <i class="bi bi-pencil-square me-1"></i> Edit / Role
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete User"
+                        onclick="deleteUserRow(this, 'Nimali Jayawardena')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="user-row "
+            data-id="3"
+            data-search="ruwan bandara stockmanager@ism.com stock manager"
+            data-role="stock_manager">
+            <td class="ps-4 fw-semibold text-secondary">#3</td>
+            <td>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-circle flex-shrink-0" style="background: #d97706;">
+                        RU
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark d-flex align-items-center gap-2">
+                            Ruwan Bandara
+                            
+                        </div>
+                        <div class="text-secondary small">
+                            <i class="bi bi-envelope me-1"></i>stockmanager@ism.com
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge rounded-pill px-3 py-2 bg-warning-subtle text-warning-emphasis border border-warning-subtle">
+                    <i class="bi bi-boxes me-1"></i> Stock Manager
+                </span>
+            </td>
+            <td style="max-width: 260px;">
+                <div class="small text-dark">Products, Barcodes, Create Adjustments, Suppliers & POs</div>
+            </td>
+            <td>
+                <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border" title="Completed POS Invoices">
+                        <i class="bi bi-receipt text-success me-1"></i>0 Sales
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Stock Adjustments Logged">
+                        <i class="bi bi-sliders text-warning me-1"></i>9 Adj
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Purchase Orders Created">
+                        <i class="bi bi-truck text-info me-1"></i>8 POs
+                    </span>
+                </div>
+            </td>
+            <td class="small text-secondary">10 Feb 2026</td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editUserModal"
+                            data-user-id="3"
+                            data-user-name="Ruwan Bandara"
+                            data-user-email="stockmanager@ism.com"
+                            data-user-role="stock_manager"
+                            data-is-self="0"
+                            title="Edit Profile, Role or Reset Password">
+                        <i class="bi bi-pencil-square me-1"></i> Edit / Role
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete User"
+                        onclick="deleteUserRow(this, 'Ruwan Bandara')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="user-row "
+            data-id="4"
+            data-search="kavindi perera cashier@ism.com cashier"
+            data-role="cashier">
+            <td class="ps-4 fw-semibold text-secondary">#4</td>
+            <td>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-circle flex-shrink-0" style="background: #16a34a;">
+                        KA
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark d-flex align-items-center gap-2">
+                            Kavindi Perera
+                            
+                        </div>
+                        <div class="text-secondary small">
+                            <i class="bi bi-envelope me-1"></i>cashier@ism.com
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge rounded-pill px-3 py-2 bg-success-subtle text-success border border-success-subtle">
+                    <i class="bi bi-cash-stack me-1"></i> Cashier
+                </span>
+            </td>
+            <td style="max-width: 260px;">
+                <div class="small text-dark">POS Checkout, Own Shift Invoices & Product View (No Cost)</div>
+            </td>
+            <td>
+                <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border" title="Completed POS Invoices">
+                        <i class="bi bi-receipt text-success me-1"></i>42 Sales
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Stock Adjustments Logged">
+                        <i class="bi bi-sliders text-warning me-1"></i>0 Adj
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Purchase Orders Created">
+                        <i class="bi bi-truck text-info me-1"></i>0 POs
+                    </span>
+                </div>
+            </td>
+            <td class="small text-secondary">01 Mar 2026</td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editUserModal"
+                            data-user-id="4"
+                            data-user-name="Kavindi Perera"
+                            data-user-email="cashier@ism.com"
+                            data-user-role="cashier"
+                            data-is-self="0"
+                            title="Edit Profile, Role or Reset Password">
+                        <i class="bi bi-pencil-square me-1"></i> Edit / Role
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete User"
+                        onclick="deleteUserRow(this, 'Kavindi Perera')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="user-row "
+            data-id="5"
+            data-search="shehan silva shehan.pos@ism.com cashier"
+            data-role="cashier">
+            <td class="ps-4 fw-semibold text-secondary">#5</td>
+            <td>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-circle flex-shrink-0" style="background: #16a34a;">
+                        SH
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark d-flex align-items-center gap-2">
+                            Shehan Silva
+                            
+                        </div>
+                        <div class="text-secondary small">
+                            <i class="bi bi-envelope me-1"></i>shehan.pos@ism.com
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge rounded-pill px-3 py-2 bg-success-subtle text-success border border-success-subtle">
+                    <i class="bi bi-cash-stack me-1"></i> Cashier
+                </span>
+            </td>
+            <td style="max-width: 260px;">
+                <div class="small text-dark">POS Checkout, Own Shift Invoices & Product View (No Cost)</div>
+            </td>
+            <td>
+                <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border" title="Completed POS Invoices">
+                        <i class="bi bi-receipt text-success me-1"></i>29 Sales
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Stock Adjustments Logged">
+                        <i class="bi bi-sliders text-warning me-1"></i>0 Adj
+                    </span>
+                    <span class="badge bg-light text-dark border" title="Purchase Orders Created">
+                        <i class="bi bi-truck text-info me-1"></i>0 POs
+                    </span>
+                </div>
+            </td>
+            <td class="small text-secondary">12 Jun 2026</td>
+            <td class="text-end pe-4 text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary text-nowrap"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editUserModal"
+                            data-user-id="5"
+                            data-user-name="Shehan Silva"
+                            data-user-email="shehan.pos@ism.com"
+                            data-user-role="cashier"
+                            data-is-self="0"
+                            title="Edit Profile, Role or Reset Password">
+                        <i class="bi bi-pencil-square me-1"></i> Edit / Role
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete User"
+                        onclick="deleteUserRow(this, 'Shehan Silva')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PART 7: Interactive 12-Module Role-Based Access Control (RBAC) Matrix Reference -->
+            <div id="rbacMatrixSection" class="card table-card">
+                <div class="card-header bg-white py-3 px-4 d-flex flex-wrap justify-content-between align-items-center border-bottom">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-shield-check text-primary me-1"></i> System-Wide 12-Module Role Permissions Reference Matrix
+                        </h6>
+                        <small class="text-secondary">Enforced across Sidebar Navigation and Modules.</small>
+                    </div>
+                    <span class="badge bg-primary-subtle text-primary">4 Roles × 12 Modules</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-3">Module / Page</th>
+                                <th class="text-center"><span class="badge bg-danger">Admin</span></th>
+                                <th class="text-center"><span class="badge bg-info text-dark">Store Manager</span></th>
+                                <th class="text-center"><span class="badge bg-warning text-dark">Stock Manager</span></th>
+                                <th class="text-center"><span class="badge bg-success">Cashier</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-3 fw-semibold">1. Dashboard</td>
+                                <td class="text-center text-success fw-semibold">Full (All Stats)</td>
+                                <td class="text-center text-success fw-semibold">Full (All Stats)</td>
+                                <td class="text-center text-warning-emphasis">Inventory Stats Only</td>
+                                <td class="text-center text-info-emphasis">Sales Stats Only</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">2. Products List</td>
+                                <td class="text-center text-success">View &amp; Edit</td>
+                                <td class="text-center text-success">View &amp; Edit</td>
+                                <td class="text-center text-success">View &amp; Edit</td>
+                                <td class="text-center text-secondary">View Only (No Cost Price)</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">3. Add / Edit Product</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">4. Barcode / Label Print</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">5. Stock Adjustments</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (Create &amp; Approve)</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (Approve)</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (Create)</td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">6. Suppliers Directory</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">7. Purchase Orders (POs)</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (Create &amp; Receive)</td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">8. POS Checkout Screen</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">9. Sales History / Invoices</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (All Shifts)</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (All Shifts)</td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (Own Shift Only)</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">10. Reports &amp; Analytics</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i> (Sales / Stock)</td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr class="table-primary bg-opacity-10">
+                                <td class="ps-3 fw-bold">11. User Management (Current Page)</td>
+                                <td class="text-center text-success fw-bold"><i class="bi bi-check-circle-fill"></i> Admin Only</td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3 fw-semibold">12. System Settings</td>
+                                <td class="text-center text-success fw-bold"><i class="bi bi-check-circle-fill"></i> Admin Only</td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td class="text-center text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <!-- 1. Create New User Modal -->
+            <div class="modal fade" id="createUserModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <form onsubmit="handleCreateUser(event)">
+                            <div class="modal-header bg-dark text-white">
+                                <h6 class="modal-title fw-bold">
+                                    <i class="bi bi-person-plus-fill text-info me-2"></i>Add New Staff Account
+                                </h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="newUserName" class="form-control" required placeholder="e.g., Dinesh Perera">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Email Address (Login ID) <span class="text-danger">*</span></label>
+                                    <input type="email" id="newUserEmail" class="form-control" required placeholder="e.g., dinesh@ismmobile.lk">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Assign System Role <span class="text-danger">*</span></label>
+                                    <select id="newUserRole" class="form-select" required>
+                                        <option value="cashier">Cashier — POS Checkout &amp; Own Shift Sales</option>
+                                        <option value="stock_manager">Stock Manager — Products, Barcodes, Adjustments, Suppliers &amp; POs</option>
+                                        <option value="store_manager">Store Manager — Full Store Operations, Approve Adjustments, POS &amp; Reports</option>
+                                        <option value="admin">Admin — Full System Control (All 12 Modules)</option>
+                                    </select>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Password <span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" required minlength="6" placeholder="Min 6 characters">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Confirm Password <span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" required minlength="6" placeholder="Repeat password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm px-4 fw-semibold">
+                                    <i class="bi bi-check2-circle me-1"></i> Create User Account
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Edit User Profile / Role / Reset Password Modal -->
+            <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <form onsubmit="handleUpdateUser(event)">
+                            <div class="modal-header bg-primary text-white">
+                                <h6 class="modal-title fw-bold">
+                                    <i class="bi bi-pencil-square me-2"></i>Edit User &amp; Role Assignment
+                                </h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div id="selfEditNotice" class="alert alert-info py-2 px-3 small d-none mb-3">
+                                    <i class="bi bi-info-circle-fill me-1"></i>
+                                    You are editing your own active Admin account. Your Admin role is locked for safety.
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="editUserName" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Email Address (Login ID) <span class="text-danger">*</span></label>
+                                    <input type="email" id="editUserEmail" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Assigned Role <span class="text-danger">*</span></label>
+                                    <select id="editUserRole" class="form-select" required>
+                                        <option value="admin">Admin — Full System Control (All 12 Modules)</option>
+                                        <option value="store_manager">Store Manager — Store Operations, POS &amp; Reports</option>
+                                        <option value="stock_manager">Stock Manager — Inventory, Adjustments, Suppliers &amp; POs</option>
+                                        <option value="cashier">Cashier — POS Checkout &amp; Own Shift Sales</option>
+                                    </select>
+                                </div>
+
+                                <hr class="my-3">
+                                <div class="small fw-semibold text-secondary mb-2">
+                                    <i class="bi bi-key me-1"></i> Optional Password Reset (Leave blank to keep current password)
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label small">New Password</label>
+                                        <input type="password" class="form-control form-control-sm" minlength="6" placeholder="Leave blank to keep">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small">Confirm New Password</label>
+                                        <input type="password" class="form-control form-control-sm" minlength="6" placeholder="Confirm new password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm px-4 fw-semibold">
+                                    <i class="bi bi-save me-1"></i> Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            function filterUsers(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('userSearchInput').value || '').trim().toLowerCase();
+                const r = document.getElementById('userRoleFilter').value;
+                let count = 0;
+                document.querySelectorAll('#usersTableBody .user-row').forEach(row => {
+                    const mQ = !q || (row.getAttribute('data-search') || '').includes(q);
+                    const mR = !r || row.getAttribute('data-role') === r;
+                    if (mQ && mR) {
+                        row.style.display = '';
+                        count++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+                document.getElementById('usersVisibleCount').textContent = count;
+            }
+
+            function resetUserFilters() {
+                document.getElementById('userSearchInput').value = '';
+                document.getElementById('userRoleFilter').value = '';
+                filterUsers();
+            }
+
+            function deleteUserRow(btn, name) {
+                if (confirm('Are you sure you want to permanently delete user account ' + name + '?')) {
+                    btn.closest('tr').remove();
+                    filterUsers();
+                    showStaticAlert('User account "' + name + '" deleted.', 'success');
+                }
+            }
+
+            function handleCreateUser(e) {
+                e.preventDefault();
+                const name = document.getElementById('newUserName').value;
+                bootstrap.Modal.getInstance(document.getElementById('createUserModal')).hide();
+                showStaticAlert('New staff account "' + name + '" created!', 'success');
+            }
+
+            function handleUpdateUser(e) {
+                e.preventDefault();
+                const name = document.getElementById('editUserName').value;
+                bootstrap.Modal.getInstance(document.getElementById('editUserModal')).hide();
+                showStaticAlert('User "' + name + '" profile & role updated!', 'success');
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const editUserModal = document.getElementById('editUserModal');
+                if (!editUserModal) return;
+
+                editUserModal.addEventListener('show.bs.modal', function (event) {
+                    const triggerBtn = event.relatedTarget;
+                    if (!triggerBtn) return;
+
+                    const name = triggerBtn.getAttribute('data-user-name');
+                    const email = triggerBtn.getAttribute('data-user-email');
+                    const role = triggerBtn.getAttribute('data-user-role');
+                    const isSelf = triggerBtn.getAttribute('data-is-self') === '1';
+
+                    document.getElementById('editUserName').value = name || '';
+                    document.getElementById('editUserEmail').value = email || '';
+                    document.getElementById('editUserRole').value = role || 'cashier';
+
+                    const selfNotice = document.getElementById('selfEditNotice');
+                    if (isSelf) {
+                        selfNotice.classList.remove('d-none');
+                    } else {
+                        selfNotice.classList.add('d-none');
+                    }
+                });
+            });
+        </script>
+        
+</body>
+</html>

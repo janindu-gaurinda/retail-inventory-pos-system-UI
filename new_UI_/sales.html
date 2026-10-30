@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales History / Invoices | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Sales History / Invoices</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">All Shifts &amp; Cashiers</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">View completed phone shop POS invoices, reprint customer warranty receipts, and process stock refunds</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <a href="pos.html" class="btn btn-primary btn-sm fw-semibold d-inline-flex align-items-center gap-1 px-3 py-2 rounded-3">
+                <i class="bi bi-cart-plus"></i> New POS Sale
+            </a>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- SECTION A: Sales Summary KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Invoices</div>
+                            <h4 class="fw-bold mb-0 text-dark">6</h4>
+                            <small class="text-muted">All store registers</small>
+                        </div>
+                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-journal-text"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Net Completed Sales</div>
+                            <h5 class="fw-bold mb-0 text-success">LKR 1,049,000.00</h5>
+                            <small class="text-muted">Excluding refunded bills</small>
+                        </div>
+                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-cash-stack"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Units Sold</div>
+                            <h4 class="fw-bold mb-0 text-dark">9</h4>
+                            <small class="text-muted">Items dispatched via POS</small>
+                        </div>
+                        <div class="stat-icon bg-info bg-opacity-10 text-info">
+                            <i class="bi bi-bag-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Refunded Invoices</div>
+                            <h4 class="fw-bold mb-0 text-danger">1</h4>
+                            <small class="text-muted">LKR 16,500.00</small>
+                        </div>
+                        <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION B: Search & Filter Bar -->
+            <div class="content-card p-3 mb-4">
+                <form onsubmit="filterSales(event)" class="row g-2 align-items-end">
+                    <div class="col-12 col-md-4">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Search Invoice # / Customer / Phone</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                            <input type="text" id="saleSearchInput" class="form-control"
+                                placeholder="Search by INV number, customer name, or phone..." oninput="filterSales()">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Cashier / Staff</label>
+                        <select id="saleCashierFilter" class="form-select form-select-sm" onchange="filterSales()">
+                            <option value="">All Cashiers</option>
+                            <option value="Janindu Gaurinda">Janindu Gaurinda</option><option value="Nimali Jayawardena">Nimali Jayawardena</option><option value="Ruwan Bandara">Ruwan Bandara</option><option value="Kavindi Perera">Kavindi Perera</option><option value="Shehan Silva">Shehan Silva</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Payment Method</label>
+                        <select id="saleMethodFilter" class="form-select form-select-sm" onchange="filterSales()">
+                            <option value="">All Methods</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Card">Card</option>
+                            <option value="QR / Bank">QR / Bank</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Status</label>
+                        <select id="saleStatusFilter" class="form-select form-select-sm" onchange="filterSales()">
+                            <option value="">All Statuses</option>
+                            <option value="completed">Completed</option>
+                            <option value="refunded">Refunded</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-sm w-100 fw-semibold">
+                            <i class="bi bi-funnel me-1"></i> Filter
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" title="Reset Filters" onclick="resetSalesFilters()">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION C: Sales History / Invoices Table -->
+            <div class="content-card p-3 p-sm-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-receipt text-primary me-1"></i> POS Invoices Register (<span id="salesVisibleCount">6</span> invoices)
+                        </h6>
+                        <small class="text-muted">Admin &amp; Store Manager View: Showing all shifts, with Refund &amp; Stock Restoration controls</small>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Invoice # / Date</th>
+                                <th>Customer</th>
+                                <th>Cashier</th>
+                                <th class="text-center">Items</th>
+                                <th>Payment</th>
+                                <th class="text-end">Discount</th>
+                                <th class="text-end">Grand Total</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTableBody">
+                            
+        <tr class="sale-row"
+            data-id="101"
+            data-search="inv-1048 walk-in customer (in-store) 077 452 8891"
+            data-cashier="Kavindi Perera"
+            data-method="Card"
+            data-status="completed">
+            <td>
+                <div class="fw-bold text-primary"><code>INV-1048</code></div>
+                <small class="text-muted">2026-10-30 01:15 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Walk-in Customer (In-Store)</div>
+                <small class="text-muted">077 452 8891</small>
+            </td>
+            <td>
+                <div class="fw-medium">Kavindi Perera</div>
+                <small class="text-muted">Cashier</small>
+            </td>
+            <td class="text-center">
+                <span class="badge rounded-pill text-bg-light border">2 units</span>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Card</span>
+            </td>
+            <td class="text-end text-muted">LKR 3,400.00</td>
+            <td class="text-end fw-bold text-dark">LKR 435,000.00</td>
+            <td class="status-cell">
+                <span class="badge text-bg-success">Completed</span>
+            </td>
+            <td class="text-end text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-dark text-nowrap" title="View / Print Receipt"
+                        onclick='openInvoiceModal({"id":101,"invoice_no":"INV-1048","created_at":"2026-10-30 01:15 PM","customer_name":"Walk-in Customer (In-Store)","customer_phone":"077 452 8891","cashier":{"id":4,"name":"Kavindi Perera","role_label":"Cashier"},"items_count":2,"payment_method":"Card","subtotal":438400,"discount_amount":3400,"tax_amount":0,"grand_total":435000,"paid_amount":435000,"change_amount":0,"status":"completed","items":[{"product_name":"Apple iPhone 16 Pro 256GB (Desert Titanium)","sku":"ISM-PHN-0101","quantity":1,"unit_price":429900,"line_total":429900},{"product_name":"Apple 20W USB-C Power Adapter (Original MHJE3)","sku":"ISM-ACC-0201","quantity":1,"unit_price":8500,"line_total":8500}]})'>
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-warning text-nowrap" title="Refund & Restore Stock"
+                        onclick="refundSaleRow(this, 'INV-1048')">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Invoice"
+                        onclick="deleteSaleRow(this, 'INV-1048')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="sale-row"
+            data-id="102"
+            data-search="inv-1047 online order (website / social) 071 899 3340"
+            data-cashier="Janindu Gaurinda"
+            data-method="QR / Bank"
+            data-status="completed">
+            <td>
+                <div class="fw-bold text-primary"><code>INV-1047</code></div>
+                <small class="text-muted">2026-10-30 12:30 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Online Order (Website / Social)</div>
+                <small class="text-muted">071 899 3340</small>
+            </td>
+            <td>
+                <div class="fw-medium">Janindu Gaurinda</div>
+                <small class="text-muted">Admin</small>
+            </td>
+            <td class="text-center">
+                <span class="badge rounded-pill text-bg-light border">2 units</span>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">QR / Bank</span>
+            </td>
+            <td class="text-end text-muted">LKR 1,800.00</td>
+            <td class="text-end fw-bold text-dark">LKR 131,000.00</td>
+            <td class="status-cell">
+                <span class="badge text-bg-success">Completed</span>
+            </td>
+            <td class="text-end text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-dark text-nowrap" title="View / Print Receipt"
+                        onclick='openInvoiceModal({"id":102,"invoice_no":"INV-1047","created_at":"2026-10-30 12:30 PM","customer_name":"Online Order (Website / Social)","customer_phone":"071 899 3340","cashier":{"id":1,"name":"Janindu Gaurinda","role_label":"Admin"},"items_count":2,"payment_method":"QR / Bank","subtotal":132800,"discount_amount":1800,"tax_amount":0,"grand_total":131000,"paid_amount":131000,"change_amount":0,"status":"completed","items":[{"product_name":"Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)","sku":"ISM-PHN-0105","quantity":1,"unit_price":126900,"line_total":126900},{"product_name":"Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass","sku":"ISM-ACC-0206","quantity":1,"unit_price":5900,"line_total":5900}]})'>
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-warning text-nowrap" title="Refund & Restore Stock"
+                        onclick="refundSaleRow(this, 'INV-1047')">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Invoice"
+                        onclick="deleteSaleRow(this, 'INV-1047')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="sale-row"
+            data-id="103"
+            data-search="inv-1046 walk-in customer (in-store) 076 221 9087"
+            data-cashier="Kavindi Perera"
+            data-method="Cash"
+            data-status="completed">
+            <td>
+                <div class="fw-bold text-primary"><code>INV-1046</code></div>
+                <small class="text-muted">2026-10-30 11:20 AM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Walk-in Customer (In-Store)</div>
+                <small class="text-muted">076 221 9087</small>
+            </td>
+            <td>
+                <div class="fw-medium">Kavindi Perera</div>
+                <small class="text-muted">Cashier</small>
+            </td>
+            <td class="text-center">
+                <span class="badge rounded-pill text-bg-light border">1 units</span>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Cash</span>
+            </td>
+            <td class="text-end text-muted">LKR 500.00</td>
+            <td class="text-end fw-bold text-dark">LKR 78,000.00</td>
+            <td class="status-cell">
+                <span class="badge text-bg-success">Completed</span>
+            </td>
+            <td class="text-end text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-dark text-nowrap" title="View / Print Receipt"
+                        onclick='openInvoiceModal({"id":103,"invoice_no":"INV-1046","created_at":"2026-10-30 11:20 AM","customer_name":"Walk-in Customer (In-Store)","customer_phone":"076 221 9087","cashier":{"id":4,"name":"Kavindi Perera","role_label":"Cashier"},"items_count":1,"payment_method":"Cash","subtotal":78500,"discount_amount":500,"tax_amount":0,"grand_total":78000,"paid_amount":80000,"change_amount":2000,"status":"completed","items":[{"product_name":"Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)","sku":"ISM-ACC-0203","quantity":1,"unit_price":78500,"line_total":78500}]})'>
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-warning text-nowrap" title="Refund & Restore Stock"
+                        onclick="refundSaleRow(this, 'INV-1046')">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Invoice"
+                        onclick="deleteSaleRow(this, 'INV-1046')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="sale-row"
+            data-id="104"
+            data-search="inv-1045 phone / whatsapp delivery order 077 901 1122"
+            data-cashier="Nimali Jayawardena"
+            data-method="Card"
+            data-status="completed">
+            <td>
+                <div class="fw-bold text-primary"><code>INV-1045</code></div>
+                <small class="text-muted">2026-10-29 06:45 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Phone / WhatsApp Delivery Order</div>
+                <small class="text-muted">077 901 1122</small>
+            </td>
+            <td>
+                <div class="fw-medium">Nimali Jayawardena</div>
+                <small class="text-muted">Store Manager</small>
+            </td>
+            <td class="text-center">
+                <span class="badge rounded-pill text-bg-light border">1 units</span>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Card</span>
+            </td>
+            <td class="text-end text-muted">LKR 4,500.00</td>
+            <td class="text-end fw-bold text-dark">LKR 375,000.00</td>
+            <td class="status-cell">
+                <span class="badge text-bg-success">Completed</span>
+            </td>
+            <td class="text-end text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-dark text-nowrap" title="View / Print Receipt"
+                        onclick='openInvoiceModal({"id":104,"invoice_no":"INV-1045","created_at":"2026-10-29 06:45 PM","customer_name":"Phone / WhatsApp Delivery Order","customer_phone":"077 901 1122","cashier":{"id":2,"name":"Nimali Jayawardena","role_label":"Store Manager"},"items_count":1,"payment_method":"Card","subtotal":379500,"discount_amount":4500,"tax_amount":0,"grand_total":375000,"paid_amount":375000,"change_amount":0,"status":"completed","items":[{"product_name":"Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)","sku":"ISM-PHN-0104","quantity":1,"unit_price":379500,"line_total":379500}]})'>
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-warning text-nowrap" title="Refund & Restore Stock"
+                        onclick="refundSaleRow(this, 'INV-1045')">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Invoice"
+                        onclick="deleteSaleRow(this, 'INV-1045')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="sale-row"
+            data-id="105"
+            data-search="inv-1044 wholesale / trade buyer 011 299 4455"
+            data-cashier="Shehan Silva"
+            data-method="Cash"
+            data-status="completed">
+            <td>
+                <div class="fw-bold text-primary"><code>INV-1044</code></div>
+                <small class="text-muted">2026-10-29 04:10 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Wholesale / Trade Buyer</div>
+                <small class="text-muted">011 299 4455</small>
+            </td>
+            <td>
+                <div class="fw-medium">Shehan Silva</div>
+                <small class="text-muted">Cashier</small>
+            </td>
+            <td class="text-center">
+                <span class="badge rounded-pill text-bg-light border">3 units</span>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Cash</span>
+            </td>
+            <td class="text-end text-muted">LKR 1,500.00</td>
+            <td class="text-end fw-bold text-dark">LKR 30,000.00</td>
+            <td class="status-cell">
+                <span class="badge text-bg-success">Completed</span>
+            </td>
+            <td class="text-end text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-dark text-nowrap" title="View / Print Receipt"
+                        onclick='openInvoiceModal({"id":105,"invoice_no":"INV-1044","created_at":"2026-10-29 04:10 PM","customer_name":"Wholesale / Trade Buyer","customer_phone":"011 299 4455","cashier":{"id":5,"name":"Shehan Silva","role_label":"Cashier"},"items_count":3,"payment_method":"Cash","subtotal":31500,"discount_amount":1500,"tax_amount":0,"grand_total":30000,"paid_amount":30000,"change_amount":0,"status":"completed","items":[{"product_name":"Anker 45W Nano II GaN Type-C Super Fast Charger","sku":"ISM-ACC-0202","quantity":3,"unit_price":10500,"line_total":31500}]})'>
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-warning text-nowrap" title="Refund & Restore Stock"
+                        onclick="refundSaleRow(this, 'INV-1044')">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Invoice"
+                        onclick="deleteSaleRow(this, 'INV-1044')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="sale-row"
+            data-id="106"
+            data-search="inv-1043 walk-in customer (in-store) 075 664 1290"
+            data-cashier="Kavindi Perera"
+            data-method="Cash"
+            data-status="refunded">
+            <td>
+                <div class="fw-bold text-primary"><code>INV-1043</code></div>
+                <small class="text-muted">2026-10-29 02:05 PM</small>
+            </td>
+            <td>
+                <div class="fw-semibold text-dark">Walk-in Customer (In-Store)</div>
+                <small class="text-muted">075 664 1290</small>
+            </td>
+            <td>
+                <div class="fw-medium">Kavindi Perera</div>
+                <small class="text-muted">Cashier</small>
+            </td>
+            <td class="text-center">
+                <span class="badge rounded-pill text-bg-light border">1 units</span>
+            </td>
+            <td>
+                <span class="badge text-bg-light border">Cash</span>
+            </td>
+            <td class="text-end text-muted">LKR 0.00</td>
+            <td class="text-end fw-bold text-dark">LKR 16,500.00</td>
+            <td class="status-cell">
+                <span class="badge text-bg-danger">Refunded</span>
+            </td>
+            <td class="text-end text-nowrap">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-dark text-nowrap" title="View / Print Receipt"
+                        onclick='openInvoiceModal({"id":106,"invoice_no":"INV-1043","created_at":"2026-10-29 02:05 PM","customer_name":"Walk-in Customer (In-Store)","customer_phone":"075 664 1290","cashier":{"id":4,"name":"Kavindi Perera","role_label":"Cashier"},"items_count":1,"payment_method":"Cash","subtotal":16500,"discount_amount":0,"tax_amount":0,"grand_total":16500,"paid_amount":17000,"change_amount":500,"status":"refunded","items":[{"product_name":"Baseus 20000mAh 65W PD Fast Charging Power Bank","sku":"ISM-ACC-0205","quantity":1,"unit_price":16500,"line_total":16500}]})'>
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-danger text-nowrap" title="Delete Invoice"
+                        onclick="deleteSaleRow(this, 'INV-1043')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <div class="modal fade" id="invoiceReceiptModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-dark text-white no-print">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-receipt me-2"></i>Invoice Details &amp; Receipt
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <div class="pos-receipt-box small">
+                                <div class="text-center border-bottom pb-2 mb-3">
+                                    <div class="fw-bold fs-5 text-uppercase">ISM Mobile & Phone Shop</div>
+                                    <div class="text-muted" style="font-size: 0.74rem;">No. 42, Galle Road, Bambalapitiya, Colombo 04</div>
+                                    <div class="text-muted" style="font-size: 0.74rem;">Tel: +94 11 255 8899 &bull; support@ismmobile.lk</div>
+                                    <div class="text-muted" style="font-size: 0.72rem;">Tax / VAT Reg: VAT-SL-8849201</div>
+                                    <div class="text-muted mt-1" style="font-size: 0.75rem;">1 Year Official Company / AppleCare Warranty Included</div>
+                                    <div class="fw-bold text-primary mt-1" id="inv_no"></div>
+                                    <div class="text-muted" style="font-size: 0.72rem;" id="inv_date"></div>
+                                </div>
+
+                                <div class="row mb-2" style="font-size: 0.78rem;">
+                                    <div class="col-6">
+                                        <div><strong>Customer:</strong> <span id="inv_customer"></span></div>
+                                        <div><strong>Phone:</strong> <span id="inv_phone"></span></div>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <div><strong>Cashier:</strong> <span id="inv_cashier"></span></div>
+                                        <div><strong>Payment:</strong> <span id="inv_method"></span></div>
+                                    </div>
+                                </div>
+
+                                <table class="table table-sm table-bordered my-2" style="font-size: 0.76rem;">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Item / SKU</th>
+                                            <th class="text-center">Qty</th>
+                                            <th class="text-end">Price</th>
+                                            <th class="text-end">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="inv_items_tbody"></tbody>
+                                </table>
+
+                                <div style="font-size: 0.8rem;">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Subtotal:</span>
+                                        <span id="inv_subtotal"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-danger">
+                                        <span>Discount:</span>
+                                        <span id="inv_discount"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Tax:</span>
+                                        <span id="inv_tax"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between fw-bold border-top pt-1 mt-1 fs-6">
+                                        <span>GRAND TOTAL:</span>
+                                        <span id="inv_total"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-1">
+                                        <span>Amount Paid:</span>
+                                        <span id="inv_paid"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between fw-bold">
+                                        <span>Change Returned:</span>
+                                        <span id="inv_change"></span>
+                                    </div>
+                                </div>
+
+                                <div class="text-center border-top pt-2 mt-3 text-muted" style="font-size: 0.72rem;">
+                                    Thank you for shopping at ISM Mobile & Phone Shop! Keep invoice for warranty claims.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-light justify-content-between no-print">
+                            <span class="badge text-bg-secondary" id="inv_status_badge"></span>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary btn-sm fw-semibold" onclick="window.print()">
+                                    <i class="bi bi-printer me-1"></i> Print Invoice
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            function filterSales(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('saleSearchInput').value || '').trim().toLowerCase();
+                const c = document.getElementById('saleCashierFilter').value;
+                const m = document.getElementById('saleMethodFilter').value;
+                const s = document.getElementById('saleStatusFilter').value;
+                let count = 0;
+                document.querySelectorAll('#salesTableBody .sale-row').forEach(r => {
+                    const mQ = !q || (r.getAttribute('data-search') || '').includes(q);
+                    const mC = !c || r.getAttribute('data-cashier') === c;
+                    const mM = !m || r.getAttribute('data-method') === m;
+                    const mS = !s || r.getAttribute('data-status') === s;
+                    if (mQ && mC && mM && mS) {
+                        r.style.display = '';
+                        count++;
+                    } else {
+                        r.style.display = 'none';
+                    }
+                });
+                document.getElementById('salesVisibleCount').textContent = count;
+            }
+
+            function resetSalesFilters() {
+                document.getElementById('saleSearchInput').value = '';
+                document.getElementById('saleCashierFilter').value = '';
+                document.getElementById('saleMethodFilter').value = '';
+                document.getElementById('saleStatusFilter').value = '';
+                filterSales();
+            }
+
+            function refundSaleRow(btn, invNo) {
+                if (confirm('Refund invoice ' + invNo + ' and restore item quantities to stock?')) {
+                    const tr = btn.closest('tr');
+                    tr.setAttribute('data-status', 'refunded');
+                    tr.querySelector('.status-cell').innerHTML = '<span class="badge text-bg-danger">Refunded</span>';
+                    btn.remove();
+                    showStaticAlert('Invoice ' + invNo + ' refunded and item quantities restored to stock!', 'success');
+                }
+            }
+
+            function deleteSaleRow(btn, invNo) {
+                if (confirm('Permanently delete invoice ' + invNo + '?')) {
+                    btn.closest('tr').remove();
+                    filterSales();
+                    showStaticAlert('Invoice ' + invNo + ' deleted.', 'success');
+                }
+            }
+
+            function openInvoiceModal(sale) {
+                document.getElementById('inv_no').textContent = sale.invoice_no;
+                document.getElementById('inv_date').textContent = sale.created_at;
+                document.getElementById('inv_customer').textContent = sale.customer_name;
+                document.getElementById('inv_phone').textContent = sale.customer_phone || 'N/A';
+                document.getElementById('inv_cashier').textContent = sale.cashier ? sale.cashier.name : 'System';
+                document.getElementById('inv_method').textContent = sale.payment_method;
+
+                let rows = '';
+                if (sale.items && sale.items.length) {
+                    sale.items.forEach(item => {
+                        rows += `
+                            <tr>
+                                <td>${item.product_name} <br><small class="text-muted">${item.sku}</small></td>
+                                <td class="text-center">${item.quantity}</td>
+                                <td class="text-end">${Number(item.unit_price).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+                                <td class="text-end fw-semibold">${Number(item.line_total).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+                            </tr>
+                        `;
+                    });
+                }
+                document.getElementById('inv_items_tbody').innerHTML = rows;
+
+                document.getElementById('inv_subtotal').textContent = 'LKR ' + Number(sale.subtotal).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('inv_discount').textContent = '- LKR ' + Number(sale.discount_amount).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('inv_tax').textContent = 'LKR ' + Number(sale.tax_amount).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('inv_total').textContent = 'LKR ' + Number(sale.grand_total).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('inv_paid').textContent = 'LKR ' + Number(sale.paid_amount).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('inv_change').textContent = 'LKR ' + Number(sale.change_amount).toLocaleString(undefined, {minimumFractionDigits: 2});
+
+                const badge = document.getElementById('inv_status_badge');
+                badge.textContent = sale.status.toUpperCase();
+                badge.className = 'badge ' + (sale.status === 'completed' ? 'text-bg-success' : 'text-bg-danger');
+
+                new bootstrap.Modal(document.getElementById('invoiceReceiptModal')).show();
+            }
+        </script>
+        
+</body>
+</html>

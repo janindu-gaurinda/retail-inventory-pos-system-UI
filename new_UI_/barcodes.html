@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode / Label Print | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Barcode / Label Print</h5>
+                        <span class="badge text-bg-primary bg-opacity-10 text-primary border border-primary-subtle">Thermal &amp; A4 Sticker Generator</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Select phones or accessories, customize label fields, and print barcode sticker sheets</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-dark btn-sm fw-semibold d-inline-flex align-items-center gap-1 px-3 py-2 rounded-3"
+                    onclick="window.print()">
+                <i class="bi bi-printer-fill"></i> Print Labels Now
+            </button>
+            <a href="products.html" class="btn btn-light border btn-sm fw-semibold d-none d-md-inline-flex align-items-center gap-1 px-3 py-2 rounded-3">
+                <i class="bi bi-box-seam"></i> Products List
+            </a>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <div class="row g-4">
+                <!-- Left Column: Label Configuration & Product Queue Builder -->
+                <div class="col-12 col-xl-4 no-print">
+                    <!-- Card 1: Add Product to Print Queue -->
+                    <div class="content-card p-3 p-sm-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
+                            <span class="section-badge">1</span>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">Select Product &amp; Quantity</h6>
+                                <small class="text-muted">Add one or multiple phone shop items to the label sheet</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="productSelect" class="form-label small fw-semibold">Choose Product</label>
+                            <select id="productSelect" class="form-select form-select-sm">
+                                
+        <option
+            value="1"
+            data-sku="ISM-PHN-0101"
+            data-name="Apple iPhone 16 Pro 256GB (Desert Titanium)"
+            data-barcode="8901041001011"
+            data-price="429,900.00"
+            data-category="iPhones & iOS Devices"
+            data-stock="8"
+            selected
+        >
+            Apple iPhone 16 Pro 256GB (Desert Titanium) (ISM-PHN-0101) — LKR 429,900.00
+        </option>
+    
+        <option
+            value="2"
+            data-sku="ISM-PHN-0102"
+            data-name="Apple iPhone 15 128GB (Blue) - Official Warranty"
+            data-barcode="8901041001028"
+            data-price="259,900.00"
+            data-category="iPhones & iOS Devices"
+            data-stock="11"
+            
+        >
+            Apple iPhone 15 128GB (Blue) - Official Warranty (ISM-PHN-0102) — LKR 259,900.00
+        </option>
+    
+        <option
+            value="3"
+            data-sku="ISM-PHN-0103"
+            data-name="Apple iPhone 13 128GB (Midnight Black)"
+            data-barcode="8901041001035"
+            data-price="179,900.00"
+            data-category="iPhones & iOS Devices"
+            data-stock="3"
+            
+        >
+            Apple iPhone 13 128GB (Midnight Black) (ISM-PHN-0103) — LKR 179,900.00
+        </option>
+    
+        <option
+            value="4"
+            data-sku="ISM-PHN-0104"
+            data-name="Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)"
+            data-barcode="8901041001042"
+            data-price="379,500.00"
+            data-category="Smartphones (Android)"
+            data-stock="6"
+            
+        >
+            Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray) (ISM-PHN-0104) — LKR 379,500.00
+        </option>
+    
+        <option
+            value="5"
+            data-sku="ISM-PHN-0105"
+            data-name="Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)"
+            data-barcode="8901041001059"
+            data-price="126,900.00"
+            data-category="Smartphones (Android)"
+            data-stock="15"
+            
+        >
+            Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue) (ISM-PHN-0105) — LKR 126,900.00
+        </option>
+    
+        <option
+            value="6"
+            data-sku="ISM-PHN-0106"
+            data-name="Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)"
+            data-barcode="8901041001066"
+            data-price="102,500.00"
+            data-category="Smartphones (Android)"
+            data-stock="18"
+            
+        >
+            Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black) (ISM-PHN-0106) — LKR 102,500.00
+        </option>
+    
+        <option
+            value="7"
+            data-sku="ISM-ACC-0201"
+            data-name="Apple 20W USB-C Power Adapter (Original MHJE3)"
+            data-barcode="8901041002018"
+            data-price="8,500.00"
+            data-category="Fast Chargers & Adapters"
+            data-stock="3"
+            
+        >
+            Apple 20W USB-C Power Adapter (Original MHJE3) (ISM-ACC-0201) — LKR 8,500.00
+        </option>
+    
+        <option
+            value="8"
+            data-sku="ISM-ACC-0202"
+            data-name="Anker 45W Nano II GaN Type-C Super Fast Charger"
+            data-barcode="8901041002025"
+            data-price="10,500.00"
+            data-category="Fast Chargers & Adapters"
+            data-stock="45"
+            
+        >
+            Anker 45W Nano II GaN Type-C Super Fast Charger (ISM-ACC-0202) — LKR 10,500.00
+        </option>
+    
+        <option
+            value="9"
+            data-sku="ISM-ACC-0203"
+            data-name="Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)"
+            data-barcode="8901041002032"
+            data-price="78,500.00"
+            data-category="Audio & Wireless Earbuds"
+            data-stock="2"
+            
+        >
+            Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) (ISM-ACC-0203) — LKR 78,500.00
+        </option>
+    
+        <option
+            value="10"
+            data-sku="ISM-ACC-0204"
+            data-name="Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)"
+            data-barcode="8901041002049"
+            data-price="56,900.00"
+            data-category="Audio & Wireless Earbuds"
+            data-stock="20"
+            
+        >
+            Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver) (ISM-ACC-0204) — LKR 56,900.00
+        </option>
+    
+        <option
+            value="11"
+            data-sku="ISM-ACC-0205"
+            data-name="Baseus 20000mAh 65W PD Fast Charging Power Bank"
+            data-barcode="8901041002056"
+            data-price="16,500.00"
+            data-category="Power Banks & Data Cables"
+            data-stock="0"
+            
+        >
+            Baseus 20000mAh 65W PD Fast Charging Power Bank (ISM-ACC-0205) — LKR 16,500.00
+        </option>
+    
+        <option
+            value="12"
+            data-sku="ISM-ACC-0206"
+            data-name="Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)"
+            data-barcode="8901041002063"
+            data-price="5,900.00"
+            data-category="Cases & Tempered Glass"
+            data-stock="85"
+            
+        >
+            Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro) (ISM-ACC-0206) — LKR 5,900.00
+        </option>
+    
+        <option
+            value="13"
+            data-sku="ISM-WCH-0301"
+            data-name="Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)"
+            data-barcode="8901041003015"
+            data-price="144,900.00"
+            data-category="Smartwatches & Wearables"
+            data-stock="3"
+            
+        >
+            Apple Watch Series 10 GPS 46mm (Jet Black Aluminum) (ISM-WCH-0301) — LKR 144,900.00
+        </option>
+    
+                            </select>
+                        </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label for="labelQty" class="form-label small fw-semibold">Number of Labels</label>
+                                <input type="number" id="labelQty" class="form-control form-control-sm" min="1" max="200" value="6">
+                            </div>
+                            <div class="col-6 d-flex align-items-end">
+                                <button type="button" class="btn btn-outline-secondary btn-sm w-100" onclick="matchCurrentStock()">
+                                    <i class="bi bi-layers me-1"></i> Match Stock Qty
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary btn-sm fw-semibold py-2" onclick="addSelectedProductToQueue()">
+                                <i class="bi bi-plus-circle me-1"></i> Add to Label Sheet
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Label Layout & Field Display Options -->
+                    <div class="content-card p-3 p-sm-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
+                            <span class="section-badge">2</span>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">Label Format &amp; Display Settings</h6>
+                                <small class="text-muted">Customize paper columns and visible fields</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="storeHeaderInput" class="form-label small fw-semibold">Store / Header Title</label>
+                            <input type="text" id="storeHeaderInput" class="form-control form-control-sm" value="ISM Mobile & Phone Shop" oninput="renderLabelSheet()">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="sheetColumns" class="form-label small fw-semibold">Sheet Layout / Columns</label>
+                            <select id="sheetColumns" class="form-select form-select-sm" onchange="renderLabelSheet()">
+                                <option value="2">2 Columns (Large Box Tags — 50x30mm)</option>
+                                <option value="3" selected>3 Columns (Standard A4 Sheet — 38x25mm)</option>
+                                <option value="4">4 Columns (Compact Accessory Stickers — 30x20mm)</option>
+                            </select>
+                        </div>
+
+                        <div class="small fw-semibold text-secondary mb-2">Visible Label Elements:</div>
+                        <div class="row g-2 small">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showStoreName" checked onchange="renderLabelSheet()">
+                                    <label class="form-check-label" for="showStoreName">Store Header</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showProductName" checked onchange="renderLabelSheet()">
+                                    <label class="form-check-label" for="showProductName">Product Name</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showSellingPrice" checked onchange="renderLabelSheet()">
+                                    <label class="form-check-label" for="showSellingPrice">Selling Price</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showSkuCode" checked onchange="renderLabelSheet()">
+                                    <label class="form-check-label" for="showSkuCode">SKU Code</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Queued Products Summary -->
+                    <div class="content-card p-3 p-sm-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0 text-dark">
+                                <i class="bi bi-list-check text-primary me-1"></i> Queued Products
+                            </h6>
+                            <button type="button" class="btn btn-sm btn-outline-danger py-0 px-2" onclick="clearQueue()">
+                                Clear All
+                            </button>
+                        </div>
+                        <div id="queueListContainer" class="small d-grid gap-2 mt-2"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Live Printable Barcode Sheet Preview -->
+                <div class="col-12 col-xl-8">
+                    <div class="content-card p-3 p-sm-4">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 pb-2 border-bottom no-print">
+                            <div>
+                                <h6 class="fw-bold mb-0 text-dark">
+                                    <i class="bi bi-printer text-primary me-1"></i> Live Printable Barcode Sheet
+                                </h6>
+                                <small class="text-muted">Click "Print Labels Now" to print on a thermal label printer or A4 sticker sheet</small>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge text-bg-primary" id="totalLabelsBadge">0 Labels</span>
+                                <button type="button" class="btn btn-dark btn-sm fw-semibold" onclick="window.print()">
+                                    <i class="bi bi-printer me-1"></i> Print Sheet
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="barcodeSheetGrid" class="barcode-sheet-grid barcode-cols-3"></div>
+                    </div>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            let printQueue = [];
+            const productSelect = document.getElementById('productSelect');
+            const labelQtyInput = document.getElementById('labelQty');
+
+            function matchCurrentStock() {
+                const selectedOption = productSelect.options[productSelect.selectedIndex];
+                if (!selectedOption) return;
+                const stock = parseInt(selectedOption.getAttribute('data-stock'), 10) || 1;
+                labelQtyInput.value = Math.max(1, stock);
+            }
+
+            function addSelectedProductToQueue() {
+                const selectedOption = productSelect.options[productSelect.selectedIndex];
+                if (!selectedOption) return;
+
+                const id = selectedOption.value;
+                const name = selectedOption.getAttribute('data-name');
+                const sku = selectedOption.getAttribute('data-sku');
+                const barcode = selectedOption.getAttribute('data-barcode');
+                const price = selectedOption.getAttribute('data-price');
+                const qty = Math.min(200, Math.max(1, parseInt(labelQtyInput.value, 10) || 1));
+
+                const existing = printQueue.find(item => item.id === id);
+                if (existing) {
+                    existing.qty = Math.min(200, existing.qty + qty);
+                } else {
+                    printQueue.push({ id, name, sku, barcode, price, qty });
+                }
+
+                renderLabelSheet();
+            }
+
+            function removeFromQueue(id) {
+                printQueue = printQueue.filter(item => item.id !== String(id));
+                renderLabelSheet();
+            }
+
+            function clearQueue() {
+                printQueue = [];
+                renderLabelSheet();
+            }
+
+            function renderLabelSheet() {
+                const grid = document.getElementById('barcodeSheetGrid');
+                const queueContainer = document.getElementById('queueListContainer');
+                const totalBadge = document.getElementById('totalLabelsBadge');
+
+                const cols = document.getElementById('sheetColumns').value;
+                grid.className = 'barcode-sheet-grid barcode-cols-' + cols;
+
+                const storeHeader = document.getElementById('storeHeaderInput').value.trim() || 'ISM Mobile & Phone Shop';
+                const showStore = document.getElementById('showStoreName').checked;
+                const showName = document.getElementById('showProductName').checked;
+                const showPrice = document.getElementById('showSellingPrice').checked;
+                const showSku = document.getElementById('showSkuCode').checked;
+
+                queueContainer.innerHTML = '';
+                let totalLabels = 0;
+
+                if (printQueue.length === 0) {
+                    queueContainer.innerHTML = '<div class="text-muted text-center py-2">No products in queue. Add a product above.</div>';
+                    grid.innerHTML = '<div class="text-center text-muted py-5" style="grid-column: 1 / -1;"><i class="bi bi-upc-scan fs-1 d-block mb-2"></i>Select a product on the left and click <strong>Add to Label Sheet</strong>.</div>';
+                    totalBadge.textContent = '0 Labels';
+                    return;
+                }
+
+                let cardsHtml = '';
+
+                printQueue.forEach(item => {
+                    totalLabels += item.qty;
+
+                    queueContainer.innerHTML += `
+                        <div class="d-flex justify-content-between align-items-center p-2 border rounded bg-light">
+                            <div class="text-truncate me-2">
+                                <div class="fw-semibold text-dark text-truncate">${item.name}</div>
+                                <small class="text-muted"><code>${item.sku}</code> &bull; <strong>${item.qty} labels</strong></small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger py-0 px-2" onclick="removeFromQueue('${item.id}')">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    for (let i = 0; i < item.qty; i++) {
+                        cardsHtml += `
+                            <div class="barcode-label-card">
+                                ${showStore ? `<div class="text-uppercase text-muted fw-bold" style="font-size: 0.65rem; letter-spacing: 0.08em;">${storeHeader}</div>` : ''}
+                                ${showName ? `<div class="fw-bold text-dark small text-truncate my-1">${item.name}</div>` : ''}
+                                <div class="barcode-bars"></div>
+                                <div class="font-monospace fw-bold small" style="letter-spacing: 0.15em;">*${item.barcode}*</div>
+                                ${showPrice ? `<div class="fw-bold text-primary mt-1" style="font-size: 0.95rem;">LKR ${item.price}</div>` : ''}
+                                ${showSku ? `<div class="text-muted" style="font-size: 0.68rem;">SKU: ${item.sku}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                });
+
+                grid.innerHTML = cardsHtml;
+                totalBadge.textContent = totalLabels + (totalLabels === 1 ? ' Label' : ' Labels');
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const params = new URLSearchParams(window.location.search);
+                const skuParam = params.get('sku');
+                if (skuParam && productSelect) {
+                    Array.from(productSelect.options).forEach((opt, i) => {
+                        if (opt.getAttribute('data-sku') === skuParam) {
+                            productSelect.selectedIndex = i;
+                        }
+                    });
+                }
+                if (productSelect && productSelect.options.length > 0) {
+                    addSelectedProductToQueue();
+                }
+            });
+        </script>
+        
+</body>
+</html>

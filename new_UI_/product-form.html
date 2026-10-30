@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add / Edit Product | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Add / Edit Product</h5>
+                        <span class="badge text-bg-primary" id="formModeBadge">Create Mode</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Create or edit a smartphone, iPhone, or accessory item with SKU, barcode, cost & selling price</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <button type="button" class="btn btn-outline-primary btn-sm fw-semibold" onclick="resetToCreateMode()">
+                <i class="bi bi-plus-lg me-1"></i> Switch to Add New
+            </button>
+            <a href="products.html" class="btn btn-light border btn-sm fw-semibold">
+                <i class="bi bi-arrow-left me-1"></i> Back to Products List
+            </a>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <div class="row g-4">
+                <!-- Left Column: Main Add / Edit Product Form -->
+                <div class="col-12 col-xl-8">
+                    <form id="productForm" onsubmit="handleSaveProductForm(event)">
+                        <!-- Step 1: Basic Identification & Classification -->
+                        <div class="content-card p-3 p-sm-4 mb-4">
+                            <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
+                                <span class="section-badge">1</span>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Basic Information &amp; Identification</h6>
+                                    <small class="text-muted">Phone / accessory name, SKU code, EAN-13 barcode, category &amp; supplier</small>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-12 col-md-8">
+                                    <label for="name" class="form-label small fw-semibold">Product Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        value="Apple iPhone 16 Pro 256GB (Desert Titanium)"
+                                        placeholder="e.g. Apple iPhone 16 Pro 256GB (Desert Titanium)" required>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <label for="status" class="form-label small fw-semibold">Product Status <span class="text-danger">*</span></label>
+                                    <select id="status" name="status" class="form-select" required>
+                                        <option value="active" selected>Active (Available in POS)</option>
+                                        <option value="inactive">Inactive (Hidden in POS)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="sku" class="form-label small fw-semibold">SKU Code (Stock Keeping Unit) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="bi bi-hash"></i></span>
+                                        <input type="text" id="sku" name="sku" class="form-control" value="ISM-PHN-0101" placeholder="ISM-PHN-0101" required>
+                                        <button type="button" class="btn btn-outline-secondary" onclick="generateSku('sku')">
+                                            <i class="bi bi-magic me-1"></i>Auto SKU
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="barcode" class="form-label small fw-semibold">Barcode Number (EAN-13 / IMEI) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="bi bi-upc-scan"></i></span>
+                                        <input type="text" id="barcode" name="barcode" class="form-control font-monospace" value="8901041001011" placeholder="8901041001011" required>
+                                        <button type="button" class="btn btn-outline-secondary" onclick="generateBarcode('barcode')">
+                                            <i class="bi bi-magic me-1"></i>Auto Barcode
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <label for="category" class="form-label small fw-semibold mb-0">
+                                            Category <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="d-flex gap-2">
+                                            <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none fw-semibold"
+                                                style="font-size: 0.78rem;" data-bs-toggle="modal" data-bs-target="#quickAddCategoryModal">
+                                                <i class="bi bi-plus-circle-fill me-1"></i>New Category
+                                            </button>
+                                            <a href="categories.html" class="text-secondary text-decoration-none" style="font-size: 0.78rem;" title="Manage All Categories">
+                                                <i class="bi bi-gear"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <select id="category" name="category" class="form-select" required>
+                                        <option value="">-- Select Category --</option>
+                                        <option value="iPhones & iOS Devices">iPhones & iOS Devices</option><option value="Smartphones (Android)">Smartphones (Android)</option><option value="Fast Chargers & Adapters">Fast Chargers & Adapters</option><option value="Audio & Wireless Earbuds">Audio & Wireless Earbuds</option><option value="Power Banks & Data Cables">Power Banks & Data Cables</option><option value="Cases & Tempered Glass">Cases & Tempered Glass</option><option value="Smartwatches & Wearables">Smartwatches & Wearables</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <label for="supplier" class="form-label small fw-semibold mb-0">Supplier Name</label>
+                                        <div class="d-flex gap-2">
+                                            <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none fw-semibold"
+                                                style="font-size: 0.78rem;" data-bs-toggle="modal" data-bs-target="#quickAddSupplierModal">
+                                                <i class="bi bi-plus-circle-fill me-1"></i>New Supplier
+                                            </button>
+                                            <a href="suppliers.html" class="text-secondary text-decoration-none" style="font-size: 0.78rem;" title="Manage All Suppliers">
+                                                <i class="bi bi-gear"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <select id="supplier" name="supplier" class="form-select">
+                                        <option value="">-- Select Supplier (Optional) --</option>
+                                        <option value="FutureWorld Apple Authorized SL">FutureWorld Apple Authorized SL</option><option value="Samsung Lanka Mobility Pvt Ltd">Samsung Lanka Mobility Pvt Ltd</option><option value="Anker & Baseus Accessories Hub">Anker & Baseus Accessories Hub</option><option value="Xiaomi Lanka Official Imports">Xiaomi Lanka Official Imports</option><option value="Spigen & Shield Case Wholesale">Spigen & Shield Case Wholesale</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="description" class="form-label small fw-semibold">Product Description / Notes</label>
+                                    <textarea id="description" name="description" rows="2" class="form-control"
+                                        placeholder="Enter storage capacity, color, warranty terms, or shelf location...">A18 Pro chip, 6.3-inch Super Retina XDR ProMotion display, 48MP Fusion camera, 1 Year AppleCare Warranty.</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Pricing & Profit Margin -->
+                        <div class="content-card p-3 p-sm-4 mb-4">
+                            <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="section-badge">2</span>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">Cost &amp; Selling Price Configuration</h6>
+                                        <small class="text-muted">Cost price is visible to Admin, Store Manager &amp; Stock Manager only</small>
+                                    </div>
+                                </div>
+                                <span class="badge text-bg-success" id="liveMarginBadge">Profit Margin: 11.7%</span>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-12 col-md-3">
+                                    <label for="cost_price" class="form-label small fw-semibold">Cost Price (LKR) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light">LKR</span>
+                                        <input type="number" step="0.01" min="0" id="cost_price" name="cost_price" class="form-control" value="385000.00" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <label for="profit_percent" class="form-label small fw-semibold text-primary">Profit Percentage (%)</label>
+                                    <div class="input-group">
+                                        <input type="number" step="0.01" id="profit_percent" class="form-control" value="11.66" placeholder="e.g. 15">
+                                        <span class="input-group-text bg-light">%</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <label for="selling_price" class="form-label small fw-semibold">Selling Price (LKR) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light">LKR</span>
+                                        <input type="number" step="0.01" min="0" id="selling_price" name="selling_price" class="form-control" value="429900.00" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <label class="form-label small fw-semibold text-secondary">Estimated Profit / Unit</label>
+                                    <div class="p-2 px-3 rounded-3 border bg-light d-flex justify-content-between align-items-center" style="height: 38px;">
+                                        <span class="small text-muted">Net Profit:</span>
+                                        <span class="fw-bold text-success" id="liveUnitProfit">LKR 44,900.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Stock & Inventory Thresholds -->
+                        <div class="content-card p-3 p-sm-4 mb-4">
+                            <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
+                                <span class="section-badge">3</span>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Inventory Stock &amp; Reorder Alert Levels</h6>
+                                    <small class="text-muted">Set current on-hand quantity, unit of measure, and low-stock alert threshold</small>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-12 col-md-4">
+                                    <label for="stock_quantity" class="form-label small fw-semibold">Stock Quantity <span class="text-danger">*</span></label>
+                                    <input type="number" min="0" id="stock_quantity" name="stock_quantity" class="form-control" value="8" required>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <label for="min_stock_level" class="form-label small fw-semibold">Low Stock Alert Level <span class="text-danger">*</span></label>
+                                    <input type="number" min="0" id="min_stock_level" name="min_stock_level" class="form-control" value="5" required>
+                                </div>
+
+                                <div class="col-12 col-md-4">
+                                    <label for="unit" class="form-label small fw-semibold">Unit of Measure <span class="text-danger">*</span></label>
+                                    <select id="unit" name="unit" class="form-select" required>
+                                        <option value="pcs" selected>Pieces (pcs)</option>
+                                        <option value="box">Box</option>
+                                        <option value="pack">Pack</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Submit & Action Buttons -->
+                        <div class="content-card p-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                            <a href="products.html" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-lg me-1"></i> Cancel
+                            </a>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-outline-primary fw-semibold" onclick="handleSaveAndNew()">
+                                    <i class="bi bi-plus-circle me-1"></i> Save &amp; Add Another
+                                </button>
+                                <button type="submit" class="btn btn-primary fw-semibold px-4" id="submitProductBtn">
+                                    <i class="bi bi-check2-circle me-1"></i> Save Product
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column: Live Barcode Label Preview & Quick Edit Switcher -->
+                <div class="col-12 col-xl-4">
+                    <div class="content-card p-3 p-sm-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="fw-bold mb-0 text-dark">
+                                <i class="bi bi-upc-scan text-primary me-1"></i> Live Label Preview
+                            </h6>
+                            <button type="button" class="btn btn-sm btn-outline-dark" onclick="window.print()">
+                                <i class="bi bi-printer me-1"></i> Print
+                            </button>
+                        </div>
+
+                        <div class="barcode-preview-box p-3 text-center">
+                            <div class="text-uppercase text-muted fw-bold" style="font-size: 0.68rem; letter-spacing: 0.08em;">
+                                ISM Mobile & Phone Shop
+                            </div>
+                            <div class="fw-bold text-dark my-1 text-truncate" id="previewName">
+                                Apple iPhone 16 Pro 256GB (Desert Titanium)
+                            </div>
+                            <div class="py-2 px-3 bg-white border rounded my-2 font-monospace fw-bold" style="letter-spacing: 0.2em;" id="previewBarcode">
+                                ||8901041001011||
+                            </div>
+                            <div class="fw-bold text-primary fs-5" id="previewPrice">
+                                LKR 429,900.00
+                            </div>
+                            <div class="text-muted small" id="previewSku">
+                                SKU: ISM-PHN-0101
+                            </div>
+                        </div>
+
+                        <div class="mt-3 pt-3 border-top small">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-muted">Total Cost Value:</span>
+                                <span class="fw-semibold text-dark" id="previewTotalCost">LKR 3,080,000.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-muted">Total Retail Value:</span>
+                                <span class="fw-semibold text-primary" id="previewTotalRetail">LKR 3,439,200.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Expected Total Profit:</span>
+                                <span class="fw-bold text-success" id="previewTotalProfit">LKR 359,200.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card p-3 p-sm-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0 text-dark">
+                                <i class="bi bi-pencil-square text-primary me-1"></i> Quick Edit Existing Product
+                            </h6>
+                            <span class="badge text-bg-light border">Click to Load</span>
+                        </div>
+                        <p class="text-muted small mb-3">
+                            Select any phone or accessory below to load it into this form for editing:
+                        </p>
+
+                        <div class="d-grid gap-2" id="quickEditList">
+                            
+        <a href="javascript:void(0)" onclick='loadProductIntoForm({"id":1,"sku":"ISM-PHN-0101","barcode":"8901041001011","name":"Apple iPhone 16 Pro 256GB (Desert Titanium)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":385000,"selling_price":429900,"stock_quantity":8,"min_stock_level":5,"unit":"pcs","status":"active","description":"A18 Pro chip, 6.3-inch Super Retina XDR ProMotion display, 48MP Fusion camera, 1 Year AppleCare Warranty."}, this)' class="quick-product-item" data-sku="ISM-PHN-0101">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-truncate me-2">
+                    <div class="fw-semibold small text-truncate">Apple iPhone 16 Pro 256GB (Desert Titanium)</div>
+                    <small class="text-muted"><code>ISM-PHN-0101</code> &bull; Stock: 8</small>
+                </div>
+                <span class="badge text-bg-light border">
+                    <i class="bi bi-pencil"></i> Edit
+                </span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" onclick='loadProductIntoForm({"id":2,"sku":"ISM-PHN-0102","barcode":"8901041001028","name":"Apple iPhone 15 128GB (Blue) - Official Warranty","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":228000,"selling_price":259900,"stock_quantity":11,"min_stock_level":5,"unit":"pcs","status":"active","description":"Dynamic Island, 48MP Main camera, USB-C connector, Genxt 1 Year Official Sri Lanka Warranty."}, this)' class="quick-product-item" data-sku="ISM-PHN-0102">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-truncate me-2">
+                    <div class="fw-semibold small text-truncate">Apple iPhone 15 128GB (Blue) - Official Warranty</div>
+                    <small class="text-muted"><code>ISM-PHN-0102</code> &bull; Stock: 11</small>
+                </div>
+                <span class="badge text-bg-light border">
+                    <i class="bi bi-pencil"></i> Edit
+                </span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" onclick='loadProductIntoForm({"id":3,"sku":"ISM-PHN-0103","barcode":"8901041001035","name":"Apple iPhone 13 128GB (Midnight Black)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":158000,"selling_price":179900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"A15 Bionic chip, 6.1-inch Super Retina XDR OLED, Dual 12MP camera system, Brand New Sealed."}, this)' class="quick-product-item" data-sku="ISM-PHN-0103">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-truncate me-2">
+                    <div class="fw-semibold small text-truncate">Apple iPhone 13 128GB (Midnight Black)</div>
+                    <small class="text-muted"><code>ISM-PHN-0103</code> &bull; Stock: 3</small>
+                </div>
+                <span class="badge text-bg-light border">
+                    <i class="bi bi-pencil"></i> Edit
+                </span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" onclick='loadProductIntoForm({"id":4,"sku":"ISM-PHN-0104","barcode":"8901041001042","name":"Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":335000,"selling_price":379500,"stock_quantity":6,"min_stock_level":4,"unit":"pcs","status":"active","description":"Snapdragon 8 Gen 3, Galaxy AI, Built-in S Pen, 200MP Quad Telephoto Camera, TRCSL Approved."}, this)' class="quick-product-item" data-sku="ISM-PHN-0104">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-truncate me-2">
+                    <div class="fw-semibold small text-truncate">Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)</div>
+                    <small class="text-muted"><code>ISM-PHN-0104</code> &bull; Stock: 6</small>
+                </div>
+                <span class="badge text-bg-light border">
+                    <i class="bi bi-pencil"></i> Edit
+                </span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" onclick='loadProductIntoForm({"id":5,"sku":"ISM-PHN-0105","barcode":"8901041001059","name":"Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":108000,"selling_price":126900,"stock_quantity":15,"min_stock_level":6,"unit":"pcs","status":"active","description":"Metal frame & Gorilla Glass Victus+, 120Hz Super AMOLED, 50MP OIS Camera, IP67 Water Resistant."}, this)' class="quick-product-item" data-sku="ISM-PHN-0105">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-truncate me-2">
+                    <div class="fw-semibold small text-truncate">Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)</div>
+                    <small class="text-muted"><code>ISM-PHN-0105</code> &bull; Stock: 15</small>
+                </div>
+                <span class="badge text-bg-light border">
+                    <i class="bi bi-pencil"></i> Edit
+                </span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" onclick='loadProductIntoForm({"id":6,"sku":"ISM-PHN-0106","barcode":"8901041001066","name":"Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)","category":"Smartphones (Android)","supplier":"Xiaomi Lanka Official Imports","cost_price":86500,"selling_price":102500,"stock_quantity":18,"min_stock_level":8,"unit":"pcs","status":"active","description":"200MP OIS camera, 1.5K 120Hz AMOLED display, 67W turbo charging adapter in box."}, this)' class="quick-product-item" data-sku="ISM-PHN-0106">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-truncate me-2">
+                    <div class="fw-semibold small text-truncate">Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)</div>
+                    <small class="text-muted"><code>ISM-PHN-0106</code> &bull; Stock: 18</small>
+                </div>
+                <span class="badge text-bg-light border">
+                    <i class="bi bi-pencil"></i> Edit
+                </span>
+            </div>
+        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <!-- FORM MODAL 1: Quick Add New Category -->
+            <div class="modal fade" id="quickAddCategoryModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <form onsubmit="handleQuickAddCatInForm(event)">
+                            <div class="modal-header bg-primary text-white">
+                                <h6 class="modal-title fw-bold">
+                                    <i class="bi bi-tags-fill me-2"></i>Add New Product Category
+                                </h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Category Code <span class="text-danger">*</span></label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" id="quick_cat_code" class="form-control font-monospace" value="CAT-109" required>
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="document.getElementById('quick_cat_code').value = 'CAT-' + Math.floor(100 + Math.random() * 900)">
+                                            Auto
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Category Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="quick_cat_name" class="form-control" required placeholder="e.g., Gaming Triggers & Coolers">
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-label small fw-semibold">Description (Optional)</label>
+                                    <textarea id="quick_cat_desc" rows="2" class="form-control form-control-sm" placeholder="Short description..."></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-3">
+                                    <i class="bi bi-check2-circle me-1"></i> Save Category
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM MODAL 2: Quick Add New Supplier -->
+            <div class="modal fade" id="quickAddSupplierModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <form onsubmit="handleQuickAddSupInForm(event)">
+                            <div class="modal-header bg-dark text-white">
+                                <h6 class="modal-title fw-bold">
+                                    <i class="bi bi-truck me-2 text-info"></i>Add New Supplier
+                                </h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Supplier Code <span class="text-danger">*</span></label>
+                                    <input type="text" id="quick_sup_code" class="form-control form-control-sm font-monospace" value="SUP-107" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Company / Supplier Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="quick_sup_name" class="form-control form-control-sm" required placeholder="e.g., Dialog Device Partner SL">
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-label small fw-semibold">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="text" id="quick_sup_phone" class="form-control form-control-sm" required placeholder="+94 77 123 4567">
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-3">
+                                    <i class="bi bi-check2-circle me-1"></i> Save Supplier
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            const ALL_PRODUCTS_DATA = [{"id":1,"sku":"ISM-PHN-0101","barcode":"8901041001011","name":"Apple iPhone 16 Pro 256GB (Desert Titanium)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":385000,"selling_price":429900,"stock_quantity":8,"min_stock_level":5,"unit":"pcs","status":"active","description":"A18 Pro chip, 6.3-inch Super Retina XDR ProMotion display, 48MP Fusion camera, 1 Year AppleCare Warranty."},{"id":2,"sku":"ISM-PHN-0102","barcode":"8901041001028","name":"Apple iPhone 15 128GB (Blue) - Official Warranty","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":228000,"selling_price":259900,"stock_quantity":11,"min_stock_level":5,"unit":"pcs","status":"active","description":"Dynamic Island, 48MP Main camera, USB-C connector, Genxt 1 Year Official Sri Lanka Warranty."},{"id":3,"sku":"ISM-PHN-0103","barcode":"8901041001035","name":"Apple iPhone 13 128GB (Midnight Black)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":158000,"selling_price":179900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"A15 Bionic chip, 6.1-inch Super Retina XDR OLED, Dual 12MP camera system, Brand New Sealed."},{"id":4,"sku":"ISM-PHN-0104","barcode":"8901041001042","name":"Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":335000,"selling_price":379500,"stock_quantity":6,"min_stock_level":4,"unit":"pcs","status":"active","description":"Snapdragon 8 Gen 3, Galaxy AI, Built-in S Pen, 200MP Quad Telephoto Camera, TRCSL Approved."},{"id":5,"sku":"ISM-PHN-0105","barcode":"8901041001059","name":"Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":108000,"selling_price":126900,"stock_quantity":15,"min_stock_level":6,"unit":"pcs","status":"active","description":"Metal frame & Gorilla Glass Victus+, 120Hz Super AMOLED, 50MP OIS Camera, IP67 Water Resistant."},{"id":6,"sku":"ISM-PHN-0106","barcode":"8901041001066","name":"Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)","category":"Smartphones (Android)","supplier":"Xiaomi Lanka Official Imports","cost_price":86500,"selling_price":102500,"stock_quantity":18,"min_stock_level":8,"unit":"pcs","status":"active","description":"200MP OIS camera, 1.5K 120Hz AMOLED display, 67W turbo charging adapter in box."},{"id":7,"sku":"ISM-ACC-0201","barcode":"8901041002018","name":"Apple 20W USB-C Power Adapter (Original MHJE3)","category":"Fast Chargers & Adapters","supplier":"FutureWorld Apple Authorized SL","cost_price":5800,"selling_price":8500,"stock_quantity":3,"min_stock_level":10,"unit":"pcs","status":"active","description":"Genuine Apple 20W USB-C fast wall charger for iPhone 8 to iPhone 16 Pro Max (6 Months Warranty)."},{"id":8,"sku":"ISM-ACC-0202","barcode":"8901041002025","name":"Anker 45W Nano II GaN Type-C Super Fast Charger","category":"Fast Chargers & Adapters","supplier":"Anker & Baseus Accessories Hub","cost_price":7200,"selling_price":10500,"stock_quantity":45,"min_stock_level":10,"unit":"pcs","status":"active","description":"Supports Samsung Super Fast Charging 2.0 (45W) & MacBook Air / iPhone PD charging."},{"id":9,"sku":"ISM-ACC-0203","barcode":"8901041002032","name":"Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)","category":"Audio & Wireless Earbuds","supplier":"FutureWorld Apple Authorized SL","cost_price":66000,"selling_price":78500,"stock_quantity":2,"min_stock_level":5,"unit":"pcs","status":"active","description":"H2 chip, 2x Active Noise Cancellation, Adaptive Audio, Dust/Sweat/Water resistant (IP54)."},{"id":10,"sku":"ISM-ACC-0204","barcode":"8901041002049","name":"Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)","category":"Audio & Wireless Earbuds","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":46000,"selling_price":56900,"stock_quantity":20,"min_stock_level":5,"unit":"pcs","status":"active","description":"Blade Lights design, Dual-amp 2-way speakers, Galaxy AI Interpreter & Adaptive ANC."},{"id":11,"sku":"ISM-ACC-0205","barcode":"8901041002056","name":"Baseus 20000mAh 65W PD Fast Charging Power Bank","category":"Power Banks & Data Cables","supplier":"Anker & Baseus Accessories Hub","cost_price":11500,"selling_price":16500,"stock_quantity":0,"min_stock_level":8,"unit":"pcs","status":"active","description":"Digital LED percentage display, 65W Type-C PD output for laptops, iPhones & Android phones."},{"id":12,"sku":"ISM-ACC-0206","barcode":"8901041002063","name":"Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)","category":"Cases & Tempered Glass","supplier":"Spigen & Shield Case Wholesale","cost_price":3200,"selling_price":5900,"stock_quantity":85,"min_stock_level":15,"unit":"pack","status":"active","description":"Anti-yellowing MagSafe clear armor case bundled with 9H full-glue tempered screen protector."},{"id":13,"sku":"ISM-WCH-0301","barcode":"8901041003015","name":"Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)","category":"Smartwatches & Wearables","supplier":"FutureWorld Apple Authorized SL","cost_price":122000,"selling_price":144900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"Thinnest Apple Watch ever, wide-angle OLED display, ECG, Blood Oxygen & Sleep Apnea notifications."}];
+
+            const nameInput = document.getElementById('name');
+            const skuInput = document.getElementById('sku');
+            const barcodeInput = document.getElementById('barcode');
+            const costInput = document.getElementById('cost_price');
+            const profitPctInput = document.getElementById('profit_percent');
+            const sellingInput = document.getElementById('selling_price');
+            const stockInput = document.getElementById('stock_quantity');
+
+            if (profitPctInput) {
+                profitPctInput.addEventListener('input', function() {
+                    const cost = parseFloat(costInput.value) || 0;
+                    const pct = parseFloat(profitPctInput.value);
+                    if (!isNaN(pct) && cost > 0) {
+                        sellingInput.value = (cost + (cost * (pct / 100))).toFixed(2);
+                    }
+                    updateLivePreview();
+                });
+            }
+
+            if (sellingInput) {
+                sellingInput.addEventListener('input', function() {
+                    const cost = parseFloat(costInput.value) || 0;
+                    const selling = parseFloat(sellingInput.value) || 0;
+                    if (cost > 0 && selling > 0) {
+                        profitPctInput.value = (((selling - cost) / cost) * 100).toFixed(2);
+                    } else {
+                        profitPctInput.value = '';
+                    }
+                    updateLivePreview();
+                });
+            }
+
+            if (costInput) {
+                costInput.addEventListener('input', function() {
+                    const cost = parseFloat(costInput.value) || 0;
+                    const pct = parseFloat(profitPctInput.value);
+                    const selling = parseFloat(sellingInput.value) || 0;
+                    if (!isNaN(pct) && pct > 0 && cost > 0) {
+                        sellingInput.value = (cost + (cost * (pct / 100))).toFixed(2);
+                    } else if (cost > 0 && selling > 0) {
+                        profitPctInput.value = (((selling - cost) / cost) * 100).toFixed(2);
+                    }
+                    updateLivePreview();
+                });
+            }
+
+            function updateLivePreview() {
+                const nameVal = nameInput.value.trim() || 'Product Name Preview';
+                const skuVal = skuInput.value.trim() || 'ISM-PHN-XXXX';
+                const barcodeVal = barcodeInput.value.trim() || '8901041000000';
+                const cost = parseFloat(costInput.value) || 0;
+                const selling = parseFloat(sellingInput.value) || 0;
+                const stock = parseInt(stockInput.value, 10) || 0;
+
+                const unitProfit = selling - cost;
+                const marginPct = cost > 0 ? ((unitProfit / cost) * 100).toFixed(1) : '0.0';
+
+                document.getElementById('liveUnitProfit').textContent =
+                    'LKR ' + unitProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+                const marginBadge = document.getElementById('liveMarginBadge');
+                marginBadge.textContent = 'Profit Margin: ' + marginPct + '%';
+                marginBadge.className = 'badge ' + (unitProfit >= 0 ? 'text-bg-success' : 'text-bg-danger');
+
+                document.getElementById('previewName').textContent = nameVal;
+                document.getElementById('previewSku').textContent = 'SKU: ' + skuVal;
+                document.getElementById('previewBarcode').textContent = '||' + barcodeVal + '||';
+                document.getElementById('previewPrice').textContent =
+                    'LKR ' + selling.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+                const totalCost = cost * Math.max(0, stock);
+                const totalRetail = selling * Math.max(0, stock);
+                const totalProfit = totalRetail - totalCost;
+
+                document.getElementById('previewTotalCost').textContent = 'LKR ' + totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                document.getElementById('previewTotalRetail').textContent = 'LKR ' + totalRetail.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                document.getElementById('previewTotalProfit').textContent = 'LKR ' + totalProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            [nameInput, skuInput, barcodeInput, stockInput].forEach(el => {
+                if (el) el.addEventListener('input', updateLivePreview);
+            });
+
+            function loadProductIntoForm(prod, clickedEl) {
+                nameInput.value = prod.name;
+                skuInput.value = prod.sku;
+                barcodeInput.value = prod.barcode;
+                document.getElementById('category').value = prod.category;
+                document.getElementById('supplier').value = prod.supplier;
+                document.getElementById('description').value = prod.description || '';
+                costInput.value = Number(prod.cost_price).toFixed(2);
+                sellingInput.value = Number(prod.selling_price).toFixed(2);
+                stockInput.value = prod.stock_quantity;
+                document.getElementById('min_stock_level').value = prod.min_stock_level;
+                document.getElementById('unit').value = prod.unit || 'pcs';
+                if (prod.cost_price > 0) {
+                    profitPctInput.value = (((prod.selling_price - prod.cost_price) / prod.cost_price) * 100).toFixed(2);
+                }
+
+                const badge = document.getElementById('formModeBadge');
+                badge.textContent = 'Editing: ' + prod.sku;
+                badge.className = 'badge text-bg-warning';
+                document.getElementById('submitProductBtn').innerHTML = '<i class="bi bi-check2-circle me-1"></i> Update Product';
+
+                document.querySelectorAll('#quickEditList .quick-product-item').forEach(a => a.classList.remove('active-item'));
+                if (clickedEl) clickedEl.classList.add('active-item');
+                updateLivePreview();
+            }
+
+            function resetToCreateMode() {
+                nameInput.value = '';
+                generateSku('sku');
+                generateBarcode('barcode');
+                document.getElementById('description').value = '';
+                costInput.value = '0.00';
+                profitPctInput.value = '';
+                sellingInput.value = '0.00';
+                stockInput.value = '10';
+                document.getElementById('min_stock_level').value = '5';
+                const badge = document.getElementById('formModeBadge');
+                badge.textContent = 'Create Mode';
+                badge.className = 'badge text-bg-primary';
+                document.getElementById('submitProductBtn').innerHTML = '<i class="bi bi-check2-circle me-1"></i> Save Product';
+                document.querySelectorAll('#quickEditList .quick-product-item').forEach(a => a.classList.remove('active-item'));
+                updateLivePreview();
+            }
+
+            function handleSaveProductForm(e) {
+                e.preventDefault();
+                showStaticAlert('Product "' + nameInput.value + '" (' + skuInput.value + ') saved successfully!', 'success');
+            }
+
+            function handleSaveAndNew() {
+                const savedName = nameInput.value || 'New Product';
+                resetToCreateMode();
+                showStaticAlert('Saved "' + savedName + '". Ready to add another product!', 'success');
+            }
+
+            function handleQuickAddCatInForm(e) {
+                e.preventDefault();
+                const name = document.getElementById('quick_cat_name').value.trim();
+                if (name) {
+                    const sel = document.getElementById('category');
+                    const opt = document.createElement('option');
+                    opt.value = name;
+                    opt.textContent = name;
+                    opt.selected = true;
+                    sel.appendChild(opt);
+                }
+                bootstrap.Modal.getInstance(document.getElementById('quickAddCategoryModal')).hide();
+                showStaticAlert('Category "' + name + '" added and selected!', 'success');
+            }
+
+            function handleQuickAddSupInForm(e) {
+                e.preventDefault();
+                const name = document.getElementById('quick_sup_name').value.trim();
+                if (name) {
+                    const sel = document.getElementById('supplier');
+                    const opt = document.createElement('option');
+                    opt.value = name;
+                    opt.textContent = name;
+                    opt.selected = true;
+                    sel.appendChild(opt);
+                }
+                bootstrap.Modal.getInstance(document.getElementById('quickAddSupplierModal')).hide();
+                showStaticAlert('Supplier "' + name + '" added and selected!', 'success');
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const params = new URLSearchParams(window.location.search);
+                const skuParam = params.get('sku');
+                if (skuParam) {
+                    const found = ALL_PRODUCTS_DATA.find(p => p.sku === skuParam);
+                    if (found) {
+                        const linkEl = document.querySelector('#quickEditList .quick-product-item[data-sku="' + skuParam + '"]');
+                        loadProductIntoForm(found, linkEl);
+                    }
+                }
+                updateLivePreview();
+            });
+        </script>
+        
+</body>
+</html>

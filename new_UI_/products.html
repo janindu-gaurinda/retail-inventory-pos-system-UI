@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List (CRUD) | ISM Mobile & Phone Shop</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared ISM Admin Stylesheet -->
+    <link href="assets/css/ism-admin.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1025;"></div>
+
+    <!-- Shared Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar d-flex flex-column justify-content-between p-3 text-white">
+        <div>
+            <!-- PART 1: Brand Logo & System Title -->
+            <div class="d-flex align-items-center justify-content-between px-2 py-1 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                <a href="dashboard.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+                    <div class="rounded-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-phone-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold leading-tight">ISM Phone Shop</div>
+                        <small class="text-white-50" style="font-size: 0.73rem;">Mobile &amp; Accessories POS</small>
+                    </div>
+                </a>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- PART 2: Section 1 — Overview -->
+            <div class="sidebar-section-title">Overview</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </span>
+                        <span class="badge rounded-pill text-bg-light text-primary" style="font-size: 0.65rem;">All Stats</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 3: Section 2 — Inventory & Catalog -->
+            <div class="sidebar-section-title">Inventory &amp; Catalog</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link active">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-box-seam"></i> Products List
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">13</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="product-form.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-plus-square"></i> Add / Edit Product
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-tags"></i> Product Categories
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="barcodes.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-upc-scan"></i> Barcode / Label Print
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stock-adjustments.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-sliders"></i> Stock Adjustments
+                        </span>
+                        <span class="badge text-bg-warning" style="font-size: 0.68rem;">2</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 4: Section 3 — Purchasing & Supply -->
+            <div class="sidebar-section-title">Purchasing &amp; Supply</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="suppliers.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-truck"></i> Suppliers Directory
+                        </span>
+                        <span class="badge bg-secondary bg-opacity-25 text-light" style="font-size: 0.68rem;">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="purchase-orders.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-receipt-cutoff"></i> Purchase Orders (POs)
+                        </span>
+                        <span class="badge bg-info bg-opacity-25 text-info" style="font-size: 0.68rem;">3</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 5: Section 4 — POS & Sales -->
+            <div class="sidebar-section-title">POS &amp; Sales</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="pos.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-cart-check"></i> POS Checkout Screen
+                        </span>
+                        <span class="badge text-bg-success" style="font-size: 0.65rem;">LIVE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sales.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-journal-text"></i> Sales History / Invoices
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- PART 6: Section 5 — Administration -->
+            <div class="sidebar-section-title">Administration</div>
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-bar-chart-line"></i> Reports &amp; Analytics
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-people"></i> User Management
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link ">
+                        <span class="nav-link-inner">
+                            <i class="bi bi-gear"></i> System Settings
+                        </span>
+                        <span class="badge bg-primary bg-opacity-25 text-info" style="font-size: 0.65rem;">Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 7: Sidebar Footer — Logged-in User Profile & Sign Out Link -->
+        <div class="border-top border-secondary border-opacity-25 pt-3 mt-2">
+            <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                    <div class="avatar-circle flex-shrink-0">JG</div>
+                    <div class="text-truncate">
+                        <div class="fw-semibold small text-white text-truncate">Janindu Gaurinda</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Admin</div>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" class="btn btn-outline-light btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-right"></i> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+
+        <!-- Shared Top Navbar -->
+        <header class="topbar px-3 px-lg-4 py-2 d-flex align-items-center justify-content-between sticky-top">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light border d-lg-none" id="openSidebarBtn" aria-label="Toggle Menu">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="mb-0 fw-bold text-dark">Products List</h5>
+                        <span class="badge text-bg-success bg-opacity-10 text-success border border-success-subtle">View &amp; Edit (Full CRUD)</span>
+                    </div>
+                    <small class="text-muted d-none d-sm-inline">Manage smartphones, iPhones, chargers, earbuds, barcodes, stock levels & pricing</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                
+            <a href="product-form.html" class="btn btn-primary btn-sm fw-semibold d-inline-flex align-items-center gap-1 px-3 py-2 rounded-3">
+                <i class="bi bi-plus-lg"></i> Add New Product
+            </a>
+            <button type="button" class="btn btn-outline-primary btn-sm fw-semibold d-none d-md-inline-flex align-items-center gap-1 px-3 py-2 rounded-3"
+                    data-bs-toggle="modal" data-bs-target="#addProductModal">
+                <i class="bi bi-window-plus"></i> Quick Add Modal
+            </button>
+        
+
+                <!-- User Account Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-light border rounded-pill d-flex align-items-center gap-2 px-2 py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar-circle" style="width: 30px; height: 30px; font-size: 0.75rem;">JG</div>
+                        <span class="small fw-semibold d-none d-md-inline">Janindu Gaurinda</span>
+                        <i class="bi bi-chevron-down small text-muted me-1"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li class="px-3 py-2 border-bottom">
+                            <div class="fw-semibold small">Janindu Gaurinda</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">superadmin@ism.com</div>
+                            <span class="badge text-bg-primary mt-1">Admin</span>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="products.html">
+                                <i class="bi bi-box-seam me-2"></i> Products List
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="pos.html">
+                                <i class="bi bi-cart-check me-2"></i> POS Terminal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item small py-2" href="settings.html">
+                                <i class="bi bi-gear me-2"></i> System Settings
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item text-danger small py-2" href="login.html">
+                                <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Body -->
+        <main class="p-3 p-lg-4 flex-grow-1">
+            
+            <!-- SECTION A: Inventory Summary KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Products</div>
+                            <h4 class="fw-bold mb-0 text-dark" id="kpiTotalProducts">13</h4>
+                            <small class="text-muted">8 Categories</small>
+                        </div>
+                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-box-seam-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Total Stock Cost Value</div>
+                            <h5 class="fw-bold mb-0 text-dark">LKR 13,280,400.00</h5>
+                            <small class="text-success fw-medium">Retail: LKR 15,592,500</small>
+                        </div>
+                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-cash-stack"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Low Stock Alerts</div>
+                            <h4 class="fw-bold mb-0 text-warning">4</h4>
+                            <small class="text-muted">At or below minimum level</small>
+                        </div>
+                        <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                            <i class="bi bi-exclamation-circle-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="stat-card p-3 h-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-secondary small fw-medium">Out of Stock</div>
+                            <h4 class="fw-bold mb-0 text-danger">1</h4>
+                            <small class="text-muted">Requires immediate PO</small>
+                        </div>
+                        <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-x-octagon-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION B: Search & Filter Bar -->
+            <div class="content-card p-3 mb-4">
+                <form onsubmit="filterProductsTable(event)" class="row g-2 align-items-end">
+                    <div class="col-12 col-md-5">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Search Product / SKU / Barcode</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                            <input type="text" id="prodSearchInput" class="form-control"
+                                placeholder="Search by phone model, SKU, barcode, or supplier..." oninput="filterProductsTable()">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Category</label>
+                        <select id="prodCategoryFilter" class="form-select form-select-sm" onchange="filterProductsTable()">
+                            <option value="">All Categories</option>
+                            <option value="iPhones & iOS Devices">iPhones & iOS Devices</option><option value="Smartphones (Android)">Smartphones (Android)</option><option value="Fast Chargers & Adapters">Fast Chargers & Adapters</option><option value="Audio & Wireless Earbuds">Audio & Wireless Earbuds</option><option value="Power Banks & Data Cables">Power Banks & Data Cables</option><option value="Cases & Tempered Glass">Cases & Tempered Glass</option><option value="Smartwatches & Wearables">Smartwatches & Wearables</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small fw-semibold text-secondary mb-1">Stock Status</label>
+                        <select id="prodStockFilter" class="form-select form-select-sm" onchange="filterProductsTable()">
+                            <option value="">All Stock Levels</option>
+                            <option value="in_stock">In Stock</option>
+                            <option value="low_stock">Low Stock</option>
+                            <option value="out_of_stock">Out of Stock</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-sm w-100 fw-semibold">
+                            <i class="bi bi-funnel me-1"></i> Filter
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" title="Reset Filters" onclick="resetProductFilters()">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION C: Products List Table -->
+            <div class="content-card p-3 p-sm-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3">
+                    <div>
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-table text-primary me-1"></i> Phone Shop Inventory Catalog (<span id="visibleProductsCount">13</span> items)
+                        </h6>
+                        <small class="text-muted">Showing full product details including Cost Price &amp; Profit Margin</small>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Product / SKU</th>
+                                <th>Barcode</th>
+                                <th>Category / Supplier</th>
+                                <th class="text-end">Cost Price</th>
+                                <th class="text-end">Selling Price</th>
+                                <th class="text-center">Stock</th>
+                                <th>Stock Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            
+        <tr class="product-row"
+            data-id="1"
+            data-search="apple iphone 16 pro 256gb (desert titanium) ism-phn-0101 8901041001011 futureworld apple authorized sl"
+            data-category="iPhones & iOS Devices"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Apple iPhone 16 Pro 256GB (Desert Titanium)</div>
+                        <div><code class="text-primary">ISM-PHN-0101</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041001011
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">iPhones & iOS Devices</div>
+                <small class="text-muted">FutureWorld Apple Authorized SL</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 385,000.00</div>
+                <small class="text-success">Margin: 11.7%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 429,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    8
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 5)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":1,"sku":"ISM-PHN-0101","barcode":"8901041001011","name":"Apple iPhone 16 Pro 256GB (Desert Titanium)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":385000,"selling_price":429900,"stock_quantity":8,"min_stock_level":5,"unit":"pcs","status":"active","description":"A18 Pro chip, 6.3-inch Super Retina XDR ProMotion display, 48MP Fusion camera, 1 Year AppleCare Warranty."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-PHN-0101" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-PHN-0101" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":1,"sku":"ISM-PHN-0101","barcode":"8901041001011","name":"Apple iPhone 16 Pro 256GB (Desert Titanium)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":385000,"selling_price":429900,"stock_quantity":8,"min_stock_level":5,"unit":"pcs","status":"active","description":"A18 Pro chip, 6.3-inch Super Retina XDR ProMotion display, 48MP Fusion camera, 1 Year AppleCare Warranty."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="2"
+            data-search="apple iphone 15 128gb (blue) - official warranty ism-phn-0102 8901041001028 futureworld apple authorized sl"
+            data-category="iPhones & iOS Devices"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Apple iPhone 15 128GB (Blue) - Official Warranty</div>
+                        <div><code class="text-primary">ISM-PHN-0102</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041001028
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">iPhones & iOS Devices</div>
+                <small class="text-muted">FutureWorld Apple Authorized SL</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 228,000.00</div>
+                <small class="text-success">Margin: 14.0%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 259,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    11
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 5)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":2,"sku":"ISM-PHN-0102","barcode":"8901041001028","name":"Apple iPhone 15 128GB (Blue) - Official Warranty","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":228000,"selling_price":259900,"stock_quantity":11,"min_stock_level":5,"unit":"pcs","status":"active","description":"Dynamic Island, 48MP Main camera, USB-C connector, Genxt 1 Year Official Sri Lanka Warranty."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-PHN-0102" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-PHN-0102" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":2,"sku":"ISM-PHN-0102","barcode":"8901041001028","name":"Apple iPhone 15 128GB (Blue) - Official Warranty","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":228000,"selling_price":259900,"stock_quantity":11,"min_stock_level":5,"unit":"pcs","status":"active","description":"Dynamic Island, 48MP Main camera, USB-C connector, Genxt 1 Year Official Sri Lanka Warranty."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="3"
+            data-search="apple iphone 13 128gb (midnight black) ism-phn-0103 8901041001035 futureworld apple authorized sl"
+            data-category="iPhones & iOS Devices"
+            data-stock-status="low_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Apple iPhone 13 128GB (Midnight Black)</div>
+                        <div><code class="text-primary">ISM-PHN-0103</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041001035
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">iPhones & iOS Devices</div>
+                <small class="text-muted">FutureWorld Apple Authorized SL</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 158,000.00</div>
+                <small class="text-success">Margin: 13.9%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 179,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-warning">
+                    3
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 5)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-warning">Low Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":3,"sku":"ISM-PHN-0103","barcode":"8901041001035","name":"Apple iPhone 13 128GB (Midnight Black)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":158000,"selling_price":179900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"A15 Bionic chip, 6.1-inch Super Retina XDR OLED, Dual 12MP camera system, Brand New Sealed."}, "Low Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-PHN-0103" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-PHN-0103" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":3,"sku":"ISM-PHN-0103","barcode":"8901041001035","name":"Apple iPhone 13 128GB (Midnight Black)","category":"iPhones & iOS Devices","supplier":"FutureWorld Apple Authorized SL","cost_price":158000,"selling_price":179900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"A15 Bionic chip, 6.1-inch Super Retina XDR OLED, Dual 12MP camera system, Brand New Sealed."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="4"
+            data-search="samsung galaxy s24 ultra 5g (12gb/256gb titanium gray) ism-phn-0104 8901041001042 samsung lanka mobility pvt ltd"
+            data-category="Smartphones (Android)"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)</div>
+                        <div><code class="text-primary">ISM-PHN-0104</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041001042
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Smartphones (Android)</div>
+                <small class="text-muted">Samsung Lanka Mobility Pvt Ltd</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 335,000.00</div>
+                <small class="text-success">Margin: 13.3%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 379,500.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    6
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 4)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":4,"sku":"ISM-PHN-0104","barcode":"8901041001042","name":"Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":335000,"selling_price":379500,"stock_quantity":6,"min_stock_level":4,"unit":"pcs","status":"active","description":"Snapdragon 8 Gen 3, Galaxy AI, Built-in S Pen, 200MP Quad Telephoto Camera, TRCSL Approved."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-PHN-0104" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-PHN-0104" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":4,"sku":"ISM-PHN-0104","barcode":"8901041001042","name":"Samsung Galaxy S24 Ultra 5G (12GB/256GB Titanium Gray)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":335000,"selling_price":379500,"stock_quantity":6,"min_stock_level":4,"unit":"pcs","status":"active","description":"Snapdragon 8 Gen 3, Galaxy AI, Built-in S Pen, 200MP Quad Telephoto Camera, TRCSL Approved."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="5"
+            data-search="samsung galaxy a55 5g (8gb/256gb awesome iceblue) ism-phn-0105 8901041001059 samsung lanka mobility pvt ltd"
+            data-category="Smartphones (Android)"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)</div>
+                        <div><code class="text-primary">ISM-PHN-0105</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041001059
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Smartphones (Android)</div>
+                <small class="text-muted">Samsung Lanka Mobility Pvt Ltd</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 108,000.00</div>
+                <small class="text-success">Margin: 17.5%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 126,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    15
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 6)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":5,"sku":"ISM-PHN-0105","barcode":"8901041001059","name":"Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":108000,"selling_price":126900,"stock_quantity":15,"min_stock_level":6,"unit":"pcs","status":"active","description":"Metal frame & Gorilla Glass Victus+, 120Hz Super AMOLED, 50MP OIS Camera, IP67 Water Resistant."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-PHN-0105" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-PHN-0105" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":5,"sku":"ISM-PHN-0105","barcode":"8901041001059","name":"Samsung Galaxy A55 5G (8GB/256GB Awesome Iceblue)","category":"Smartphones (Android)","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":108000,"selling_price":126900,"stock_quantity":15,"min_stock_level":6,"unit":"pcs","status":"active","description":"Metal frame & Gorilla Glass Victus+, 120Hz Super AMOLED, 50MP OIS Camera, IP67 Water Resistant."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="6"
+            data-search="xiaomi redmi note 13 pro 5g (8gb/256gb midnight black) ism-phn-0106 8901041001066 xiaomi lanka official imports"
+            data-category="Smartphones (Android)"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)</div>
+                        <div><code class="text-primary">ISM-PHN-0106</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041001066
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Smartphones (Android)</div>
+                <small class="text-muted">Xiaomi Lanka Official Imports</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 86,500.00</div>
+                <small class="text-success">Margin: 18.5%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 102,500.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    18
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 8)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":6,"sku":"ISM-PHN-0106","barcode":"8901041001066","name":"Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)","category":"Smartphones (Android)","supplier":"Xiaomi Lanka Official Imports","cost_price":86500,"selling_price":102500,"stock_quantity":18,"min_stock_level":8,"unit":"pcs","status":"active","description":"200MP OIS camera, 1.5K 120Hz AMOLED display, 67W turbo charging adapter in box."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-PHN-0106" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-PHN-0106" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":6,"sku":"ISM-PHN-0106","barcode":"8901041001066","name":"Xiaomi Redmi Note 13 Pro 5G (8GB/256GB Midnight Black)","category":"Smartphones (Android)","supplier":"Xiaomi Lanka Official Imports","cost_price":86500,"selling_price":102500,"stock_quantity":18,"min_stock_level":8,"unit":"pcs","status":"active","description":"200MP OIS camera, 1.5K 120Hz AMOLED display, 67W turbo charging adapter in box."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="7"
+            data-search="apple 20w usb-c power adapter (original mhje3) ism-acc-0201 8901041002018 futureworld apple authorized sl"
+            data-category="Fast Chargers & Adapters"
+            data-stock-status="low_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Apple 20W USB-C Power Adapter (Original MHJE3)</div>
+                        <div><code class="text-primary">ISM-ACC-0201</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041002018
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Fast Chargers & Adapters</div>
+                <small class="text-muted">FutureWorld Apple Authorized SL</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 5,800.00</div>
+                <small class="text-success">Margin: 46.6%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 8,500.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-warning">
+                    3
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 10)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-warning">Low Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":7,"sku":"ISM-ACC-0201","barcode":"8901041002018","name":"Apple 20W USB-C Power Adapter (Original MHJE3)","category":"Fast Chargers & Adapters","supplier":"FutureWorld Apple Authorized SL","cost_price":5800,"selling_price":8500,"stock_quantity":3,"min_stock_level":10,"unit":"pcs","status":"active","description":"Genuine Apple 20W USB-C fast wall charger for iPhone 8 to iPhone 16 Pro Max (6 Months Warranty)."}, "Low Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-ACC-0201" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-ACC-0201" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":7,"sku":"ISM-ACC-0201","barcode":"8901041002018","name":"Apple 20W USB-C Power Adapter (Original MHJE3)","category":"Fast Chargers & Adapters","supplier":"FutureWorld Apple Authorized SL","cost_price":5800,"selling_price":8500,"stock_quantity":3,"min_stock_level":10,"unit":"pcs","status":"active","description":"Genuine Apple 20W USB-C fast wall charger for iPhone 8 to iPhone 16 Pro Max (6 Months Warranty)."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="8"
+            data-search="anker 45w nano ii gan type-c super fast charger ism-acc-0202 8901041002025 anker & baseus accessories hub"
+            data-category="Fast Chargers & Adapters"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Anker 45W Nano II GaN Type-C Super Fast Charger</div>
+                        <div><code class="text-primary">ISM-ACC-0202</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041002025
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Fast Chargers & Adapters</div>
+                <small class="text-muted">Anker & Baseus Accessories Hub</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 7,200.00</div>
+                <small class="text-success">Margin: 45.8%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 10,500.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    45
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 10)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":8,"sku":"ISM-ACC-0202","barcode":"8901041002025","name":"Anker 45W Nano II GaN Type-C Super Fast Charger","category":"Fast Chargers & Adapters","supplier":"Anker & Baseus Accessories Hub","cost_price":7200,"selling_price":10500,"stock_quantity":45,"min_stock_level":10,"unit":"pcs","status":"active","description":"Supports Samsung Super Fast Charging 2.0 (45W) & MacBook Air / iPhone PD charging."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-ACC-0202" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-ACC-0202" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":8,"sku":"ISM-ACC-0202","barcode":"8901041002025","name":"Anker 45W Nano II GaN Type-C Super Fast Charger","category":"Fast Chargers & Adapters","supplier":"Anker & Baseus Accessories Hub","cost_price":7200,"selling_price":10500,"stock_quantity":45,"min_stock_level":10,"unit":"pcs","status":"active","description":"Supports Samsung Super Fast Charging 2.0 (45W) & MacBook Air / iPhone PD charging."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="9"
+            data-search="apple airpods pro (2nd gen) with magsafe case (usb-c) ism-acc-0203 8901041002032 futureworld apple authorized sl"
+            data-category="Audio & Wireless Earbuds"
+            data-stock-status="low_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)</div>
+                        <div><code class="text-primary">ISM-ACC-0203</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041002032
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Audio & Wireless Earbuds</div>
+                <small class="text-muted">FutureWorld Apple Authorized SL</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 66,000.00</div>
+                <small class="text-success">Margin: 18.9%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 78,500.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-warning">
+                    2
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 5)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-warning">Low Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":9,"sku":"ISM-ACC-0203","barcode":"8901041002032","name":"Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)","category":"Audio & Wireless Earbuds","supplier":"FutureWorld Apple Authorized SL","cost_price":66000,"selling_price":78500,"stock_quantity":2,"min_stock_level":5,"unit":"pcs","status":"active","description":"H2 chip, 2x Active Noise Cancellation, Adaptive Audio, Dust/Sweat/Water resistant (IP54)."}, "Low Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-ACC-0203" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-ACC-0203" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":9,"sku":"ISM-ACC-0203","barcode":"8901041002032","name":"Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)","category":"Audio & Wireless Earbuds","supplier":"FutureWorld Apple Authorized SL","cost_price":66000,"selling_price":78500,"stock_quantity":2,"min_stock_level":5,"unit":"pcs","status":"active","description":"H2 chip, 2x Active Noise Cancellation, Adaptive Audio, Dust/Sweat/Water resistant (IP54)."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="10"
+            data-search="samsung galaxy buds3 pro anc wireless earbuds (silver) ism-acc-0204 8901041002049 samsung lanka mobility pvt ltd"
+            data-category="Audio & Wireless Earbuds"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)</div>
+                        <div><code class="text-primary">ISM-ACC-0204</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041002049
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Audio & Wireless Earbuds</div>
+                <small class="text-muted">Samsung Lanka Mobility Pvt Ltd</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 46,000.00</div>
+                <small class="text-success">Margin: 23.7%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 56,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    20
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 5)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":10,"sku":"ISM-ACC-0204","barcode":"8901041002049","name":"Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)","category":"Audio & Wireless Earbuds","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":46000,"selling_price":56900,"stock_quantity":20,"min_stock_level":5,"unit":"pcs","status":"active","description":"Blade Lights design, Dual-amp 2-way speakers, Galaxy AI Interpreter & Adaptive ANC."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-ACC-0204" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-ACC-0204" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":10,"sku":"ISM-ACC-0204","barcode":"8901041002049","name":"Samsung Galaxy Buds3 Pro ANC Wireless Earbuds (Silver)","category":"Audio & Wireless Earbuds","supplier":"Samsung Lanka Mobility Pvt Ltd","cost_price":46000,"selling_price":56900,"stock_quantity":20,"min_stock_level":5,"unit":"pcs","status":"active","description":"Blade Lights design, Dual-amp 2-way speakers, Galaxy AI Interpreter & Adaptive ANC."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="11"
+            data-search="baseus 20000mah 65w pd fast charging power bank ism-acc-0205 8901041002056 anker & baseus accessories hub"
+            data-category="Power Banks & Data Cables"
+            data-stock-status="out_of_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Baseus 20000mAh 65W PD Fast Charging Power Bank</div>
+                        <div><code class="text-primary">ISM-ACC-0205</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041002056
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Power Banks & Data Cables</div>
+                <small class="text-muted">Anker & Baseus Accessories Hub</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 11,500.00</div>
+                <small class="text-success">Margin: 43.5%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 16,500.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-danger">
+                    0
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 8)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-danger">Out of Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":11,"sku":"ISM-ACC-0205","barcode":"8901041002056","name":"Baseus 20000mAh 65W PD Fast Charging Power Bank","category":"Power Banks & Data Cables","supplier":"Anker & Baseus Accessories Hub","cost_price":11500,"selling_price":16500,"stock_quantity":0,"min_stock_level":8,"unit":"pcs","status":"active","description":"Digital LED percentage display, 65W Type-C PD output for laptops, iPhones & Android phones."}, "Out of Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-ACC-0205" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-ACC-0205" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":11,"sku":"ISM-ACC-0205","barcode":"8901041002056","name":"Baseus 20000mAh 65W PD Fast Charging Power Bank","category":"Power Banks & Data Cables","supplier":"Anker & Baseus Accessories Hub","cost_price":11500,"selling_price":16500,"stock_quantity":0,"min_stock_level":8,"unit":"pcs","status":"active","description":"Digital LED percentage display, 65W Type-C PD output for laptops, iPhones & Android phones."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="12"
+            data-search="spigen ultra hybrid magfit case + 9h tempered glass (iphone 16 pro) ism-acc-0206 8901041002063 spigen & shield case wholesale"
+            data-category="Cases & Tempered Glass"
+            data-stock-status="in_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)</div>
+                        <div><code class="text-primary">ISM-ACC-0206</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041002063
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Cases & Tempered Glass</div>
+                <small class="text-muted">Spigen & Shield Case Wholesale</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 3,200.00</div>
+                <small class="text-success">Margin: 84.4%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 5,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-dark">
+                    85
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pack (Min: 15)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-success">In Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":12,"sku":"ISM-ACC-0206","barcode":"8901041002063","name":"Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)","category":"Cases & Tempered Glass","supplier":"Spigen & Shield Case Wholesale","cost_price":3200,"selling_price":5900,"stock_quantity":85,"min_stock_level":15,"unit":"pack","status":"active","description":"Anti-yellowing MagSafe clear armor case bundled with 9H full-glue tempered screen protector."}, "In Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-ACC-0206" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-ACC-0206" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":12,"sku":"ISM-ACC-0206","barcode":"8901041002063","name":"Spigen Ultra Hybrid MagFit Case + 9H Tempered Glass (iPhone 16 Pro)","category":"Cases & Tempered Glass","supplier":"Spigen & Shield Case Wholesale","cost_price":3200,"selling_price":5900,"stock_quantity":85,"min_stock_level":15,"unit":"pack","status":"active","description":"Anti-yellowing MagSafe clear armor case bundled with 9H full-glue tempered screen protector."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="product-row"
+            data-id="13"
+            data-search="apple watch series 10 gps 46mm (jet black aluminum) ism-wch-0301 8901041003015 futureworld apple authorized sl"
+            data-category="Smartwatches & Wearables"
+            data-stock-status="low_stock">
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="product-icon-box">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold text-dark">Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)</div>
+                        <div><code class="text-primary">ISM-WCH-0301</code></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-light border font-monospace">
+                    <i class="bi bi-upc me-1"></i>8901041003015
+                </span>
+            </td>
+            <td>
+                <div class="fw-medium text-dark">Smartwatches & Wearables</div>
+                <small class="text-muted">FutureWorld Apple Authorized SL</small>
+            </td>
+            <td class="text-end">
+                <div class="fw-medium text-secondary">LKR 122,000.00</div>
+                <small class="text-success">Margin: 18.8%</small>
+            </td>
+            <td class="text-end fw-bold text-dark">
+                LKR 144,900.00
+            </td>
+            <td class="text-center">
+                <span class="fw-bold fs-6 text-warning">
+                    3
+                </span>
+                <div class="text-muted" style="font-size: 0.72rem;">
+                    pcs (Min: 5)
+                </div>
+            </td>
+            <td>
+                <span class="badge text-bg-warning">Low Stock</span>
+            </td>
+            <td class="text-end">
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-secondary" title="View Details"
+                        onclick='openViewModal({"id":13,"sku":"ISM-WCH-0301","barcode":"8901041003015","name":"Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)","category":"Smartwatches & Wearables","supplier":"FutureWorld Apple Authorized SL","cost_price":122000,"selling_price":144900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"Thinnest Apple Watch ever, wide-angle OLED display, ECG, Blood Oxygen & Sleep Apnea notifications."}, "Low Stock")'>
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <a href="barcodes.html?sku=ISM-WCH-0301" class="btn btn-outline-dark" title="Open Barcode / Label Print Page">
+                        <i class="bi bi-upc-scan"></i>
+                    </a>
+                    <a href="product-form.html?sku=ISM-WCH-0301" class="btn btn-outline-primary" title="Open Full Edit Product Page">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button type="button" class="btn btn-outline-danger" title="Delete Product"
+                        onclick='openDeleteModal({"id":13,"sku":"ISM-WCH-0301","barcode":"8901041003015","name":"Apple Watch Series 10 GPS 46mm (Jet Black Aluminum)","category":"Smartwatches & Wearables","supplier":"FutureWorld Apple Authorized SL","cost_price":122000,"selling_price":144900,"stock_quantity":3,"min_stock_level":5,"unit":"pcs","status":"active","description":"Thinnest Apple Watch ever, wide-angle OLED display, ECG, Blood Oxygen & Sleep Apnea notifications."})'>
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </main>
+
+        <!-- Shared Footer -->
+        <footer class="px-4 py-3 text-center text-muted small border-top bg-white">
+            &copy; 2026 <strong>ISM Mobile & Phone Shop</strong> (BR-CMB-01) &bull; +94 11 255 8899 &bull; support@ismmobile.lk
+        </footer>
+    </div>
+
+    <!-- Page Modals -->
+    
+            <!-- MODAL 1: Quick Add New Product -->
+            <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-primary text-white">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-plus-circle me-2"></i>Quick Add Phone / Accessory
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="handleQuickAddProduct(event)">
+                            <div class="modal-body p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">SKU Code *</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" id="add_sku" class="form-control" value="ISM-PHN-0115" required>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="generateSku('add_sku')">Auto</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Barcode (EAN-13) *</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" id="add_barcode" class="form-control" value="8901041001158" required>
+                                            <button type="button" class="btn btn-outline-secondary" onclick="generateBarcode('add_barcode')">Auto</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Status *</label>
+                                        <select id="add_status" class="form-select form-select-sm" required>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <label class="form-label small fw-semibold">Product Name *</label>
+                                        <input type="text" id="add_name" class="form-control form-control-sm" placeholder="e.g. Google Pixel 9 Pro XL 256GB (Obsidian)" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Unit *</label>
+                                        <select id="add_unit" class="form-select form-select-sm" required>
+                                            <option value="pcs">Pieces (pcs)</option>
+                                            <option value="box">Box</option>
+                                            <option value="pack">Pack</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label small fw-semibold mb-0">Category *</label>
+                                            <a href="categories.html" class="small text-decoration-none">+ Manage Categories</a>
+                                        </div>
+                                        <select id="add_category" class="form-select form-select-sm" required>
+                                            <option value="iPhones & iOS Devices">iPhones & iOS Devices</option><option value="Smartphones (Android)">Smartphones (Android)</option><option value="Fast Chargers & Adapters">Fast Chargers & Adapters</option><option value="Audio & Wireless Earbuds">Audio & Wireless Earbuds</option><option value="Power Banks & Data Cables">Power Banks & Data Cables</option><option value="Cases & Tempered Glass">Cases & Tempered Glass</option><option value="Smartwatches & Wearables">Smartwatches & Wearables</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <label class="form-label small fw-semibold mb-0">Supplier Name</label>
+                                            <a href="suppliers.html" class="small text-decoration-none">+ Manage Suppliers</a>
+                                        </div>
+                                        <select id="add_supplier" class="form-select form-select-sm">
+                                            <option value="FutureWorld Apple Authorized SL">FutureWorld Apple Authorized SL</option><option value="Samsung Lanka Mobility Pvt Ltd">Samsung Lanka Mobility Pvt Ltd</option><option value="Anker & Baseus Accessories Hub">Anker & Baseus Accessories Hub</option><option value="Xiaomi Lanka Official Imports">Xiaomi Lanka Official Imports</option><option value="Spigen & Shield Case Wholesale">Spigen & Shield Case Wholesale</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Cost Price (LKR) *</label>
+                                        <input type="number" step="0.01" min="0" id="add_cost" class="form-control form-control-sm" value="285000" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Selling Price (LKR) *</label>
+                                        <input type="number" step="0.01" min="0" id="add_selling" class="form-control form-control-sm" value="325000" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Initial Stock *</label>
+                                        <input type="number" min="0" id="add_stock" class="form-control form-control-sm" value="10" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Min Stock Alert *</label>
+                                        <input type="number" min="0" id="add_min_stock" class="form-control form-control-sm" value="5" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Description</label>
+                                        <textarea id="add_description" rows="2" class="form-control form-control-sm" placeholder="Optional phone specs, warranty details, or IMEI notes..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm fw-semibold px-4">
+                                    <i class="bi bi-check2-circle me-1"></i> Save Product
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 2: Delete Confirmation -->
+            <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-danger text-white">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-exclamation-triangle me-2"></i>Delete Product
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form onsubmit="confirmDeleteProduct(event)">
+                            <div class="modal-body p-4">
+                                <p class="mb-1">Are you sure you want to permanently delete this product?</p>
+                                <div class="p-3 bg-light rounded-3 border mt-2">
+                                    <div class="fw-bold text-dark" id="delete_product_name"></div>
+                                    <small class="text-muted" id="delete_product_sku"></small>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger btn-sm fw-semibold px-3">
+                                    <i class="bi bi-trash me-1"></i> Yes, Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 3: View Product Details -->
+            <div class="modal fade" id="viewProductModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header bg-primary text-white">
+                            <h6 class="modal-title fw-bold">
+                                <i class="bi bi-box-seam me-2"></i>Product Details
+                            </h6>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-4 small">
+                            <h6 class="fw-bold text-dark mb-1" id="view_name"></h6>
+                            <p class="text-muted mb-3" id="view_description"></p>
+                            <table class="table table-sm table-bordered mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th class="bg-light w-50">SKU</th>
+                                        <td><code id="view_sku"></code></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Barcode</th>
+                                        <td class="font-monospace" id="view_barcode"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Category</th>
+                                        <td id="view_category"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Supplier</th>
+                                        <td id="view_supplier"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Cost Price</th>
+                                        <td class="fw-semibold text-secondary" id="view_cost_price"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Selling Price</th>
+                                        <td class="fw-bold text-primary" id="view_selling_price"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Current Stock</th>
+                                        <td id="view_stock"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-light">Stock Status</th>
+                                        <td><span class="badge text-bg-primary" id="view_stock_badge"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+    <!-- Common Bootstrap JS & Shared ISM Admin JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ism-admin.js"></script>
+    
+        <script>
+            let pendingDeleteId = null;
+
+            function filterProductsTable(e) {
+                if (e) e.preventDefault();
+                const q = (document.getElementById('prodSearchInput').value || '').trim().toLowerCase();
+                const cat = document.getElementById('prodCategoryFilter').value;
+                const st = document.getElementById('prodStockFilter').value;
+                let visible = 0;
+
+                document.querySelectorAll('#productsTableBody .product-row').forEach(row => {
+                    const matchQ = !q || (row.getAttribute('data-search') || '').includes(q);
+                    const matchCat = !cat || row.getAttribute('data-category') === cat;
+                    const matchSt = !st || row.getAttribute('data-stock-status') === st;
+                    if (matchQ && matchCat && matchSt) {
+                        row.style.display = '';
+                        visible++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+                document.getElementById('visibleProductsCount').textContent = visible;
+            }
+
+            function resetProductFilters() {
+                document.getElementById('prodSearchInput').value = '';
+                document.getElementById('prodCategoryFilter').value = '';
+                document.getElementById('prodStockFilter').value = '';
+                filterProductsTable();
+            }
+
+            function openViewModal(product, stockLabel) {
+                document.getElementById('view_name').textContent = product.name;
+                document.getElementById('view_description').textContent = product.description || 'No description provided.';
+                document.getElementById('view_sku').textContent = product.sku;
+                document.getElementById('view_barcode').textContent = product.barcode;
+                document.getElementById('view_category').textContent = product.category;
+                document.getElementById('view_supplier').textContent = product.supplier || 'N/A';
+                document.getElementById('view_cost_price').textContent = 'LKR ' + Number(product.cost_price).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('view_selling_price').textContent = 'LKR ' + Number(product.selling_price).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('view_stock').textContent = product.stock_quantity + ' ' + product.unit + ' (Min: ' + product.min_stock_level + ')';
+                document.getElementById('view_stock_badge').textContent = stockLabel;
+
+                new bootstrap.Modal(document.getElementById('viewProductModal')).show();
+            }
+
+            function openDeleteModal(product) {
+                pendingDeleteId = product.id;
+                document.getElementById('delete_product_name').textContent = product.name;
+                document.getElementById('delete_product_sku').textContent = 'SKU: ' + product.sku + ' | Barcode: ' + product.barcode;
+                new bootstrap.Modal(document.getElementById('deleteProductModal')).show();
+            }
+
+            function confirmDeleteProduct(e) {
+                e.preventDefault();
+                if (pendingDeleteId) {
+                    const row = document.querySelector('.product-row[data-id="' + pendingDeleteId + '"]');
+                    if (row) row.remove();
+                    filterProductsTable();
+                }
+                bootstrap.Modal.getInstance(document.getElementById('deleteProductModal')).hide();
+                showStaticAlert('Product deleted from catalog (Static Demo Mode).', 'success');
+            }
+
+            function handleQuickAddProduct(e) {
+                e.preventDefault();
+                const name = document.getElementById('add_name').value;
+                const sku = document.getElementById('add_sku').value;
+                const barcode = document.getElementById('add_barcode').value;
+                const category = document.getElementById('add_category').value;
+                const supplier = document.getElementById('add_supplier').value;
+                const cost = parseFloat(document.getElementById('add_cost').value) || 0;
+                const selling = parseFloat(document.getElementById('add_selling').value) || 0;
+                const stock = parseInt(document.getElementById('add_stock').value, 10) || 0;
+                const minStock = parseInt(document.getElementById('add_min_stock').value, 10) || 5;
+                const unit = document.getElementById('add_unit').value;
+                const margin = cost > 0 ? (((selling - cost) / cost) * 100).toFixed(1) : '0.0';
+                const newId = Date.now();
+                const newProd = { id: newId, name, sku, barcode, category, supplier, cost_price: cost, selling_price: selling, stock_quantity: stock, min_stock_level: minStock, unit, description: document.getElementById('add_description').value };
+
+                const tbody = document.getElementById('productsTableBody');
+                const tr = document.createElement('tr');
+                tr.className = 'product-row';
+                tr.setAttribute('data-id', newId);
+                tr.setAttribute('data-search', (name + ' ' + sku + ' ' + barcode + ' ' + supplier).toLowerCase());
+                tr.setAttribute('data-category', category);
+                tr.setAttribute('data-stock-status', stock <= 0 ? 'out_of_stock' : (stock <= minStock ? 'low_stock' : 'in_stock'));
+                tr.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="product-icon-box"><i class="bi bi-phone"></i></div>
+                            <div>
+                                <div class="fw-semibold text-dark">${name}</div>
+                                <div><code class="text-primary">${sku}</code></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge text-bg-light border font-monospace"><i class="bi bi-upc me-1"></i>${barcode}</span></td>
+                    <td><div class="fw-medium text-dark">${category}</div><small class="text-muted">${supplier}</small></td>
+                    <td class="text-end"><div class="fw-medium text-secondary">LKR ${cost.toLocaleString(undefined,{minimumFractionDigits:2})}</div><small class="text-success">Margin: ${margin}%</small></td>
+                    <td class="text-end fw-bold text-dark">LKR ${selling.toLocaleString(undefined,{minimumFractionDigits:2})}</td>
+                    <td class="text-center"><span class="fw-bold fs-6 text-dark">${stock}</span><div class="text-muted" style="font-size:0.72rem;">${unit} (Min: ${minStock})</div></td>
+                    <td><span class="badge text-bg-success">In Stock</span></td>
+                    <td class="text-end">
+                        <div class="btn-group btn-group-sm">
+                            <a href="barcodes.html?sku=${encodeURIComponent(sku)}" class="btn btn-outline-dark"><i class="bi bi-upc-scan"></i></a>
+                            <a href="product-form.html?sku=${encodeURIComponent(sku)}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                        </div>
+                    </td>
+                `;
+                tbody.insertBefore(tr, tbody.firstChild);
+                filterProductsTable();
+                bootstrap.Modal.getInstance(document.getElementById('addProductModal')).hide();
+                showStaticAlert('New product "' + name + '" (' + sku + ') added to catalog!', 'success');
+            }
+        </script>
+        
+</body>
+</html>
